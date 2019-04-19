@@ -24,3 +24,6 @@ h5专题页面可视化编辑后台
 * ...
 
 一键生成纯静态html文件，随时随地部署使用
+
+## preview
+[在线Demo](https://yangyuji.github.io/cms-admin/)

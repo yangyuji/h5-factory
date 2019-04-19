@@ -96,7 +96,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: path.resolve(__dirname, '../assets'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
@@ -183,7 +183,7 @@ if (config.build.generateAnalyzerReport || config.build.bundleAnalyzerReport) {
   if (config.build.generateAnalyzerReport) {
     webpackConfig.plugins.push(
       new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
+        analyzerMode: 'assets',
         reportFilename: 'bundle-report.html',
         openAnalyzer: false
       })
