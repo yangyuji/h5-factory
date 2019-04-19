@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>cms-admin</title>
+    <style type="text/css">
+      .svg-icon {
+        width: 40px;
+        height: 40px;
+        stroke: #343640;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+      .svg-icon .path {
+        fill: none;
+      }
+      .init-box {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .init-box .box-loading {
+        width: 128px;
+        height: 128px;
+        background: none;
+        animation: loading-rotate 0.8s linear infinite;
+      }
+      @keyframes loading-rotate {
+        to {
+          transform: rotate(1turn)
+        }
+      }
+      .init-box .init-tips {
+        color: #8B90A0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="init-box">
+        <svg viewBox="0 0 50 50" class="svg-icon box-loading">
+          <circle cx="25" cy="25" r="20" fill="none" stroke="#F2F2F2" class="path"></circle>
+          <circle cx="25" cy="25" r="20" fill="none" stroke="#24292e" stroke-dasharray="60,150" class="path"></circle>
+        </svg>
+        <p class="init-tips">初次加载，请耐心等待...</p>
+      </div>
+    </div>
+  </body>
+</html>
