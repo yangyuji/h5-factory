@@ -56,6 +56,7 @@
     position: relative;
     height: 40px;
     line-height: 38px;
+    background-color: #fff;
     border-bottom: 1px solid #e8e8e8;
     padding-left: 15px;
 

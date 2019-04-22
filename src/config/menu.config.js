@@ -5,19 +5,19 @@ module.exports = [
       {
         key: 'base-text',
         text: '文本',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/wenben.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/text.png'
       }, {
         key: 'base-img',
         text: '图片',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/dantu.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/image.png'
       }, {
         key: 'base-hot-img',
         text: '热区图',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/anniu.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/image-hot.png'
       }, {
         key: 'base-form',
         text: '表单',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/anniu.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/form.png'
       }
     ]
   }, {
@@ -26,23 +26,23 @@ module.exports = [
       {
         key: 'swipe-banner',
         text: '轮播图',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/tuzu.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/swiper.png'
       }, {
         key: 'page-tabs',
         text: '页面Tabs',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/anniu.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/tabs.png'
       }, {
         key: 'floor-memu',
         text: '楼层导航',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/fenge.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/floor.png'
       }, {
         key: 'timeout',
         text: '倒计时',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/liukong.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/timer.png'
       }, {
         key: 'left-scroll',
         text: '横向滚动',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/shuanglan.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/scroll.png'
       }
     ]
   }, {
@@ -51,11 +51,11 @@ module.exports = [
       {
         key: 'news-marquee',
         text: '滚动新闻',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/tuzu.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/marquee.png'
       }, {
         key: 'flex-box',
         text: '金刚位',
-        img: '//img.dsimg.cn/m_station/cms/cms_admin/shuanglan.png'
+        img: 'https://yangyuji.github.io/cms-admin/static/img/yflex.png'
       }
     ]
   }

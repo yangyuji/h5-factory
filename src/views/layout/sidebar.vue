@@ -7,10 +7,13 @@
         <i class="el-icon-remove"></i>
       </div>
       <div class="memu-group-list" id="Contros">
-        <div class="memu-item" :data-key="item.key"
+        <div class="memu-item"
+             :data-key="item.key"
+             draggable="true"
+             @dragstart="menuDrag($event, item.key)"
              v-for="item in memu.items">
           <div class="item-img-box">
-            <img :src="item.img" :alt="item.text">
+            <img :src="item.img" :alt="item.text" draggable="false">
           </div>
           <p class="item-text-box">{{item.text}}</p>
         </div>
@@ -28,6 +31,11 @@
       return {
         memuData: menuConfig
       }
+    },
+    methods: {
+      menuDrag(e, key) {
+        e.dataTransfer.setData('cmp-type', key)
+      }
     }
   }
 </script>
@@ -40,6 +48,16 @@
   padding-bottom: 20px;
   box-sizing: border-box;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 1px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+  }
 
   .sidebar-memu-group {
     position: relative;
@@ -107,31 +125,24 @@
     }
   }
 }
-.memu-moving {
-  position: absolute;
-  box-sizing: content-box;
-  width: 60px;
-  height: 60px;
-  background: #fff;
-  opacity: .6;
-  cursor: pointer;
-  z-index: 1000;
+@media screen and (max-width: 1440px) {
+  .app-sidebar {
+    width: 100px;
+    padding: 10px;
 
-  .moving-img-box {
-    text-align: center;
-    margin-top: 6px;
-    height: 32px;
-    img {
-      height: 32px;
-      width: 32px;
+    .sidebar-memu-group {
+      width: 80px;
+
+      .memu-group-title i {
+        right: 0;
+      }
+      .memu-group-list {
+        .memu-item {
+          width: 80px;
+          height: 80px;
+        }
+      }
     }
-  }
-  .moving-text-box {
-    text-align: center;
-    height: 20px;
-    line-height: 20px;
-    margin: 0;
-    font-size: 12px;
   }
 }
 </style>
