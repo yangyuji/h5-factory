@@ -3,19 +3,19 @@ module.exports = [
     title: '基础组件',
     items: [
       {
-        key: 'base-text',
+        key: 'text',
         text: '文本',
         img: 'https://yangyuji.github.io/cms-admin/static/img/text.png'
       }, {
-        key: 'base-img',
+        key: 'img',
         text: '图片',
         img: 'https://yangyuji.github.io/cms-admin/static/img/image.png'
       }, {
-        key: 'base-hot-img',
+        key: 'hot-img',
         text: '热区图',
         img: 'https://yangyuji.github.io/cms-admin/static/img/image-hot.png'
       }, {
-        key: 'base-form',
+        key: 'form',
         text: '表单',
         img: 'https://yangyuji.github.io/cms-admin/static/img/form.png'
       }
