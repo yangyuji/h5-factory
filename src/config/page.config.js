@@ -45,6 +45,26 @@ module.exports = {
       placeholder: '生成的html文件名称',
       val: '',
       isNecessary: true
+    }, {
+      type: 'text',
+      label: '分享标题',
+      attr: 'page-share-title',
+      placeholder: '微信分享的标题',
+      val: '',
+      isNecessary: true
+    }, {
+      type: 'textarea',
+      label: '分享描述',
+      attr: 'page-share-desc',
+      placeholder: '微信分享的描述文字',
+      val: '',
+      isNecessary: true
+    }, {
+      type: 'upload',
+      label: '分享图标',
+      attr: 'share-icon',
+      val: '',
+      isNecessary: true
     }
   ],
   style: [
@@ -78,29 +98,6 @@ module.exports = {
           val: 'repeat'
         }
       ]
-    }
-  ],
-  action: [
-    {
-      type: 'text',
-      label: '标题',
-      attr: 'page-share-title',
-      placeholder: '微信分享的标题',
-      val: '',
-      isNecessary: true
-    }, {
-      type: 'textarea',
-      label: '描述',
-      attr: 'page-share-desc',
-      placeholder: '微信分享的描述文字',
-      val: '',
-      isNecessary: true
-    }, {
-      type: 'upload',
-      label: '图标',
-      attr: 'share-icon',
-      val: '',
-      isNecessary: true
     }
   ]
 }

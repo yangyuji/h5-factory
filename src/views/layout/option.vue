@@ -13,28 +13,22 @@
                     placeholder="非必填，页内跳转配置使用"></el-input>
         </el-form-item>
       </template>
+
       <template v-if="option.base && option.base.length">
-        <template v-for="item in option.base">
-          <form-item :item="item"></form-item>
+        <template v-for="(item, idx) in option.base">
+          <form-item :item="item" :index="idx"></form-item>
         </template>
       </template>
 
       <template v-if="option.style && option.style.length">
-
         <h3><i class="el-icon-setting"></i> 样式配置</h3>
-
         <template v-for="(item, idx) in option.style">
-
-          <form-item :item="item"></form-item>
-
-          <upload v-if="item.type === 'upload'"
-                  :id="idx"
-                  :label="item.label"
-                  :item="item"
-                  v-on:uploadSuccess="uploadSuccess">
-          </upload>
-
+          <form-item :item="item" :index="idx"></form-item>
         </template>
+      </template>
+
+      <template v-if="option.action">
+        <h3><i class="el-icon-setting"></i> 点击配置</h3>
 
       </template>
 
@@ -43,9 +37,7 @@
 </template>
 
 <script>
-  import util from '@/utils/util.js'
   import formItem from '@/components/formItem.vue'
-  import upload from '@/components/upload.vue'
   export default {
     name: 'AppOption',
     data() {
@@ -53,7 +45,6 @@
       }
     },
     components: {
-      upload,
       formItem
     },
     props: {
@@ -71,17 +62,7 @@
       }
     },
     methods: {
-      uploadSuccess(res, item, img, list, idx) {
-        const width = 750
-        const height = img.height * (750 / img.width).toFixed(4)
-        item.width = width
-        item.height = height
-        if (list && list.length) {
-          const cp = util.copyObj(item)
-          list.splice(idx, 1, cp)
-        }
-        console.log('uploadSuccess', item)
-      }
+
     }
   }
 </script>
@@ -99,6 +80,7 @@
   }
 
   .el-form {
+    padding-bottom: 30px;
 
     > h3 {
       background-color: #f2f3f4;

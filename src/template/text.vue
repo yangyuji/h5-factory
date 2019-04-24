@@ -15,7 +15,7 @@
     computed: {
       getStyle() {
         const ret = []
-        this.component.style.forEach((val) => {
+        this.component.option.style.forEach((val) => {
           const unit = val.unit ? val.unit : ''
           if (val.val) {
             if (Array.isArray(val.attr)) {
@@ -30,11 +30,11 @@
         return ret.join(';')
       },
       getText() {
-        const arr = this.component.base[0].val.split('\n')
+        const arr = this.component.option.base[0].val.split('\n')
         if (arr.length) {
           return arr.join('<br/>')
         }
-        return this.component.base[0].val
+        return this.component.option.base[0].val
       }
     }
   }
