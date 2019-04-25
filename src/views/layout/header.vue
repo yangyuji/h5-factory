@@ -1,6 +1,6 @@
 <template>
   <header class="app-header">
-    <img class="header-logo" src="https://yangyuji.github.io/vue-element-admin/static/img/logo.png">cms admin
+    <img class="header-logo" src="https://yangyuji.github.io/cms-admin/static/img/logo.png">cms-admin
   </header>
 </template>
 

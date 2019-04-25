@@ -5,19 +5,19 @@ module.exports = [
       {
         key: 'text',
         text: '文本',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/text.png'
+        icon: 'fa-file-text-o'
       }, {
         key: 'img',
         text: '图片',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/image.png'
+        icon: 'fa-file-image-o'
       }, {
         key: 'hot-img',
         text: '热区图',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/image-hot.png'
+        icon: 'fa-object-group'
       }, {
         key: 'form',
         text: '表单',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/form.png'
+        icon: 'fa-list'
       }
     ]
   }, {
@@ -26,23 +26,23 @@ module.exports = [
       {
         key: 'swipe-banner',
         text: '轮播图',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/swiper.png'
+        icon: 'fa-caret-square-o-right'
       }, {
         key: 'page-tabs',
         text: '页面Tabs',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/tabs.png'
+        icon: 'fa-address-book-o'
       }, {
         key: 'floor-memu',
         text: '楼层导航',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/floor.png'
+        icon: 'fa-list-ol'
       }, {
         key: 'timeout',
         text: '倒计时',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/timer.png'
+        icon: 'fa-hourglass-start'
       }, {
         key: 'left-scroll',
         text: '横向滚动',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/scroll.png'
+        icon: 'fa-exchange'
       }
     ]
   }, {
@@ -51,11 +51,11 @@ module.exports = [
       {
         key: 'news-marquee',
         text: '滚动新闻',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/marquee.png'
+        icon: 'fa-newspaper-o'
       }, {
         key: 'flex-box',
         text: '金刚位',
-        img: 'https://yangyuji.github.io/cms-admin/static/img/yflex.png'
+        icon: 'fa-th'
       }
     ]
   }

@@ -12,8 +12,8 @@
              draggable="true"
              @dragstart="menuDrag($event, item.key)"
              v-for="item in memu.items">
-          <div class="item-img-box">
-            <img :src="item.img" :alt="item.text" draggable="false">
+          <div class="item-icon-box">
+            <i :class="['fa', item.icon]" aria-hidden="true"></i>
           </div>
           <p class="item-text-box">{{item.text}}</p>
         </div>
@@ -104,16 +104,17 @@
           border-right: 0;
         }
 
-        .item-img-box {
+        .item-icon-box {
           text-align: center;
           margin-top: 18px;
           height: 32px;
 
-          > img {
-            height: 32px;
-            width: 32px;
+          > .fa {
+            font-size: 24px;
+            color: #409eff;
           }
         }
+
         .item-text-box {
           text-align: center;
           height: 20px;
