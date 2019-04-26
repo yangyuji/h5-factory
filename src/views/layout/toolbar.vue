@@ -30,10 +30,7 @@
     },
     methods: {
       showPageSet() {
-        this.$message({
-          message: '功能完善中，敬请期待！',
-          type: 'success'
-        })
+        this.$emit('showPageSet')
       },
       showPreview() {
         this.$message({

@@ -12,6 +12,8 @@
 module.exports = {
   'text': {
     title: '文本',
+    domId: '',
+    domName: '',
     base: [
       {
         type: 'textarea',
@@ -112,13 +114,19 @@ module.exports = {
   },
   'img': {
     title: '图片',
-    base: [],
+    domId: '',
+    domName: '',
     style: [
       {
         type: 'upload',
         label: '上传图片',
         attr: 'src',
         val: '',
+        /* limit: {
+          w: 750,
+          h: 200,
+          s: 500
+        },*/
         isNecessary: true
       }, {
         type: 'input-number',

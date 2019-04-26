@@ -14,7 +14,7 @@
           </div>
           <div class="el-upload el-upload--text">
             <div class="el-upload-dragger"><i class="el-icon-upload"></i>
-              <div v-if="item.val" class="image-preview" :style="{backgroundImage: 'url('+item.val+')'}">
+              <div v-if="item.val" class="image-preview" :style="{ backgroundImage: 'url(' + item.val + ')' }">
                 <i class="fa fa-window-close" @click="delImg(item, $event)"></i>
               </div>
               <div v-else class="el-upload__text">点击此处，<em>上传图片</em></div>
@@ -33,17 +33,8 @@
   export default {
     name: 'upload',
     props: {
-      id: {
-        type: Number
-      },
       label: {
         type: String
-      },
-      array: {
-        type: Array,
-        default: () => {
-          return []
-        }
       },
       item: {
         type: Object
@@ -92,12 +83,16 @@
                 }
 
                 if (invalide) {
-                  this.item.val = img
-                  this.$emit('uploadSuccess', img)
+                  const width = 750
+                  const height = img.height * (750 / img.width).toFixed(4)
+                  this.item.width = width
+                  this.item.height = height
+                  this.item.val = img.src
+                  this.$emit('uploadSuccess', this.item, img)
                 }
               }
               img.src = reader.result
-              this.$emit('beforeUpload', file, this.item, img, this.array, this.id)
+              this.$emit('beforeUpload', file, this.item, img)
             }
             reader.onerror = (err) => {
               console.log('reader error', err)

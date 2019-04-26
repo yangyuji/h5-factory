@@ -89,7 +89,6 @@
 </template>
 
 <script>
-  import util from '@/utils/util.js'
   import upload from '@/components/upload.vue'
   export default {
     props: {
@@ -126,15 +125,7 @@
           return false
         }
       },
-      uploadSuccess(res, item, img, list, idx) {
-        const width = 750
-        const height = img.height * (750 / img.width).toFixed(4)
-        item.width = width
-        item.height = height
-        if (list && list.length) {
-          const cp = util.copyObj(item)
-          list.splice(idx, 1, cp)
-        }
+      uploadSuccess(item, img) {
         console.log('uploadSuccess', item)
       }
     }

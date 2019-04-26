@@ -1,18 +1,16 @@
 <template>
   <div class="app-option">
     <el-form ref="options-form" label-width="70px" size="mini">
-      <h2>【{{name}}】</h2>
 
-      <template v-if="domId !== 'page'">
-        <el-form-item class="small" label="组件编号：">
-          <span>{{domId}}</span>
-        </el-form-item>
-        <el-form-item class="small" label="组件名称：">
-          <el-input v-model="domName"
-                    maxlength="30"
-                    placeholder="非必填，页内跳转配置使用"></el-input>
-        </el-form-item>
-      </template>
+      <h2>【{{option.title}}】</h2>
+      <el-form-item class="small" label="组件编号：">
+        <span>{{option.domId}}</span>
+      </el-form-item>
+      <el-form-item class="small" label="组件名称：">
+        <el-input v-model="option.domName"
+                  maxlength="30"
+                  placeholder="非必填，页内跳转配置使用"></el-input>
+      </el-form-item>
 
       <template v-if="option.base && option.base.length">
         <template v-for="(item, idx) in option.base">
@@ -48,21 +46,11 @@
       formItem
     },
     props: {
-      name: {
-        type: String
-      },
-      domId: {
-        type: String
-      },
-      domName: {
-        type: String
-      },
       option: {
         type: Object
       }
     },
     methods: {
-
     }
   }
 </script>

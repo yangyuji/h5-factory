@@ -2,7 +2,7 @@
   <div :class="['comp-content', component.active ? 'active' : '']"
        :style="getStyle">
     <div class="image-box">
-      <img v-if="getImg" :src="getImg">
+      <img v-if="imgUrl" :src="imgUrl">
       <div v-else class="image-placeholder"><i class="fa fa-image"></i></div>
     </div>
   </div>
@@ -15,17 +15,27 @@
         type: Object
       }
     },
+    data() {
+      return {
+        imgUrl: this.component.style[0].val
+      }
+    },
     computed: {
       getStyle() {
         const ret = []
-        this.component.option.style.forEach((val) => {
-          const unit = val.unit ? val.unit : ''
-          val.val && ret.push(val.attr + ':' + val.val + unit)
+        this.component.style.forEach((item) => {
+          const unit = item.unit ? item.unit : ''
+          item.val && ret.push(item.attr + ':' + item.val + unit)
         })
         return ret.join(';')
-      },
-      getImg() {
-        this.component.option.style[0].val
+      }
+    },
+    watch: {
+      component: {
+        handler() {
+          this.imgUrl = this.component.style[0].val
+        },
+        deep: true
       }
     }
   }

@@ -2,7 +2,7 @@
   <div class="app-body">
     <app-sidebar></app-sidebar>
     <div class="app-main">
-      <app-toolbar></app-toolbar>
+      <app-toolbar v-on:showPageSet="showPageSet"></app-toolbar>
       <div class="scroll-y">
         <div class="app-phone">
 
@@ -50,23 +50,23 @@
         </div>
       </div>
     </div>
-    <app-opt v-if="currentConfig.name"
-             :name="currentConfig.name"
-             :domId="currentConfig.domId"
-             :domName="currentConfig.domName"
-             :option="currentConfig.option">
-    </app-opt>
+
+    <app-opt v-if="currentConfig" :option="currentConfig"></app-opt>
+    <app-page-opt v-else :option="pageConfig"></app-page-opt>
+
   </div>
 </template>
 
 <script>
   import util from '@/utils/util.js'
-  import compConfig from '@/config/comp.config.js'
   import appSidebar from '@/views/layout/sidebar.vue'
   import appToolbar from '@/views/layout/toolbar.vue'
   import appOpt from '@/views/layout/option.vue'
+  import appPageOpt from '@/views/layout/pageOption.vue'
   // 页面默认配置
   import pageOption from '@/config/page.config.js'
+  // 组件默认配置
+  import compConfig from '@/config/comp.config.js'
   // 组件模板
   import textTpl from '@/template/text.vue'
   import imgTpl from '@/template/image.vue'
@@ -77,6 +77,7 @@
       appSidebar,
       appToolbar,
       appOpt,
+      appPageOpt,
       textTpl,
       imgTpl
     },
@@ -85,12 +86,8 @@
         compList: [{
           type: 'placeholder'
         }],
-        currentConfig: {
-          name: '',
-          domId: '',
-          domName: '',
-          option: null
-        }
+        pageConfig: util.copyObj(pageOption),
+        currentConfig: null
       }
     },
     mounted() {
@@ -98,12 +95,8 @@
     },
     methods: {
       showPageSet() {
-        this.currentConfig = {
-          name: '页面配置',
-          domId: 'page',
-          domName: '',
-          option: util.copyObj(pageOption)
-        }
+        this.resetCompUnchecked()
+        this.currentConfig = null
       },
       resetCompUnchecked() {
         this.compList.forEach((val) => {
@@ -114,15 +107,13 @@
       },
       // 用控件替换 Placeholder
       replacePlaceholderWithComp(index, key) {
-        const config = util.copyObj(compConfig[key])
-        const comp = {
+        const comp = util.copyObj(compConfig[key])
+        const config = {
           type: key,
           active: true,
-          name: config.title,
-          domId: key + '-' + util.createDomID(),
-          domName: '',
-          option: config
+          domId: key + '-' + util.createDomID()
         }
+        Object.assign(comp, config)
         this.compList.splice(index + 1, 0, comp)
         // 再插入一个占位控件
         this.compList.splice(index + 2, 0, {
