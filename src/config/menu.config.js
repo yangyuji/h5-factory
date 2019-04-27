@@ -11,10 +11,6 @@ module.exports = [
         text: '图片',
         icon: 'fa-file-image-o'
       }, {
-        key: 'hot-img',
-        text: '热区图',
-        icon: 'fa-object-group'
-      }, {
         key: 'form',
         text: '表单',
         icon: 'fa-list'

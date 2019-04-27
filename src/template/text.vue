@@ -22,11 +22,14 @@
               item.attr.forEach((atr, i) => {
                 ret.push(atr + ':' + item.val[i])
               })
+            } else if (item.attr === 'background-image') {
+              ret.push(item.attr + ':url(' + item.val + ')')
             } else {
               ret.push(item.attr + ':' + item.val + unit)
             }
           }
         })
+        console.log(ret)
         return ret.join(';')
       },
       getText() {
@@ -41,6 +44,9 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+  .comp-content {
+    background-repeat: no-repeat;
+  }
   .text-box {
     display: block;
   }

@@ -26,7 +26,7 @@
       </template>
 
       <template v-if="option.action">
-        <h3><i class="el-icon-setting"></i> 点击配置</h3>
+        <h3><i class="el-icon-setting"></i> {{option.action.title}}</h3>
 
       </template>
 
