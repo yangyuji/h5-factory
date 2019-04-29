@@ -29,7 +29,6 @@
             }
           }
         })
-        console.log(ret)
         return ret.join(';')
       },
       getText() {

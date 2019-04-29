@@ -54,6 +54,7 @@
     <app-opt v-if="currentConfig" :option="currentConfig"></app-opt>
     <app-page-opt v-else :option="pageConfig"></app-page-opt>
 
+    <click-config :show="clickShow" :option="currentConfig"></click-config>
   </div>
 </template>
 
@@ -63,6 +64,7 @@
   import appToolbar from '@/views/layout/toolbar.vue'
   import appOpt from '@/views/layout/option.vue'
   import appPageOpt from '@/views/layout/pageOption.vue'
+  import clickConfig from '@/views/dialog/click.vue'
   // 页面默认配置
   import pageOption from '@/config/page.config.js'
   // 组件默认配置
@@ -78,11 +80,13 @@
       appToolbar,
       appOpt,
       appPageOpt,
+      clickConfig,
       textTpl,
       imgTpl
     },
     data() {
       return {
+        clickShow: false,
         compList: [{
           type: 'placeholder'
         }],

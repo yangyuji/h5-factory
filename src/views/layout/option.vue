@@ -28,6 +28,12 @@
       <template v-if="option.action">
         <h3><i class="el-icon-setting"></i> {{option.action.title}}</h3>
 
+        <template v-if="option.type === 'text'">
+          <text-click :show.sync="textClickShow"
+                      :text="getText"></text-click>
+          <el-button icon="el-icon-plus" round @click="showTextClick">配置点击</el-button>
+        </template>
+
       </template>
 
     </el-form>
@@ -36,14 +42,22 @@
 
 <script>
   import formItem from '@/components/formItem.vue'
+  import textClick from '@/views/dialog/textClick.vue'
   export default {
     name: 'AppOption',
     data() {
       return {
+        textClickShow: false
       }
     },
     components: {
-      formItem
+      formItem,
+      textClick
+    },
+    computed: {
+      getText() {
+        return this.option.base[0].val
+      }
     },
     props: {
       option: {
@@ -51,6 +65,10 @@
       }
     },
     methods: {
+      showTextClick() {
+        this.textClickShow = true
+        // this.$emit('showTextClick')
+      }
     }
   }
 </script>

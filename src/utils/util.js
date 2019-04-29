@@ -1,9 +1,12 @@
 
 export default {
-  createDomID: function (len) {
+  createDomID(len) {
     return Number(Math.random().toString().substr(3, len)).toString(36)
   },
-  copyObj: function (obj) {
+  copyObj(obj) {
     return JSON.parse(JSON.stringify(obj))
+  },
+  getSelection(scope) {
+    return scope.value.substring(scope.selectionStart, scope.selectionEnd)
   }
 }

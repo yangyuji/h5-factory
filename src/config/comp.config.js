@@ -143,8 +143,8 @@ module.exports = {
       }
     ],
     action: {
-      type: 'click',
-      title: '点击配置',
+      type: 'text-click',
+      title: '文字跳转配置',
       config: null
     }
   },
@@ -154,6 +154,12 @@ module.exports = {
     domName: '',
     style: [
       {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '',
+        isNecessary: false
+      }, {
         type: 'upload',
         label: '上传图片',
         attr: 'src',
@@ -207,7 +213,7 @@ module.exports = {
       }
     ],
     action: {
-      type: 'click',
+      type: 'image-click',
       title: '点击区域配置',
       config: null
     }

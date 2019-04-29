@@ -17,7 +17,7 @@
     },
     data() {
       return {
-        imgUrl: this.component.style[0].val
+        imgUrl: this.component.style[1].val
       }
     },
     computed: {
@@ -33,7 +33,7 @@
     watch: {
       component: {
         handler() {
-          this.imgUrl = this.component.style[0].val
+          this.imgUrl = this.component.style[1].val
         },
         deep: true
       }
@@ -45,7 +45,6 @@
   .image-box {
     position: relative;
     overflow: hidden;
-    background-color: #f9f9f9;
 
     .image-placeholder {
       width: 100%;
