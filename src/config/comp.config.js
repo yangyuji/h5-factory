@@ -141,12 +141,7 @@ module.exports = {
         step: 1,
         isNecessary: true
       }
-    ],
-    action: {
-      type: 'text-click',
-      title: '文字跳转配置',
-      config: null
-    }
+    ]
   },
   'img': {
     title: '图片',

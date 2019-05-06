@@ -54,7 +54,7 @@
     <app-opt v-if="currentConfig" :option="currentConfig"></app-opt>
     <app-page-opt v-else :option="pageConfig"></app-page-opt>
 
-    <click-config :show="clickShow" :option="currentConfig"></click-config>
+    <click-config :show="clickShow" :option="currentConfig" :comps="compList"></click-config>
   </div>
 </template>
 
@@ -95,6 +95,16 @@
       }
     },
     mounted() {
+      this.$bus.$on('click:show', (type, idx) => {
+        console.log(idx)
+        this.clickShow = true
+      })
+      this.$bus.$on('click:hide', () => {
+        this.clickShow = false
+      })
+      this.$bus.$on('click:submit', (type, idx, list) => {
+        this.clickShow = false
+      })
       this.showPageSet()
     },
     methods: {

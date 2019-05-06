@@ -5,8 +5,5 @@ export default {
   },
   copyObj(obj) {
     return JSON.parse(JSON.stringify(obj))
-  },
-  getSelection(scope) {
-    return scope.value.substring(scope.selectionStart, scope.selectionEnd)
   }
 }

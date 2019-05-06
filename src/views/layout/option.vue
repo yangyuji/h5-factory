@@ -28,10 +28,10 @@
       <template v-if="option.action">
         <h3><i class="el-icon-setting"></i> {{option.action.title}}</h3>
 
-        <template v-if="option.type === 'text'">
-          <text-click :show.sync="textClickShow"
-                      :text="getText"></text-click>
-          <el-button icon="el-icon-plus" round @click="showTextClick">配置点击</el-button>
+        <template v-if="option.type === 'img'">
+          <image-click :show.sync="imageClickShow"
+                      :img="getImage"></image-click>
+          <el-button icon="el-icon-plus" round @click="showImageClick">配置点击</el-button>
         </template>
 
       </template>
@@ -42,21 +42,21 @@
 
 <script>
   import formItem from '@/components/formItem.vue'
-  import textClick from '@/views/dialog/textClick.vue'
+  import imageClick from '@/views/dialog/imageClick.vue'
   export default {
     name: 'AppOption',
     data() {
       return {
-        textClickShow: false
+        imageClickShow: false
       }
     },
     components: {
       formItem,
-      textClick
+      imageClick
     },
     computed: {
-      getText() {
-        return this.option.base[0].val
+      getImage() {
+        return this.option.style[1].val
       }
     },
     props: {
@@ -64,10 +64,18 @@
         type: Object
       }
     },
+    mounted() {
+      this.$bus.$on('option-click:submit', (type, idx) => {
+        this.imageClickShow = false
+        console.log(type)
+      })
+      this.$bus.$on('option-click:cancel', () => {
+        this.imageClickShow = false
+      })
+    },
     methods: {
-      showTextClick() {
-        this.textClickShow = true
-        // this.$emit('showTextClick')
+      showImageClick() {
+        this.imageClickShow = true
       }
     }
   }

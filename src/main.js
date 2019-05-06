@@ -9,6 +9,13 @@ Vue.use(ElementUI, {
   size: 'small'
 })
 
+const eventBus = {
+  install(Vue) {
+    Vue.prototype.$bus = new Vue()
+  }
+}
+Vue.use(eventBus)
+
 new Vue({
   render: h => h(App)
 }).$mount('#app')
