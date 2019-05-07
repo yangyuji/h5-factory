@@ -2,7 +2,7 @@
   <el-dialog id="imageClick"
              title="图片跳转配置"
              :close-on-click-modal="false"
-             :append-to-body="true"
+             :append-to-body="false"
              :visible="dialogShow"
              @close="cancel"
              width="780px">
@@ -30,8 +30,7 @@
           <template v-for="(area, idx) in areas">
             <el-form-item :class="['small', current === idx ? 'edit' : '']"
                           :data-index="idx" label="配置点击：">
-              <span class="right-list-span" v-if="area.text">{{ area.text }}</span>
-              <span class="right-list-span warn" v-else>尚未配置</span>
+              <span :class="['right-list-span', area.text ? '' : 'warn' ]">{{ area.text || '尚未配置' }}</span>
               <a class="right-list-a" @click="delArea(area, idx)"><i
                 class="el-icon-delete"></i></a>
               <a class="right-list-a" @click="editArea(area, idx)"><i
@@ -71,7 +70,7 @@
     watch: {
       show(val) {
         this.dialogShow = val
-        if (this.dialogShow) {
+        if (val) {
           const initArea = {
             x: '0px',
             y: '0px',
@@ -124,6 +123,8 @@
               }
             })
           })
+        } else {
+          this.areas = []
         }
       }
     },
@@ -131,7 +132,8 @@
       delArea(area, idx) {
         const n = this.areas.findIndex((item) => item.index === idx)
         this.areas.splice(n, 1)
-        document.getElementById('cropBox-' + idx).remove()
+        const box = document.getElementById('cropBox-' + idx)
+        box && box.remove()
         // 重置样式
         document.querySelectorAll('div.crop-box').forEach((val) => {
           val.classList.remove('active')

@@ -13,6 +13,7 @@
     "element-ui": "^2.4.9",
     "font-awesome": "^4.7.0",
     "normalize.css": "7.0.0",
+    "swiper": "^4.5.0",
     "vue": "2.6.10"
   },
   "devDependencies": {

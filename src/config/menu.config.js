@@ -20,7 +20,7 @@ module.exports = [
     title: '交互组件',
     items: [
       {
-        key: 'swipe-banner',
+        key: 'swiper-banner',
         text: '轮播图',
         icon: 'fa-caret-square-o-right'
       }, {

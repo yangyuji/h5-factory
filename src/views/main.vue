@@ -23,6 +23,8 @@
               <text-tpl v-if="comp.type === 'text'" :component="comp"></text-tpl>
               <!--图片控件-->
               <img-tpl v-if="comp.type === 'img'" :component="comp"></img-tpl>
+              <!--轮播图控件-->
+              <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
 
               <!--控件操作-->
               <div class="comp-menu">
@@ -72,6 +74,7 @@
   // 组件模板
   import textTpl from '@/template/text.vue'
   import imgTpl from '@/template/image.vue'
+  import swiperTpl from '@/template/swiper-banner.vue'
 
   export default {
     name: 'AppMain',
@@ -82,7 +85,8 @@
       appPageOpt,
       clickConfig,
       textTpl,
-      imgTpl
+      imgTpl,
+      swiperTpl
     },
     data() {
       return {
@@ -233,6 +237,7 @@
       min-height: 1334px;
       margin: 0 auto;
       background-color: #fff;
+      transform: translateX(-30px);
 
       .place-holder {
         position: relative;
@@ -317,7 +322,7 @@
             .tips {
               font-size: 12px;
               position: absolute;
-              left: 134%;
+              left: 120%;
               background-color: #111;
               height: 18px;
               padding: 0 5px;

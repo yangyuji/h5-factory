@@ -212,5 +212,97 @@ module.exports = {
       title: '点击区域配置',
       config: null
     }
+  },
+  'swiper-banner': {
+    title: '轮播图',
+    domId: '',
+    domName: '',
+    assert: {
+      script: 'https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js',
+      style: 'https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css'
+    },
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: 'rgba(255, 255, 255, 0)',
+        isNecessary: true
+      }, {
+        type: 'radio',
+        label: '自动播放',
+        attr: 'autoplay',
+        val: true,
+        options: [{
+          name: '是',
+          val: true
+        }, {
+          name: '否',
+          val: false
+        }],
+        isNecessary: false
+      }, {
+        type: 'radio',
+        label: '显示分页',
+        attr: 'pagination',
+        val: true,
+        options: [{
+          name: '是',
+          val: true
+        }, {
+          name: '否',
+          val: false
+        }],
+        isNecessary: false
+      }, {
+        type: 'input-number',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'swiper-click',
+      title: '图片项配置',
+      config: [{
+        val: '',
+        link: ''
+      }]
+    }
   }
 }

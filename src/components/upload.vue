@@ -36,6 +36,10 @@
       label: {
         type: String
       },
+      index: {
+        type: Number,
+        default: 0
+      },
       item: {
         type: Object
       }
@@ -88,11 +92,11 @@
                   this.item.width = width
                   this.item.height = height
                   this.item.val = img.src
-                  this.$emit('uploadSuccess', this.item, img)
+                  this.$emit('uploadSuccess', this.item, img, this.index)
                 }
               }
               img.src = reader.result
-              this.$emit('beforeUpload', file, this.item, img)
+              this.$emit('beforeUpload', file, this.item, img, this.index)
             }
             reader.onerror = (err) => {
               console.log('reader error', err)

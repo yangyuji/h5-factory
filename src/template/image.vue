@@ -64,6 +64,7 @@
       height: auto;
       margin: 0;
       border: 0;
+      -webkit-user-drag: none;
     }
   }
 </style>

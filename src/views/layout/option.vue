@@ -28,12 +28,16 @@
       <template v-if="option.action">
         <h3><i class="el-icon-setting"></i> {{option.action.title}}</h3>
 
-        <template v-if="option.type === 'img'">
+        <template v-if="option.action.type === 'image-click'">
           <image-click :show.sync="imageClickShow"
                       :img="getImage"></image-click>
           <el-button icon="el-icon-plus" round @click="showImageClick">配置点击</el-button>
         </template>
 
+        <template v-if="option.action.type === 'swiper-click'">
+          <banner-click :banners="option.action.config"
+                        v-on:bannerConfigChanged="swiperItemChanged"></banner-click>
+        </template>
       </template>
 
     </el-form>
@@ -43,6 +47,7 @@
 <script>
   import formItem from '@/components/formItem.vue'
   import imageClick from '@/views/dialog/imageClick.vue'
+  import bannerClick from '@/views/dialog/bannerClick.vue'
   export default {
     name: 'AppOption',
     data() {
@@ -52,7 +57,8 @@
     },
     components: {
       formItem,
-      imageClick
+      imageClick,
+      bannerClick
     },
     computed: {
       getImage() {
@@ -76,6 +82,16 @@
     methods: {
       showImageClick() {
         this.imageClickShow = true
+      },
+      swiperItemChanged(config, img, idx) {
+        if (!this.option.action.config) {
+          this.option.action.config = []
+        }
+        if (idx < this.option.action.config.length) {
+          this.option.action.config[idx] = config
+        } else {
+          this.option.action.config.push(config)
+        }
       }
     }
   }
