@@ -2,7 +2,7 @@
   <div>
     <template v-if="slides && slides.length">
       <div class="form-list-panel" v-for="(slide, idx) in slides">
-        <upload :label="'图片项' + (idx + 1)"
+        <upload :label="'图片' + (idx + 1)"
                 :index="idx"
                 :item="slide"
                 v-on:uploadSuccess="uploadSuccess">
@@ -11,15 +11,10 @@
           <el-form-item class="small" label="跳转到：">
             <span style="word-break: break-all;">{{slide.link.val}}</span>
           </el-form-item>
-          <el-form-item class="small" label="点击配置：">
-            <el-button icon="el-icon-edit" round @click="showClick()">配置跳转</el-button>
-          </el-form-item>
         </template>
-        <template v-else>
-          <el-form-item class="small" label="点击配置：">
-            <el-button icon="el-icon-plus" round @click="showClick()">配置跳转</el-button>
-          </el-form-item>
-        </template>
+        <el-form-item class="small" label="点击配置：">
+          <el-button icon="el-icon-edit" round @click="showClick()">配置跳转</el-button>
+        </el-form-item>
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
              @click="upBanner(idx)"><i class="el-icon-arrow-up"></i>上移</a>
@@ -67,22 +62,19 @@
       },
       delBanner(idx) {
         this.slides.splice(idx, 1)
-        this.$emit('bannerConfigChanged', null, null, idx)
       },
       addBanner() {
         if (this.slides.length < 10) {
-          const tmp = {
+          this.slides.push({
             val: '',
             link: ''
-          }
-          this.slides.push(tmp)
-          this.$emit('bannerConfigChanged', tmp, null, this.slides.length - 1)
+          })
         } else {
           this.$alert('最多添加10个图片项！')
         }
       },
       uploadSuccess(item, img, idx) {
-        this.$emit('bannerConfigChanged', item, img, idx)
+        console.log('uploadSuccess', item)
       }
     }
   }

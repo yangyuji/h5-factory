@@ -35,8 +35,7 @@
         </template>
 
         <template v-if="option.action.type === 'swiper-click'">
-          <banner-click :banners="option.action.config"
-                        v-on:bannerConfigChanged="swiperItemChanged"></banner-click>
+          <banner-click :banners="option.action.config"></banner-click>
         </template>
       </template>
 
@@ -73,7 +72,7 @@
     mounted() {
       this.$bus.$on('option-click:submit', (type, idx) => {
         this.imageClickShow = false
-        console.log(type)
+        console.log(type, idx)
       })
       this.$bus.$on('option-click:cancel', () => {
         this.imageClickShow = false
@@ -82,16 +81,6 @@
     methods: {
       showImageClick() {
         this.imageClickShow = true
-      },
-      swiperItemChanged(config, img, idx) {
-        if (!this.option.action.config) {
-          this.option.action.config = []
-        }
-        if (idx < this.option.action.config.length) {
-          this.option.action.config[idx] = config
-        } else {
-          this.option.action.config.push(config)
-        }
       }
     }
   }

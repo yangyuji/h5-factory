@@ -3,17 +3,10 @@
        :style="getStyle">
     <div class="swiper-container" :id="component.domId" :style="{width: width, height: height}">
       <div class="swiper-wrapper">
-        <template v-if="banners">
-          <div v-for="banner in banners" class="swiper-slide">
-            <img v-if="banner.val" :src="banner.val">
-            <div v-else class="image-placeholder"><i class="fa fa-image"></i></div>
-          </div>
-        </template>
-        <template v-else>
-          <div class="swiper-slide">
-            <div class="image-placeholder"><i class="fa fa-image"></i></div>
-          </div>
-        </template>
+        <div v-for="banner in banners" class="swiper-slide">
+          <img v-if="banner.val" :src="banner.val">
+          <div v-else class="image-placeholder"><i class="fa fa-image"></i></div>
+        </div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -51,11 +44,12 @@
     watch: {
       component: {
         handler() {
-          this.banners = this.component.action.config
+          console.log('swiper-banner changed', this.component.action.config)
           this.height = this.getMaxHeight()
           this.width = this.getWidth()
-          this.swiper.update()
-          console.log('swiper-banner changed', this.banners)
+          setTimeout(() => {
+            this.swiper.update()
+          }, 0)
         },
         deep: true
       }
