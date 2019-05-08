@@ -31,10 +31,12 @@
 
 <script>
   import util from '@/utils/util.js'
+  import compConfig from '@/config/comp.config.js'
   import upload from '@/components/upload.vue'
   export default {
     data() {
       return {
+        defaultConf: util.copyObj(compConfig['swiper-banner']),
         slides: this.banners
       }
     },
@@ -44,6 +46,14 @@
     props: {
       banners: {
         type: Array
+      }
+    },
+    watch: {
+      banners: {
+        handler(val) {
+          this.slides = val
+        },
+        deep: true
       }
     },
     methods: {
@@ -65,10 +75,7 @@
       },
       addBanner() {
         if (this.slides.length < 10) {
-          this.slides.push({
-            val: '',
-            link: ''
-          })
+          this.slides.push(util.copyObj(this.defaultConf.action.config[0]))
         } else {
           this.$alert('最多添加10个图片项！')
         }
@@ -81,23 +88,5 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-  .form-list-panel {
-    margin-top: 15px;
-    border: 1px solid #dbdbdb;
-    padding: 15px 15px 10px 15px;
 
-    &:first-child {
-       margin-top: 0;
-     }
-
-    .list-item-opt {
-      text-align: right;
-
-      > a {
-        margin-left: 10px;
-        color: #2aa7ff;
-        font-size: 12px;
-      }
-    }
-  }
 </style>

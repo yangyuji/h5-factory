@@ -213,6 +213,86 @@ module.exports = {
       config: null
     }
   },
+  'form': {
+    title: '表单',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'text',
+        label: '接口地址',
+        val: '',
+        placeholder: '请输入表单提交的接口地址',
+        isNecessary: true
+      }
+    ],
+    style: [
+      {
+        type: 'input-number',
+        label: '容器高度',
+        attr: 'height',
+        val: '',
+        unit: 'px',
+        isNecessary: false
+      }, {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '',
+        isNecessary: false
+      }, {
+        type: 'upload',
+        label: '背景图片',
+        attr: 'background-image',
+        val: '',
+        isNecessary: true
+      }, {
+        type: 'select',
+        label: '背景尺寸',
+        attr: 'background-size',
+        val: 'contain',
+        options: [
+          {
+            name: '无',
+            val: 'inherit'
+          }, {
+            name: '宽高裁剪',
+            val: 'cover'
+          }, {
+            name: '宽高自适应',
+            val: 'contain'
+          }
+        ]
+      }, {
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#333333',
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '字体大小',
+        attr: 'font-size',
+        val: 24,
+        unit: 'px',
+        step: 1,
+        max: 200,
+        min: 20,
+        isNecessary: false
+      }
+    ],
+    action: {
+      type: 'form-submit',
+      title: '表单项配置',
+      config: [{
+        desc: '字段描述',
+        type: 'text',
+        name: 'name',
+        placeholder: '',
+        isNecessary: 1
+      }]
+    }
+  },
   'swiper-banner': {
     title: '轮播图',
     domId: '',

@@ -23,7 +23,7 @@
             <el-tab-pane label="全部">
               <div class="choose-panel smaller">
                 <template v-for="comp in comps">
-                  <el-button v-if="comp.type!=='placeholder'"
+                  <el-button v-if="comp.type !== 'placeholder'"
                              size="mini" round
                              :class="[currentTab == 'page' && link == comp.domId ?
                              'el-button--primary' : '']"
@@ -62,7 +62,7 @@
             <el-tab-pane label="表单">
               <div class="choose-panel smaller">
                 <template v-for="comp in comps">
-                  <el-button v-if="comp.type == 'img-hot-area'"
+                  <el-button v-if="comp.type == 'form'"
                              size="mini" round
                              :class="[currentTab == 'page' && link == comp.domId ?
                              'el-button--primary' : '']"
@@ -100,7 +100,7 @@
         type: Boolean,
         default: false
       },
-      text: {
+      type: {
         type: String
       },
       index: {

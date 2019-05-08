@@ -35,7 +35,11 @@
         </template>
 
         <template v-if="option.action.type === 'swiper-click'">
-          <banner-click :banners="option.action.config"></banner-click>
+          <banner-item :banners="option.action.config"></banner-item>
+        </template>
+
+        <template v-if="option.action.type === 'form-submit'">
+          <input-item :forms="option.action.config"></input-item>
         </template>
       </template>
 
@@ -45,8 +49,9 @@
 
 <script>
   import formItem from '@/components/formItem.vue'
-  import imageClick from '@/views/dialog/imageClick.vue'
-  import bannerClick from '@/views/dialog/bannerClick.vue'
+  import imageClick from '@/views/option/imageClick.vue'
+  import bannerItem from '@/views/option/bannerItem.vue'
+  import inputItem from '@/views/option/inputItem.vue'
   export default {
     name: 'AppOption',
     data() {
@@ -57,7 +62,8 @@
     components: {
       formItem,
       imageClick,
-      bannerClick
+      bannerItem,
+      inputItem
     },
     computed: {
       getImage() {
@@ -139,6 +145,26 @@
 
       .el-form-item__label {
         padding-right: 0;
+      }
+    }
+
+    .form-list-panel {
+      margin-top: 15px;
+      border: 1px solid #e8e8e8;
+      padding: 15px 15px 10px 15px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .list-item-opt {
+        text-align: right;
+
+        > a {
+          margin-left: 10px;
+          color: #2aa7ff;
+          font-size: 12px;
+        }
       }
     }
   }

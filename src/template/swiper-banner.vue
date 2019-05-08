@@ -5,7 +5,7 @@
       <div class="swiper-wrapper">
         <div v-for="banner in banners" class="swiper-slide">
           <img v-if="banner.val" :src="banner.val">
-          <div v-else class="image-placeholder"><i class="fa fa-image"></i></div>
+          <div v-else class="image-placeholder"><i class="fa fa-caret-square-o-right"></i></div>
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -18,6 +18,11 @@
   import 'swiper/dist/css/swiper.min.css'
 
   export default {
+    props: {
+      component: {
+        type: Object
+      }
+    },
     data() {
       return {
         swiper: null,
@@ -36,15 +41,9 @@
         return ret.join(';')
       }
     },
-    props: {
-      component: {
-        type: Object
-      }
-    },
     watch: {
       component: {
         handler() {
-          console.log('swiper-banner changed', this.component.action.config)
           this.height = this.getMaxHeight()
           this.width = this.getWidth()
           setTimeout(() => {

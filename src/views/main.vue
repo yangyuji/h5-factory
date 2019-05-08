@@ -23,6 +23,8 @@
               <text-tpl v-if="comp.type === 'text'" :component="comp"></text-tpl>
               <!--图片控件-->
               <img-tpl v-if="comp.type === 'img'" :component="comp"></img-tpl>
+              <!--表单控件-->
+              <form-tpl v-if="comp.type === 'form'" :component="comp"></form-tpl>
               <!--轮播图控件-->
               <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
 
@@ -66,7 +68,7 @@
   import appToolbar from '@/views/layout/toolbar.vue'
   import appOpt from '@/views/layout/option.vue'
   import appPageOpt from '@/views/layout/pageOption.vue'
-  import clickConfig from '@/views/dialog/click.vue'
+  import clickConfig from '@/views/common/click.vue'
   // 页面默认配置
   import pageOption from '@/config/page.config.js'
   // 组件默认配置
@@ -74,6 +76,7 @@
   // 组件模板
   import textTpl from '@/template/text.vue'
   import imgTpl from '@/template/image.vue'
+  import formTpl from '@/template/form.vue'
   import swiperTpl from '@/template/swiper-banner.vue'
 
   export default {
@@ -86,6 +89,7 @@
       clickConfig,
       textTpl,
       imgTpl,
+      formTpl,
       swiperTpl
     },
     data() {
