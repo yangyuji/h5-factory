@@ -1,5 +1,5 @@
-# cms-admin
-h5专题页面可视化编辑后台
+# h5-factory
+h5专题页面可视化编辑工具
 
 ### 页面功能
 * 图片懒加载
@@ -23,7 +23,7 @@ h5专题页面可视化编辑后台
 * 金刚位
 * ...
 
-一键生成纯静态html文件，随时随地部署使用
+无需开发，拖拽制作，自定义跳转链接，一键生成纯静态html文件，SEO友好，页面秒开，随时随地部署使用
 
-## preview
-[在线Demo](https://yangyuji.github.io/cms-admin/)
+## 在线预览
+[在线Demo](https://yangyuji.github.io/h5-factory/)

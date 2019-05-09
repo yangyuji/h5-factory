@@ -1,5 +1,5 @@
 {
-  "name": "cms-admin",
+  "name": "h5-factory",
   "version": "1.0.0",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

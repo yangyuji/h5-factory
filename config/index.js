@@ -38,7 +38,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../docs'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'https://yangyuji.github.io/cms-admin/',
+    assetsPublicPath: 'https://yangyuji.github.io/h5-factory/',
 
     /**
      * Source Maps

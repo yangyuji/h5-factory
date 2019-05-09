@@ -1,6 +1,6 @@
 <template>
   <header class="app-header">
-    <img class="header-logo" src="https://yangyuji.github.io/cms-admin/static/img/logo.png">cms-admin
+    <img class="header-logo" src="https://yangyuji.github.io/h5-factory/static/img/logo.png">h5-factory
   </header>
 </template>
 
