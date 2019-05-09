@@ -57,8 +57,14 @@
             name: '日期选择',
             val: 'date'
           }, {
-            name: '下拉单选',
+            name: '下拉选择',
             val: 'select'
+          }, {
+            name: 'radio单选',
+            val: 'radio'
+          }, {
+            name: 'checkbox多选',
+            val: 'checkbox'
           }
         ]
       }
@@ -69,9 +75,6 @@
       }
     },
     methods: {
-      showClick(banner, idx) {
-        this.$bus.$emit('click:show', 'bannerImageClick', idx, banner)
-      },
       upInput(idx) {
         const tmp = util.copyObj(this.inputs[idx])
         this.inputs.splice(idx, 1)
@@ -89,7 +92,7 @@
         if (this.inputs.length < 10) {
           this.inputs.push(util.copyObj(this.defaultConf.action.config[0]))
         } else {
-          this.$alert('最多添加10个图片项！')
+          this.$alert('最多添加10个表单项！')
         }
       }
     }

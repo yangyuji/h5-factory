@@ -44,6 +44,7 @@
     watch: {
       component: {
         handler() {
+          this.banners = this.component.action.config
           this.height = this.getMaxHeight()
           this.width = this.getWidth()
           setTimeout(() => {

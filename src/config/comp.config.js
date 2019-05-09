@@ -220,9 +220,21 @@ module.exports = {
     base: [
       {
         type: 'text',
-        label: '接口地址',
+        label: '提交地址',
         val: '',
-        placeholder: '请输入表单提交的接口地址',
+        placeholder: '表单提交的接口地址',
+        isNecessary: true
+      }, {
+        type: 'radio',
+        label: '提交方式',
+        val: 'POST',
+        options: [{
+          name: 'GET',
+          val: 'GET'
+        }, {
+          name: 'POST',
+          val: 'POST'
+        }],
         isNecessary: true
       }
     ],
@@ -279,13 +291,100 @@ module.exports = {
         max: 200,
         min: 20,
         isNecessary: false
+      }, {
+        type: 'input-number',
+        label: '容器上边',
+        attr: 'padding-top',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 200,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '容器右边',
+        attr: 'padding-right',
+        val: 30,
+        unit: 'px',
+        min: 0,
+        max: 200,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '容器下边',
+        attr: 'padding-bottom',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 200,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '容器左边',
+        attr: 'padding-left',
+        val: 30,
+        unit: 'px',
+        min: 0,
+        max: 200,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左侧宽度',
+        attr: 'item-left',
+        val: 120,
+        unit: 'px',
+        min: 0,
+        max: 300,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右框高度',
+        attr: 'item-height',
+        val: 48,
+        unit: 'px',
+        min: 0,
+        max: 300,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右框圆角',
+        attr: 'item-border-radius',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '右边框色',
+        attr: 'item-border',
+        val: '#e8e8e8',
+        unit: '',
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '项间距',
+        attr: 'item-margin-top',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 300,
+        step: 1,
+        isNecessary: true
       }
     ],
     action: {
       type: 'form-submit',
       title: '表单项配置',
       config: [{
-        desc: '字段描述',
+        desc: '字段描述：',
         type: 'text',
         name: 'name',
         placeholder: '',
