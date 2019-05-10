@@ -399,7 +399,7 @@ module.exports = {
           type: 'input-number',
           label: '按钮高度',
           attr: 'form-btn_height',
-          val: 48,
+          val: 60,
           unit: 'px',
           min: 0,
           max: 200,

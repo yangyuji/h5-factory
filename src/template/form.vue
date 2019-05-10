@@ -52,7 +52,6 @@
         return ret.join(';')
       },
       getLabelStyle() {
-        console.log(this.component.others.config.length)
         const ret = [
           'width:' + this.component.others.config[0].val + 'px',
           'height:' + this.component.others.config[1].val + 'px',

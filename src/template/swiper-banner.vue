@@ -64,10 +64,10 @@
             }
           })
         }
-        return h > 0 ? h * (748 / 750) + 'px' : '225px'
+        return h > 0 ? h + 'px' : '225px'
       },
       getWidth() {
-        return (748 - this.component.style[4].val - this.component.style[6].val) + 'px'
+        return (750 - this.component.style[4].val - this.component.style[6].val) + 'px'
       }
     },
     mounted() {

@@ -4,7 +4,11 @@
     <div class="app-main">
       <app-toolbar v-on:showPageSet="showPageSet"></app-toolbar>
       <div class="scroll-y">
-        <div class="app-phone">
+        <div class="app-phone"
+             @dragover.self="dragPhoneOver"
+             @dragleave.self="dragPhoneLeave"
+             @drop.self="dropPhone"
+             @dragover.prevent>
 
           <template v-for="(comp, idx) in compList">
 
@@ -212,6 +216,26 @@
       },
       dragleave(e) {
         e.target.classList.remove('active')
+      },
+      dragPhoneOver() {
+        const target = document.querySelector('.place-holder:last-child')
+        target.classList.add('active')
+      },
+      dropPhone(e) {
+        const target = document.querySelector('.place-holder:last-child')
+        target.classList.remove('active')
+        const key = e.dataTransfer.getData('cmp-type')
+        const idx = parseInt(target.dataset.index)
+        if (compConfig[key]) {
+          this.resetCompUnchecked()
+          this.replacePlaceholderWithComp(idx, key)
+        } else {
+          this.$message.warning('没有查询到该组件的配置信息。。。')
+        }
+      },
+      dragPhoneLeave() {
+        const target = document.querySelector('.place-holder:last-child')
+        target.classList.remove('active')
       }
     }
   }
@@ -221,7 +245,7 @@
   .app-main {
     position: relative;
     flex: 1;
-    min-width: 750px;
+    min-width: 752px;
     background-color: #f2f3f4;
 
     .scroll-y {
@@ -237,7 +261,7 @@
     .app-phone {
       position: relative;
       box-sizing: border-box;
-      width: 750px;
+      width: 752px;
       min-height: 1334px;
       margin: 0 auto;
       background-color: #fff;
