@@ -1,5 +1,6 @@
 /* const typeMap = {
   'text': '纯文本输入框',
+  'input-number': '纯数字输入框',
   'font': '字体样式',
   'upload': '图片上传控件',
   'select': '下拉选择',
@@ -10,7 +11,7 @@
 } */
 
 module.exports = {
-  'text': {
+  text: {
     title: '文本',
     domId: '',
     domName: '',
@@ -143,7 +144,7 @@ module.exports = {
       }
     ]
   },
-  'img': {
+  img: {
     title: '图片',
     domId: '',
     domName: '',
@@ -213,7 +214,7 @@ module.exports = {
       config: null
     }
   },
-  'form': {
+  form: {
     title: '表单',
     domId: '',
     domName: '',
@@ -276,12 +277,6 @@ module.exports = {
           }
         ]
       }, {
-        type: 'color-picker',
-        label: '字体颜色',
-        attr: 'color',
-        val: '#333333',
-        isNecessary: true
-      }, {
         type: 'input-number',
         label: '字体大小',
         attr: 'font-size',
@@ -292,8 +287,14 @@ module.exports = {
         min: 20,
         isNecessary: false
       }, {
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#333333',
+        isNecessary: true
+      }, {
         type: 'input-number',
-        label: '容器上边',
+        label: '容器上白',
         attr: 'padding-top',
         val: 20,
         unit: 'px',
@@ -303,7 +304,7 @@ module.exports = {
         isNecessary: true
       }, {
         type: 'input-number',
-        label: '容器右边',
+        label: '容器右白',
         attr: 'padding-right',
         val: 30,
         unit: 'px',
@@ -313,7 +314,7 @@ module.exports = {
         isNecessary: true
       }, {
         type: 'input-number',
-        label: '容器下边',
+        label: '容器下白',
         attr: 'padding-bottom',
         val: 20,
         unit: 'px',
@@ -323,7 +324,7 @@ module.exports = {
         isNecessary: true
       }, {
         type: 'input-number',
-        label: '容器左边',
+        label: '容器左白',
         attr: 'padding-left',
         val: 30,
         unit: 'px',
@@ -331,55 +332,143 @@ module.exports = {
         max: 200,
         step: 1,
         isNecessary: true
-      }, {
-        type: 'input-number',
-        label: '左侧宽度',
-        attr: 'item-left',
-        val: 120,
-        unit: 'px',
-        min: 0,
-        max: 300,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'input-number',
-        label: '右框高度',
-        attr: 'item-height',
-        val: 48,
-        unit: 'px',
-        min: 0,
-        max: 300,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'input-number',
-        label: '右框圆角',
-        attr: 'item-border-radius',
-        val: 0,
-        unit: 'px',
-        min: 0,
-        max: 100,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'color-picker',
-        label: '右边框色',
-        attr: 'item-border',
-        val: '#e8e8e8',
-        unit: '',
-        isNecessary: true
-      }, {
-        type: 'input-number',
-        label: '项间距',
-        attr: 'item-margin-top',
-        val: 20,
-        unit: 'px',
-        min: 0,
-        max: 300,
-        step: 1,
-        isNecessary: true
       }
     ],
+    others: {
+      type: 'form-item',
+      title: '表单样式',
+      config: [
+        {
+          type: 'input-number',
+          label: 'label宽度',
+          attr: 'form-label_width',
+          val: 120,
+          unit: 'px',
+          min: 0,
+          max: 300,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: 'input高度',
+          attr: 'form-input_height',
+          val: 48,
+          unit: 'px',
+          min: 0,
+          max: 300,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: 'input圆角',
+          attr: 'form-input_border-radius',
+          val: 0,
+          unit: 'px',
+          min: 0,
+          max: 100,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'color-picker',
+          label: 'input边框',
+          attr: 'form-input_border-color',
+          val: '#e8e8e8',
+          unit: '',
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: 'input间距',
+          attr: 'form-item_margin-top',
+          val: 20,
+          unit: 'px',
+          min: 0,
+          max: 300,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '按钮距上',
+          attr: 'form-btn_margin-top',
+          val: 30,
+          unit: 'px',
+          min: 0,
+          max: 200,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '按钮高度',
+          attr: 'form-btn_height',
+          val: 48,
+          unit: 'px',
+          min: 0,
+          max: 200,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '按钮宽度',
+          attr: 'form-btn_width',
+          val: 100,
+          unit: '%',
+          min: 0,
+          max: 100,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'color-picker',
+          label: '按钮背景',
+          attr: 'form-btn_background-color',
+          val: '#409eff',
+          unit: '',
+          isNecessary: true
+        }, {
+          type: 'color-picker',
+          label: '按钮边框',
+          attr: 'form-btn_border-color',
+          val: '#057ED5',
+          unit: '',
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '按钮圆角',
+          attr: 'form-btn_border-radius',
+          val: 5,
+          unit: 'px',
+          min: 0,
+          max: 100,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '按钮字体',
+          attr: 'form-btn_font-size',
+          val: 28,
+          unit: 'px',
+          min: 20,
+          max: 200,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'color-picker',
+          label: '按钮字色',
+          attr: 'form-btn_color',
+          val: '#fff',
+          unit: '',
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '按钮字重',
+          attr: 'form-btn_font-weight',
+          val: 500,
+          unit: '',
+          min: 100,
+          max: 900,
+          step: 100,
+          isNecessary: true
+        }
+      ]
+    },
     action: {
       type: 'form-submit',
       title: '表单项配置',

@@ -3,7 +3,7 @@
        :style="style">
     <div class="form-box">
       <div class="form-box-item"
-           :style="{marginTop: component.style[14].val + 'px'}"
+           :style="{marginTop: component.others.config[4].val + 'px'}"
            v-if="inputs.length" v-for="input in inputs">
         <label :style="labelStyle">{{input.desc}}</label>
         <input class="item-input" v-if="input.type !== 'select'"
@@ -15,7 +15,7 @@
         </select>
       </div>
       <div v-else class="image-placeholder"><i class="fa fa-list"></i></div>
-      <div class="form-btn">提 交</div>
+      <div class="form-btn" :style="buttonStyle">提 交</div>
     </div>
   </div>
 </template>
@@ -32,6 +32,7 @@
         style: this.getStyle(),
         labelStyle: this.getLabelStyle(),
         inputStyle: this.getInputStyle(),
+        buttonStyle: this.getButtonStyle(),
         inputs: this.component.action.config
       }
     },
@@ -39,11 +40,11 @@
       getStyle() {
         const ret = []
         this.component.style.forEach((item) => {
-          if (item.val && item.attr.indexOf('item-') < 0) {
+          if (item.val) {
             if (item.attr === 'background-image') {
               ret.push(item.attr + ':url(' + item.val + ')')
             } else {
-              const unit = item.unit ? item.unit : ''
+              const unit = item.unit || ''
               ret.push(item.attr + ':' + item.val + unit)
             }
           }
@@ -51,21 +52,38 @@
         return ret.join(';')
       },
       getLabelStyle() {
-        console.log(this.component.style.length)
+        console.log(this.component.others.config.length)
         const ret = [
-          'width:' + this.component.style[10].val + 'px',
-          'height:' + this.component.style[11].val + 'px',
-          'line-height:' + this.component.style[11].val + 'px'
+          'width:' + this.component.others.config[0].val + 'px',
+          'height:' + this.component.others.config[1].val + 'px',
+          'line-height:' + this.component.others.config[1].val + 'px'
         ]
         return ret.join(';')
       },
       getInputStyle() {
-        const ret = [
-          'height:' + this.component.style[11].val + 'px',
-          'line-height:' + this.component.style[11].val + 'px',
-          'border-radius:' + this.component.style[12].val + 'px',
-          'border-color:' + this.component.style[13].val
-        ]
+        const ret = []
+        this.component.others.config.forEach((item) => {
+          const isInput = item.attr.indexOf('form-input_')
+          const idx = item.attr.indexOf('_')
+          if (isInput === 0) {
+            const unit = item.unit || ''
+            item.val && ret.push(item.attr.substring(idx + 1, item.attr.length) + ':' + item.val + unit)
+          }
+        })
+        return ret.join(';')
+      },
+      getButtonStyle() {
+        const ret = []
+        this.component.others.config.forEach((item) => {
+          const isInput = item.attr.indexOf('form-btn_')
+          const idx = item.attr.indexOf('_')
+          if (isInput === 0) {
+            const unit = item.unit || ''
+            const attr = item.attr.substring(idx + 1, item.attr.length)
+            item.val && ret.push(attr + ':' + item.val + unit)
+            attr === 'height' && ret.push('line-height:' + item.val + unit)
+          }
+        })
         return ret.join(';')
       }
     },
@@ -75,6 +93,7 @@
           this.style = this.getStyle()
           this.labelStyle = this.getLabelStyle()
           this.inputStyle = this.getInputStyle()
+          this.buttonStyle = this.getButtonStyle()
           this.inputs = this.component.action.config
         },
         deep: true
@@ -118,13 +137,8 @@
 
     .form-btn {
       box-sizing: border-box;
-      width: 100%;
-      height: 48px;
-      line-height: 48px;
-      margin-top: 30px;
-      border: 1px solid #ccc;
+      border: 1px solid;
       text-align: center;
-      font-size: 26px;
     }
   }
 </style>

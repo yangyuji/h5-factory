@@ -24,7 +24,7 @@
       getStyle() {
         const ret = []
         this.component.style.forEach((item) => {
-          const unit = item.unit ? item.unit : ''
+          const unit = item.unit || ''
           item.val && ret.push(item.attr + ':' + item.val + unit)
         })
         return ret.join(';')

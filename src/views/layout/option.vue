@@ -25,6 +25,13 @@
         </template>
       </template>
 
+      <template v-if="option.others && option.others.config.length">
+        <h3><i class="el-icon-setting"></i> {{option.others.title}}</h3>
+        <template v-for="(item, idx) in option.others.config">
+          <form-item :item="item" :index="idx"></form-item>
+        </template>
+      </template>
+
       <template v-if="option.action">
         <h3><i class="el-icon-setting"></i> {{option.action.title}}</h3>
 
@@ -145,6 +152,7 @@
 
       .el-form-item__label {
         padding-right: 0;
+        font-size: 13px;
       }
     }
 

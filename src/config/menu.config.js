@@ -32,10 +32,6 @@ module.exports = [
         text: '楼层导航',
         icon: 'fa-list-ol'
       }, {
-        key: 'timeout',
-        text: '倒计时',
-        icon: 'fa-hourglass-start'
-      }, {
         key: 'left-scroll',
         text: '横向滚动',
         icon: 'fa-exchange'
@@ -45,6 +41,10 @@ module.exports = [
     title: '其他组件',
     items: [
       {
+        key: 'timeout',
+        text: '倒计时',
+        icon: 'fa-hourglass-start'
+      }, {
         key: 'news-marquee',
         text: '滚动新闻',
         icon: 'fa-newspaper-o'

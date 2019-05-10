@@ -16,7 +16,7 @@
       getStyle() {
         const ret = []
         this.component.style.forEach((item) => {
-          const unit = item.unit ? item.unit : ''
+          const unit = item.unit || ''
           if (item.val) {
             if (Array.isArray(item.attr)) {
               item.attr.forEach((atr, i) => {

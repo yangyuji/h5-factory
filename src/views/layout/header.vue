@@ -22,8 +22,8 @@
 
     .header-logo {
       display: inline-block;
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
       vertical-align: middle;
       margin-right: 15px;
     }
