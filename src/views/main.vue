@@ -15,9 +15,9 @@
             <!--占位提示控件-->
             <div v-if="comp.type === 'placeholder'"
                  class="place-holder"
-                 @dragover="dragover"
-                 @dragleave="dragleave"
-                 @drop="drop"
+                 @dragover.stop="dragover"
+                 @dragleave.stop="dragleave"
+                 @drop.stop="drop"
                  @dragover.prevent
                  :data-index="idx">放在这里</div>
 
@@ -31,6 +31,8 @@
               <form-tpl v-if="comp.type === 'form'" :component="comp"></form-tpl>
               <!--轮播图控件-->
               <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
+              <!--横向滚动控件-->
+              <scroll-left v-if="comp.type === 'scroll-left'" :component="comp"></scroll-left>
 
               <!--控件操作-->
               <div class="comp-menu">
@@ -82,6 +84,7 @@
   import imgTpl from '@/template/image.vue'
   import formTpl from '@/template/form.vue'
   import swiperTpl from '@/template/swiper-banner.vue'
+  import scrollLeft from '@/template/scroll-left.vue'
 
   export default {
     name: 'AppMain',
@@ -94,7 +97,8 @@
       textTpl,
       imgTpl,
       formTpl,
-      swiperTpl
+      swiperTpl,
+      scrollLeft
     },
     data() {
       return {
@@ -201,12 +205,14 @@
         this.showPageSet()
       },
       dragover(e) {
-        e.target.classList.add('active')
+        const target = e.target
+        if (!target.classList.contains('active')) target.classList.add('active')
       },
       drop(e) {
-        e.target.classList.remove('active')
+        const target = e.target
+        target.classList.remove('active')
         const key = e.dataTransfer.getData('cmp-type')
-        const idx = parseInt(e.target.dataset.index)
+        const idx = parseInt(target.dataset.index)
         if (compConfig[key]) {
           this.resetCompUnchecked()
           this.replacePlaceholderWithComp(idx, key)
@@ -219,7 +225,7 @@
       },
       dragPhoneOver() {
         const target = document.querySelector('.place-holder:last-child')
-        target.classList.add('active')
+        if (!target.classList.contains('active')) target.classList.add('active')
       },
       dropPhone(e) {
         const target = document.querySelector('.place-holder:last-child')

@@ -24,15 +24,15 @@ module.exports = [
         text: '轮播图',
         icon: 'fa-caret-square-o-right'
       }, {
-        key: 'page-tabs',
-        text: '页面Tabs',
-        icon: 'fa-address-book-o'
+        key: 'bottom-tabs',
+        text: '底部导航',
+        icon: 'fa-adjust'
       }, {
         key: 'floor-memu',
         text: '楼层导航',
         icon: 'fa-list-ol'
       }, {
-        key: 'left-scroll',
+        key: 'scroll-left',
         text: '横向滚动',
         icon: 'fa-exchange'
       }
@@ -52,6 +52,23 @@ module.exports = [
         key: 'flex-box',
         text: '金刚位',
         icon: 'fa-th'
+      }
+    ]
+  }, {
+    title: '页面模板',
+    items: [
+      {
+        key: 'page-home',
+        text: '首页模板',
+        icon: 'fa-home'
+      }, {
+        key: 'page-list',
+        text: '列表页',
+        icon: 'fa-list-alt'
+      }, {
+        key: 'page-swiper',
+        text: '全屏轮播',
+        icon: 'fa-pied-piper-pp'
       }
     ]
   }

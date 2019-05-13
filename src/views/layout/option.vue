@@ -45,6 +45,10 @@
           <banner-item :banners="option.action.config"></banner-item>
         </template>
 
+        <template v-if="option.action.type === 'left-scroll-click'">
+          <scroll-item :scrolls="option.action.config"></scroll-item>
+        </template>
+
         <template v-if="option.action.type === 'form-submit'">
           <input-item :forms="option.action.config"></input-item>
         </template>
@@ -58,6 +62,7 @@
   import formItem from '@/components/formItem.vue'
   import imageClick from '@/views/option/imageClick.vue'
   import bannerItem from '@/views/option/bannerItem.vue'
+  import scrollItem from '@/views/option/scrollItem.vue'
   import inputItem from '@/views/option/inputItem.vue'
   export default {
     name: 'AppOption',
@@ -70,6 +75,7 @@
       formItem,
       imageClick,
       bannerItem,
+      scrollItem,
       inputItem
     },
     computed: {
