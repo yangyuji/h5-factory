@@ -2,7 +2,8 @@
   <div class="app-body">
     <app-sidebar></app-sidebar>
     <div class="app-main">
-      <app-toolbar v-on:showPageSet="showPageSet"></app-toolbar>
+      <app-toolbar v-on:showPageSet="showPageSet"
+                   v-on:savePageSet="savePageSet"></app-toolbar>
       <div class="scroll-y">
         <div class="app-phone"
              @dragover.self="dragPhoneOver"
@@ -121,12 +122,49 @@
       this.$bus.$on('click:submit', (type, idx, list) => {
         this.clickShow = false
       })
+      this.getLocalData()
       this.showPageSet()
+    },
+    watch: {
+      compList: {
+        handler(val) {
+          localStorage.setItem('pageDateSet', JSON.stringify({
+            time: Date.now(),
+            config: val
+          }))
+        },
+        deep: true
+      }
     },
     methods: {
       showPageSet() {
         this.resetCompUnchecked()
         this.currentConfig = null
+      },
+      savePageSet() {
+        console.warn('save Info: ', JSON.stringify(this.compList))
+        this.$message({
+          message: '打开chomre devtool查看保存的信息！',
+          type: 'success'
+        })
+      },
+      getLocalData() {
+        const tmp = localStorage.getItem('pageDateSet')
+        if (tmp) {
+          const localData = JSON.parse(tmp)
+          const t = util.parseTime(localData.time)
+          this.$confirm('您有一份【' + t + '】未保存的编辑内容, 是否恢复到当前编辑界面？', '提示', {
+            confirmButtonText: '载入',
+            cancelButtonText: '丢弃',
+            type: 'warning',
+            center: true
+          }).then(() => {
+            this.compList = localData.config
+            this.resetCompUnchecked()
+          }).catch(() => {
+            localStorage.setItem('pageDateSet', '')
+          })
+        }
       },
       resetCompUnchecked() {
         this.compList.forEach((val) => {
@@ -135,7 +173,6 @@
           }
         })
       },
-      // 用控件替换 Placeholder
       replacePlaceholderWithComp(index, key) {
         const comp = util.copyObj(compConfig[key])
         const config = {

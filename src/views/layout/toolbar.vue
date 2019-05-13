@@ -23,11 +23,6 @@
 <script>
   export default {
     name: 'AppToolbar',
-    data() {
-      return {
-
-      }
-    },
     methods: {
       showPageSet() {
         this.$emit('showPageSet')
@@ -39,10 +34,7 @@
         })
       },
       saveAll() {
-        this.$message({
-          message: '功能完善中，敬请期待！',
-          type: 'success'
-        })
+        this.$emit('savePageSet')
       }
     }
   }
