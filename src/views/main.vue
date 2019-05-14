@@ -34,6 +34,8 @@
               <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
               <!--横向滚动控件-->
               <scroll-left v-if="comp.type === 'scroll-left'" :component="comp"></scroll-left>
+              <!--倒计时控件-->
+              <timeout v-if="comp.type === 'timeout'" :component="comp"></timeout>
 
               <!--控件操作-->
               <div class="comp-menu">
@@ -86,6 +88,7 @@
   import formTpl from '@/template/form.vue'
   import swiperTpl from '@/template/swiper-banner.vue'
   import scrollLeft from '@/template/scroll-left.vue'
+  import timeout from '@/template/timeout.vue'
 
   export default {
     name: 'AppMain',
@@ -99,7 +102,8 @@
       imgTpl,
       formTpl,
       swiperTpl,
-      scrollLeft
+      scrollLeft,
+      timeout
     },
     data() {
       return {

@@ -37,8 +37,10 @@
 
         <template v-if="option.action.type === 'image-click'">
           <image-click :show.sync="imageClickShow"
-                      :img="getImage"></image-click>
-          <el-button icon="el-icon-plus" round @click="showImageClick">配置点击</el-button>
+                       :img="option.style[1].val"
+                       :clicks="option.action.config"></image-click>
+          <el-button icon="el-icon-plus" :disabled="!option.style[1].val" round
+                     @click="imageClickShow = true">点击区域配置</el-button>
         </template>
 
         <template v-if="option.action.type === 'swiper-click'">
@@ -52,6 +54,15 @@
         <template v-if="option.action.type === 'form-submit'">
           <input-item :forms="option.action.config"></input-item>
         </template>
+
+        <template v-if="option.action.type === 'timeout-click'">
+          <timeout-item :show.sync="timeoutClickShow"
+                        :end="option.style[0].val"
+                        :img="option.style[1].val"
+                        :times="option.action.config"></timeout-item>
+          <el-button icon="el-icon-plus" :disabled="!option.style[1].val" round
+                     @click="timeoutClickShow = true">时间项配置</el-button>
+        </template>
       </template>
 
     </el-form>
@@ -61,6 +72,7 @@
 <script>
   import formItem from '@/components/formItem.vue'
   import imageClick from '@/views/option/imageClick.vue'
+  import timeoutItem from '@/views/option/timeoutItem.vue'
   import bannerItem from '@/views/option/bannerItem.vue'
   import scrollItem from '@/views/option/scrollItem.vue'
   import inputItem from '@/views/option/inputItem.vue'
@@ -68,38 +80,21 @@
     name: 'AppOption',
     data() {
       return {
-        imageClickShow: false
+        imageClickShow: false,
+        timeoutClickShow: false
       }
     },
     components: {
       formItem,
       imageClick,
+      timeoutItem,
       bannerItem,
       scrollItem,
       inputItem
     },
-    computed: {
-      getImage() {
-        return this.option.style[1].val
-      }
-    },
     props: {
       option: {
         type: Object
-      }
-    },
-    mounted() {
-      this.$bus.$on('option-click:submit', (type, idx) => {
-        this.imageClickShow = false
-        console.log(type, idx)
-      })
-      this.$bus.$on('option-click:cancel', () => {
-        this.imageClickShow = false
-      })
-    },
-    methods: {
-      showImageClick() {
-        this.imageClickShow = true
       }
     }
   }

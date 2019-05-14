@@ -66,7 +66,7 @@
       // 先清空上一次的区域
       var childs = container.childNodes;
       // 从0到length会删不全
-      if (childs.length) {
+      if (cropBox && childs.length) {
         for (var i = childs.length - 1; i >= 0; i--) {
           childs[i].classList.contains('crop-box') && childs[i].parentNode.removeChild(childs[i]);
         }
@@ -80,10 +80,10 @@
           box.dataset.index = i;
           i == 0 && box.classList.add('active');
           i > 0 && box.classList.remove('active');
-          box.style.width = opt.initareas[i].width;
-          box.style.height = opt.initareas[i].height;
-          box.style.left = opt.initareas[i].x;
-          box.style.top = opt.initareas[i].y;
+          box.style.width = opt.initareas[i].w + 'px';
+          box.style.height = opt.initareas[i].h + 'px';
+          box.style.left = opt.initareas[i].x + 'px';
+          box.style.top = opt.initareas[i].y + 'px';
           box.style.display = 'block';
           if (opt.initareas[i].text) {
             box.querySelector('.crop-box-tips').textContent = opt.initareas[i].text;

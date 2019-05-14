@@ -3,8 +3,8 @@
              title="图片跳转配置"
              :close-on-click-modal="false"
              :append-to-body="false"
-             :visible="dialogShow"
-             @close="cancel"
+             :visible.sync="dialogShow"
+             @close="$emit('update:show', false)"
              width="780px">
     <el-row>
       <el-col :span="12" style="text-align:center;width:375px;">
@@ -30,7 +30,8 @@
           <template v-for="(area, idx) in areas">
             <el-form-item :class="['small', current === idx ? 'edit' : '']"
                           :data-index="idx" label="配置点击：">
-              <span :class="['right-list-span', area.text ? '' : 'warn' ]">{{ area.text || '尚未配置' }}</span>
+              <span :class="['right-list-span', area.text ? '' : 'warn' ]">
+                {{ area.text || '尚未配置' }}</span>
               <a class="right-list-a" @click="delArea(area, idx)"><i
                 class="el-icon-delete"></i></a>
               <a class="right-list-a" @click="editArea(area, idx)"><i
@@ -42,8 +43,7 @@
     </el-row>
 
     <div slot="footer" class="dialog-footer">
-      <el-button @click="cancel">取 消</el-button>
-      <el-button type="primary" @click="sure">确 定</el-button>
+      <el-button type="primary" @click="dialogShow = false">确 定</el-button>
     </div>
   </el-dialog>
 </template>
@@ -56,46 +56,40 @@
         type: Boolean,
         default: false
       },
+      clicks: {
+        type: Array
+      },
       img: {
         type: String
       }
     },
     data() {
       return {
-        areas: [],
+        areas: this.clicks,
         current: 0,
         dialogShow: this.show
       }
     },
     watch: {
-      show(val) {
-        this.dialogShow = val
-        if (val) {
-          const initArea = {
-            x: '0px',
-            y: '0px',
-            width: '225px',
-            height: '64px'
-          }
-          this.areas.push({
-            index: 0,
-            position: initArea,
-            config: ''
-          })
+      clicks(list) {
+        this.areas = list
+      },
+      show(isShow) {
+        this.dialogShow = isShow
+        this.current = 0
+        if (isShow) {
           this.$nextTick(() => {
             dragArea.init({
               container: 'areaMap',
               cropBox: 'cropBox-0',
-              initareas: [initArea],
+              initareas: this.areas,
               newcallback: (area) => {
                 this.areas.push({
                   index: parseInt(area.dataset.index),
-                  position: {
-                    x: area.style.left,
-                    y: area.style.top,
-                    width: area.style.width,
-                    height: area.style.height
-                  },
+                  x: parseInt(area.style.left),
+                  y: parseInt(area.style.top),
+                  w: parseInt(area.style.width),
+                  h: parseInt(area.style.height),
                   config: ''
                 })
                 this.current = parseInt(area.dataset.index)
@@ -107,24 +101,22 @@
                 const idx = parseInt(area.dataset.index)
                 this.current = idx
                 const item = this.areas.find((item) => item.index === idx)
-                item.position.x = area.style.left
-                item.position.y = area.style.top
-                item.position.width = area.style.width
-                item.position.height = area.style.height
+                item.x = parseInt(area.style.left)
+                item.y = parseInt(area.style.top)
+                item.w = parseInt(area.style.width)
+                item.h = parseInt(area.style.height)
               },
               dragareacallback: (area) => {
                 const idx = parseInt(area.dataset.index)
                 this.current = idx
                 const item = this.areas.find((item) => item.index === idx)
-                item.position.x = area.style.left
-                item.position.y = area.style.top
-                item.position.width = area.style.width
-                item.position.height = area.style.height
+                item.x = parseInt(area.style.left)
+                item.y = parseInt(area.style.top)
+                item.w = parseInt(area.style.width)
+                item.h = parseInt(area.style.height)
               }
             })
           })
-        } else {
-          this.areas = []
         }
       }
     },
@@ -143,12 +135,6 @@
       },
       editArea(area, idx) {
         this.$bus.$emit('click:show', 'imgClick', idx, area)
-      },
-      sure() {
-        this.$bus.$emit('option-click:submit', this.areas)
-      },
-      cancel() {
-        this.$bus.$emit('option-click:cancel')
       }
     }
   }
