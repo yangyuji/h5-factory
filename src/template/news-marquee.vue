@@ -2,7 +2,7 @@
   <div :class="['comp-content', component.active ? 'active' : '']"
        :style="getStyle">
     <ul class="marquee-box" id="line-marquee">
-      <li :style="{ lineHeight: component.style[1].val + 'px' }" v-for="mq in marquees" class="marquee-item">{{mq.text}}</li>
+      <li :style="{lineHeight: component.style[2].val + 'px'}" v-for="mq in marquees" class="marquee-item">{{mq.text}}</li>
     </ul>
   </div>
 </template>
@@ -18,6 +18,11 @@
     data() {
       return {
         marquee: null,
+        marqueeOption: {
+          successive: this.component.style[0].val, // 是否连续
+          speed: 1000 / 60, // 滚动速度
+          pause: 3500 // 停顿时间
+        },
         marquees: this.component.action.config
       }
     },
@@ -45,18 +50,19 @@
       component: {
         handler() {
           this.marquees = this.component.action.config
+          this.marqueeOption.successive = this.component.style[0].val
           // 需要重新初始化marquee对象
           if (this.marquee) {
             this.marquee.destroy()
             this.marquee = null
           }
-          this.marquee = new NewsMarquee('#line-marquee')
+          this.marquee = new NewsMarquee('#line-marquee', this.marqueeOption)
         },
         deep: true
       }
     },
     mounted() {
-      this.marquee = new NewsMarquee('#line-marquee')
+      this.marquee = new NewsMarquee('#line-marquee', this.marqueeOption)
     }
   }
 </script>

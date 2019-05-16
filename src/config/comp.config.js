@@ -691,6 +691,20 @@ module.exports = {
     domName: '',
     style: [
       {
+        type: 'radio',
+        label: '是否连续',
+        attr: 'goon',
+        val: false,
+        options: [
+          {
+            name: '连续',
+            val: true
+          }, {
+            name: '不连续',
+            val: false
+          }
+        ]
+      }, {
         type: 'upload',
         label: '背景图片',
         attr: 'background-image',

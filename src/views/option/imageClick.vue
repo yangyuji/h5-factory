@@ -32,7 +32,7 @@
                           :data-index="idx" label="配置点击：">
               <span :class="['right-list-span', area.text ? '' : 'warn' ]">
                 {{ area.text || '尚未配置' }}</span>
-              <a class="right-list-a" @click="delArea(area, idx)"><i
+              <a class="right-list-a" v-if="idx > 0" @click="delArea(area, idx)"><i
                 class="el-icon-delete"></i></a>
               <a class="right-list-a" @click="editArea(area, idx)"><i
                 class="el-icon-edit"></i></a>
