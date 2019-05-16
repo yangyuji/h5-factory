@@ -684,5 +684,79 @@ module.exports = {
         }
       ]
     }
+  },
+  'news-marquee': {
+    title: '倒计时',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'upload',
+        label: '背景图片',
+        attr: 'background-image',
+        val: '',
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '容器高度',
+        attr: 'height',
+        val: 80,
+        unit: 'px',
+        min: 0,
+        max: 200,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '字体大小',
+        attr: 'font-size',
+        val: 24,
+        unit: 'px',
+        min: 0,
+        max: 120,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'font',
+        label: '字体',
+        attr: ['font-weight', 'text-decoration', 'font-style', 'text-align'],
+        val: ['400', 'none', 'inherit', 'left'],
+        isNecessary: false
+      }, {
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#333333',
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'marquee-click',
+      title: '滚动项配置',
+      config: [{
+        text: '滚动新闻默认文本',
+        click: null
+      }]
+    }
   }
 }

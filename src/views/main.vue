@@ -33,9 +33,11 @@
               <!--轮播图控件-->
               <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
               <!--横向滚动控件-->
-              <scroll-left v-if="comp.type === 'scroll-left'" :component="comp"></scroll-left>
+              <scroll-left-tpl v-if="comp.type === 'scroll-left'" :component="comp"></scroll-left-tpl>
               <!--倒计时控件-->
-              <timeout v-if="comp.type === 'timeout'" :component="comp"></timeout>
+              <timeout-tpl v-if="comp.type === 'timeout'" :component="comp"></timeout-tpl>
+              <!--滚动新闻控件-->
+              <news-marquee-tpl v-if="comp.type === 'news-marquee'" :component="comp"></news-marquee-tpl>
 
               <!--控件操作-->
               <div class="comp-menu">
@@ -87,8 +89,9 @@
   import imgTpl from '@/template/image.vue'
   import formTpl from '@/template/form.vue'
   import swiperTpl from '@/template/swiper-banner.vue'
-  import scrollLeft from '@/template/scroll-left.vue'
-  import timeout from '@/template/timeout.vue'
+  import scrollLeftTpl from '@/template/scroll-left.vue'
+  import timeoutTpl from '@/template/timeout.vue'
+  import newsMarqueeTpl from '@/template/news-marquee.vue'
 
   export default {
     name: 'AppMain',
@@ -102,8 +105,9 @@
       imgTpl,
       formTpl,
       swiperTpl,
-      scrollLeft,
-      timeout
+      scrollLeftTpl,
+      timeoutTpl,
+      newsMarqueeTpl
     },
     data() {
       return {

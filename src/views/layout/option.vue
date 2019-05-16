@@ -63,6 +63,10 @@
           <el-button icon="el-icon-plus" :disabled="!option.style[1].val" round
                      @click="timeoutClickShow = true">时间项配置</el-button>
         </template>
+
+        <template v-if="option.action.type === 'marquee-click'">
+          <marquee-item :marquees="option.action.config"></marquee-item>
+        </template>
       </template>
 
     </el-form>
@@ -76,6 +80,7 @@
   import bannerItem from '@/views/option/bannerItem.vue'
   import scrollItem from '@/views/option/scrollItem.vue'
   import inputItem from '@/views/option/inputItem.vue'
+  import marqueeItem from '@/views/option/marqueeItem.vue'
   export default {
     name: 'AppOption',
     data() {
@@ -90,7 +95,8 @@
       timeoutItem,
       bannerItem,
       scrollItem,
-      inputItem
+      inputItem,
+      marqueeItem
     },
     props: {
       option: {

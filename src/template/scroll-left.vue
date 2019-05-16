@@ -60,7 +60,7 @@
       component: {
         handler() {
           this.scrolls = this.component.action.config
-          // 没改变项都需要重新初始化iscroll对象
+          // 每改变项都需要重新初始化iscroll对象
           this.initScroll()
         },
         deep: true
