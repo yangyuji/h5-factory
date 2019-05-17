@@ -3,21 +3,21 @@
              title="点击配置"
              :close-on-click-modal="false"
              :append-to-body="false"
-             :visible="show"
-             @close="cancel"
+             :visible.sync="dialogShow"
+             @close="$emit('update:show', false)"
              width="680px">
 
       <el-tabs v-model="currentTab" type="card" @tab-click="clickTab">
 
-        <el-tab-pane label="链接地址" name="outside">
+        <el-tab-pane v-if="showTabs.indexOf('outside') > -1" label="链接地址" name="outside">
           <el-form label-width="100px" style="margin-top:20px;">
             <el-form-item label="链接地址：">
-              <el-input placeholder="请输入链接地址，例：https://www.example.com/" v-model="link"></el-input>
+              <el-input placeholder="请输入链接地址，例：https://www.example.com/" v-model="outsideVal"></el-input>
             </el-form-item>
           </el-form>
         </el-tab-pane>
 
-        <el-tab-pane label="页内位置" name="page">
+        <el-tab-pane v-if="showTabs.indexOf('page') > -1" label="页内位置" name="page">
 
           <el-tabs tab-position="left">
             <el-tab-pane label="全部">
@@ -25,7 +25,7 @@
                 <template v-for="comp in comps">
                   <el-button v-if="comp.type !== 'placeholder'"
                              size="mini" round
-                             :class="[currentTab == 'page' && link == comp.domId ?
+                             :class="[currentTab === 'page' && pageVal === comp.domId ?
                              'el-button--primary' : '']"
                              @click="setPageAction(comp.domId)">
                     {{comp.domName || comp.domId}}
@@ -38,7 +38,7 @@
                 <template v-for="comp in comps">
                   <el-button v-if="comp.type == 'img'"
                              size="mini" round
-                             :class="[currentTab == 'page' && link == comp.domId ?
+                             :class="[currentTab == 'page' && pageVal === comp.domId ?
                              'el-button--primary' : '']"
                              @click="setPageAction(comp.domId)">
                     {{comp.domName || comp.domId}}
@@ -51,7 +51,7 @@
                 <template v-for="comp in comps">
                   <el-button v-if="comp.type == 'text'"
                              size="mini" round
-                             :class="[currentTab == 'page' && link == comp.domId ?
+                             :class="[currentTab == 'page' && pageVal === comp.domId ?
                              'el-button--primary' : '']"
                              @click="setPageAction(comp.domId)">
                     {{comp.domName || comp.domId}}
@@ -64,7 +64,7 @@
                 <template v-for="comp in comps">
                   <el-button v-if="comp.type == 'form'"
                              size="mini" round
-                             :class="[currentTab == 'page' && link == comp.domId ?
+                             :class="[currentTab == 'page' && pageVal == comp.domId ?
                              'el-button--primary' : '']"
                              @click="setPageAction(comp.domId)">
                     {{comp.domName || comp.domId}}
@@ -76,10 +76,10 @@
 
         </el-tab-pane>
 
-        <el-tab-pane label="拨打电话" name="tel">
+        <el-tab-pane v-if="showTabs.indexOf('tel') > -1" label="拨打电话" name="tel">
           <el-form label-width="100px">
             <el-form-item label="电话号码：">
-              <el-input placeholder="请输入电话号码" v-model="link" :maxlength="11"></el-input>
+              <el-input placeholder="请输入电话号码" v-model="telVal" :maxlength="11"></el-input>
             </el-form-item>
           </el-form>
         </el-tab-pane>
@@ -87,7 +87,7 @@
       </el-tabs>
 
       <div slot="footer" class="dialog-footer">
-        <el-button @click="cancel">取 消</el-button>
+        <el-button @click="dialogShow = false">取 消</el-button>
         <el-button type="primary" @click="sure">确 定</el-button>
       </div>
   </el-dialog>
@@ -100,8 +100,11 @@
         type: Boolean,
         default: false
       },
-      type: {
-        type: String
+      option: {
+        type: Object
+      },
+      tabs: {
+        type: Array
       },
       index: {
         type: Number
@@ -112,23 +115,73 @@
     },
     data() {
       return {
-        showTabs: ['outside', 'page', 'tel'],
-        currentTab: 'outside',
-        link: ''
+        dialogShow: this.show,
+        config: this.option,
+        showTabs: this.tabs,
+        currentTab: this.getCurrentTab(),
+        returnVal: this.getOldVal(),
+        outsideVal: this.getVal('outside'),
+        pageVal: this.getVal('page'),
+        telVal: this.getVal('tel')
+      }
+    },
+    watch: {
+      option() {
+        this.config = this.option
+      },
+      tabs() {
+        this.showTabs = this.tabs
+      },
+      show() {
+        this.dialogShow = this.show
+        if (this.dialogShow) {
+          this.currentTab = this.getCurrentTab()
+          this.outsideVal = this.getVal('outside')
+          this.pageVal = this.getVal('page')
+          this.telVal = this.getVal('tel')
+        }
       }
     },
     methods: {
-      setPageAction(id) {
-        this.link = id
+      getVal(type) {
+        if (this.config && this.config.action && this.config.action.config.length && this.config.action.config[this.index].click) {
+          if (this.config.action.config[this.index].click.type === type) {
+            return this.config.action.config[this.index].click.href
+          }
+        }
+        return ''
       },
-      clickTab(tab, event) {
+      getOldVal() {
+        return this.config && this.config.action && this.config.action.config.length ? this.config.action.config[this.index].click : null
+      },
+      getCurrentTab() {
+        return this.config && this.config.action.config && this.config.action.config.length && this.config.action.config[this.index].click ? this.config.action.config[this.index].click.type : 'outside'
+      },
+      setPageAction(id) {
+        this.pageVal = id
+        this.returnVal = {
+          type: 'page',
+          href: id
+        }
+      },
+      clickTab(tab) {
         this.currentTab = tab.name
       },
-      cancel() {
-        this.$bus.$emit('click:hide')
-      },
       sure() {
-        this.$bus.$emit('click:submit', this.index)
+        this.dialogShow = false
+        if (this.currentTab === 'outside' && this.outsideVal) {
+          this.returnVal = {
+            type: 'outside',
+            href: this.outsideVal
+          }
+        }
+        if (this.currentTab === 'tel' && this.telVal) {
+          this.returnVal = {
+            type: 'tel',
+            href: this.telVal
+          }
+        }
+        this.$bus.$emit('click:submit', this.index, this.returnVal)
       }
     }
   }

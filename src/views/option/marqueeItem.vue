@@ -5,13 +5,13 @@
         <el-form-item class="small" label="滚动文案：">
           <el-input v-model="item.text" :maxlength="500" placeholder="滚动项文案"></el-input>
         </el-form-item>
-        <template v-if="item.link">
+        <template v-if="item.click">
           <el-form-item class="small" label="跳转到：">
-            <span style="word-break: break-all;">{{item.link.val}}</span>
+            <span style="word-break: break-all;">{{item.click.href}}</span>
           </el-form-item>
         </template>
         <el-form-item class="small" label="点击配置：">
-          <el-button icon="el-icon-edit" round @click="showClick()">配置跳转</el-button>
+          <el-button icon="el-icon-edit" round @click="showClick(item, idx)">配置跳转</el-button>
         </el-form-item>
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
@@ -52,7 +52,7 @@
     },
     methods: {
       showClick(banner, idx) {
-        this.$bus.$emit('click:show', 'newsMarqueeClick', idx, banner)
+        this.$bus.$emit('click:show', idx)
       },
       upItem(idx) {
         const tmp = util.copyObj(this.items[idx])

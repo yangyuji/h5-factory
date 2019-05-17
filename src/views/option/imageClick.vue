@@ -30,11 +30,11 @@
           <template v-for="(area, idx) in areas">
             <el-form-item :class="['small', current === idx ? 'edit' : '']"
                           :data-index="idx" label="配置点击：">
-              <span :class="['right-list-span', area.text ? '' : 'warn' ]">
-                {{ area.text || '尚未配置' }}</span>
+              <span :class="['right-list-span', area.click ? '' : 'warn' ]">
+                {{ area.click ? area.click.href : '尚未配置' }}</span>
               <a class="right-list-a" v-if="idx > 0" @click="delArea(area, idx)"><i
                 class="el-icon-delete"></i></a>
-              <a class="right-list-a" @click="editArea(area, idx)"><i
+              <a class="right-list-a" @click="showClick(area, idx)"><i
                 class="el-icon-edit"></i></a>
             </el-form-item>
           </template>
@@ -133,8 +133,8 @@
         this.current = 0
         document.getElementById('cropBox-0').classList.add('active')
       },
-      editArea(area, idx) {
-        this.$bus.$emit('click:show', 'imgClick', idx, area)
+      showClick(area, idx) {
+        this.$bus.$emit('click:show', idx)
       }
     }
   }

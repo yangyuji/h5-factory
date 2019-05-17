@@ -69,7 +69,11 @@
     <app-opt v-if="currentConfig" :option="currentConfig"></app-opt>
     <app-page-opt v-else :option="pageConfig"></app-page-opt>
 
-    <click-config :show="clickShow" :option="currentConfig" :comps="compList"></click-config>
+    <click-config :show.sync="clickShow"
+                  :option="currentConfig"
+                  :comps="compList"
+                  :index="click.index"
+                  :tabs="click.tabs"></click-config>
   </div>
 </template>
 
@@ -112,23 +116,29 @@
     data() {
       return {
         clickShow: false,
+        click: {
+          index: 0,
+          tabs: []
+        },
         compList: [{
           type: 'placeholder'
         }],
         pageConfig: util.copyObj(pageOption),
+        currentIndex: -1,
         currentConfig: null
       }
     },
     mounted() {
-      this.$bus.$on('click:show', (type, idx) => {
-        console.log(idx)
+      this.$bus.$on('click:show', (idx, tabs) => {
+        this.click.index = idx
+        if (Array.isArray(tabs) && tabs.length) this.click.tabs = tabs
+        else this.click.tabs = ['outside', 'page', 'tel']
         this.clickShow = true
       })
-      this.$bus.$on('click:hide', () => {
-        this.clickShow = false
-      })
-      this.$bus.$on('click:submit', (type, idx, list) => {
-        this.clickShow = false
+      this.$bus.$on('click:submit', (idx, config) => {
+        if (idx > -1 && config) {
+          this.compList[this.currentIndex].action.config[idx].click = config
+        }
       })
       this.getLocalData()
       this.showPageSet()
@@ -136,10 +146,12 @@
     watch: {
       compList: {
         handler(val) {
-          localStorage.setItem('pageDateSet', JSON.stringify({
-            time: Date.now(),
-            config: val
-          }))
+          if (val && val.length > 1) {
+            localStorage.setItem('pageDateSet', JSON.stringify({
+              time: Date.now(),
+              config: val
+            }))
+          }
         },
         deep: true
       }
@@ -147,6 +159,7 @@
     methods: {
       showPageSet() {
         this.resetCompUnchecked()
+        this.currentIndex = -1
         this.currentConfig = null
       },
       savePageSet() {
@@ -195,6 +208,7 @@
           type: 'placeholder'
         })
         // 显示配置项
+        this.currentIndex = index + 1
         this.currentConfig = comp
       },
       clickComp(e) {
@@ -202,6 +216,7 @@
         this.compList.forEach((val, index) => {
           if (index === idx) {
             val.active = true
+            this.currentIndex = index
             this.currentConfig = val
           } else {
             val.active = false
@@ -223,6 +238,7 @@
           type: 'placeholder'
         })
         // 显示当前组件配置
+        this.currentIndex = idx - 2
         this.currentConfig = this.compList[idx - 2]
       },
       downComp(idx) {
@@ -241,6 +257,7 @@
           active: false
         })
         // 显示当前组件配置
+        this.currentIndex = idx + 2
         this.currentConfig = this.compList[idx + 2]
       },
       delComp(idx) {

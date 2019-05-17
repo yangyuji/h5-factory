@@ -7,13 +7,13 @@
                 :item="slide"
                 v-on:uploadSuccess="uploadSuccess">
         </upload>
-        <template v-if="slide.link">
+        <template v-if="slide.click">
           <el-form-item class="small" label="跳转到：">
-            <span style="word-break: break-all;">{{slide.link.val}}</span>
+            <span style="word-break: break-all;">{{slide.click.href}}</span>
           </el-form-item>
         </template>
         <el-form-item class="small" label="点击配置：">
-          <el-button icon="el-icon-edit" round @click="showClick()">配置跳转</el-button>
+          <el-button icon="el-icon-edit" round @click="showClick(slide, idx)">配置跳转</el-button>
         </el-form-item>
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
@@ -58,7 +58,8 @@
     },
     methods: {
       showClick(banner, idx) {
-        this.$bus.$emit('click:show', 'bannerImageClick', idx, banner)
+        // 轮播图只可配置外链
+        this.$bus.$emit('click:show', idx, ['outside'])
       },
       upBanner(idx) {
         const tmp = util.copyObj(this.slides[idx])

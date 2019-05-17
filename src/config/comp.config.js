@@ -217,7 +217,7 @@ module.exports = {
         y: 0,
         w: 225,
         h: 64,
-        config: ''
+        click: null
       }]
     }
   },
@@ -576,7 +576,7 @@ module.exports = {
       title: '图片项配置',
       config: [{
         val: '',
-        link: ''
+        click: null
       }]
     }
   },
@@ -617,7 +617,7 @@ module.exports = {
         {
           val: '',
           text: '',
-          link: ''
+          click: null
         }
       ]
     }
