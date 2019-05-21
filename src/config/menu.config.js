@@ -28,7 +28,7 @@ module.exports = [
         text: '底部导航',
         icon: 'fa-adjust'
       }, {
-        key: 'floor-memu',
+        key: 'floor-menu',
         text: '楼层导航',
         icon: 'fa-list-ol'
       }, {

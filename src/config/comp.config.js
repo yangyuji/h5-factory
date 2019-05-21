@@ -225,6 +225,10 @@ module.exports = {
     title: '表单',
     domId: '',
     domName: '',
+    assert: {
+      script: ['./js/form/form.min.js'],
+      style: ['./js/form/form.min.css']
+    },
     base: [
       {
         type: 'text',
@@ -493,8 +497,8 @@ module.exports = {
     domId: '',
     domName: '',
     assert: {
-      script: 'https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js',
-      style: 'https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css'
+      script: ['./js/swiper/swiper.min.js'],
+      style: ['./js/swiper/swiper.min.css']
     },
     style: [
       {
@@ -580,12 +584,55 @@ module.exports = {
       }]
     }
   },
+  'floor-menu': {
+    title: '楼层导航',
+    domId: '',
+    domName: '',
+    assert: {
+      script: ['./js/libs/iscroll.min.js', './js/body/floor-menu.js']
+    },
+    style: [
+      {
+        type: 'color-picker',
+        label: '默认背景',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '选中背景',
+        attr: 'background-color:hover',
+        val: '#ffffff',
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '默认字体',
+        attr: 'color',
+        val: '#4a4a4a',
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '选中字体',
+        attr: 'color:hover',
+        val: '#D0021B',
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'floor-menu-click',
+      title: '导航项配置',
+      config: [{
+        text: '默认项1',
+        click: null
+      }]
+    }
+  },
   'scroll-left': {
     title: '横向滚动',
     domId: '',
     domName: '',
     assert: {
-      script: 'https://cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js'
+      script: ['./js/libs/iscroll.min.js', './js/body/scroll-left.js']
     },
     style: [
       {
@@ -626,6 +673,9 @@ module.exports = {
     title: '倒计时',
     domId: '',
     domName: '',
+    assert: {
+      script: ['./js/body/timeout.js']
+    },
     style: [
       {
         type: 'datetime',
@@ -689,6 +739,9 @@ module.exports = {
     title: '倒计时',
     domId: '',
     domName: '',
+    assert: {
+      script: ['./js/body/new-marquee.js']
+    },
     style: [
       {
         type: 'radio',

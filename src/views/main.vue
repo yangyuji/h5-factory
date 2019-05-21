@@ -32,6 +32,8 @@
               <form-tpl v-if="comp.type === 'form'" :component="comp"></form-tpl>
               <!--轮播图控件-->
               <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
+              <!--楼层导航控件-->
+              <floor-menu-tpl v-if="comp.type === 'floor-menu'" :component="comp"></floor-menu-tpl>
               <!--横向滚动控件-->
               <scroll-left-tpl v-if="comp.type === 'scroll-left'" :component="comp"></scroll-left-tpl>
               <!--倒计时控件-->
@@ -93,6 +95,7 @@
   import imgTpl from '@/template/image.vue'
   import formTpl from '@/template/form.vue'
   import swiperTpl from '@/template/swiper-banner.vue'
+  import floorMenuTpl from '@/template/floor-menu.vue'
   import scrollLeftTpl from '@/template/scroll-left.vue'
   import timeoutTpl from '@/template/timeout.vue'
   import newsMarqueeTpl from '@/template/news-marquee.vue'
@@ -109,6 +112,7 @@
       imgTpl,
       formTpl,
       swiperTpl,
+      floorMenuTpl,
       scrollLeftTpl,
       timeoutTpl,
       newsMarqueeTpl

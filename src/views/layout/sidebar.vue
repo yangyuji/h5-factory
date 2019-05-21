@@ -1,17 +1,17 @@
 <template>
   <div class="app-sidebar">
-    <div class="sidebar-memu-group" v-for="(memu, index) in memuData">
+    <div class="sidebar-menu-group" v-for="(menu, index) in menuData">
 
-      <div class="memu-group-title">
-        {{memu.title}}
+      <div class="menu-group-title">
+        {{menu.title}}
         <i class="el-icon-remove"></i>
       </div>
-      <div class="memu-group-list" id="Contros">
-        <div class="memu-item"
+      <div class="menu-group-list" id="Contros">
+        <div class="menu-item"
              :data-key="item.key"
              draggable="true"
              @dragstart="menuDrag($event, item.key)"
-             v-for="item in memu.items">
+             v-for="item in menu.items">
           <div class="item-icon-box">
             <i :class="['fa', item.icon]" aria-hidden="true"></i>
           </div>
@@ -29,7 +29,7 @@
     name: 'AppSide',
     data() {
       return {
-        memuData: menuConfig
+        menuData: menuConfig
       }
     },
     methods: {
@@ -59,14 +59,14 @@
     background: rgba(0, 0, 0, 0.1);
   }
 
-  .sidebar-memu-group {
+  .sidebar-menu-group {
     position: relative;
     margin-top: 20px;
     &:first-child {
       margin-top: 0;
     }
 
-    .memu-group-title {
+    .menu-group-title {
       position: relative;
       height: 40px;
       line-height: 40px;
@@ -80,11 +80,11 @@
         color: #999;
       }
     }
-    .memu-group-list {
+    .menu-group-list {
       overflow: hidden;
       transition: height 400ms ease;
 
-      .memu-item {
+      .menu-item {
         position: relative;
         box-sizing: content-box;
         float: left;
@@ -131,14 +131,14 @@
     width: 100px;
     padding: 10px;
 
-    .sidebar-memu-group {
+    .sidebar-menu-group {
       width: 80px;
 
-      .memu-group-title i {
+      .menu-group-title i {
         right: 0;
       }
-      .memu-group-list {
-        .memu-item {
+      .menu-group-list {
+        .menu-item {
           width: 80px;
           height: 80px;
         }
