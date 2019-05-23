@@ -37,8 +37,8 @@ npm run build:report
 ```
 * 按需加载组件代码和样式
 ``` bash
-// 根据用到的组件生成script标签
-<script src="lib/swiper.min.js,base/timeout.min.js,base/form.min.js">
+// 按需生成script标签
+<script src="lib/swiper.min.js,base/timeout.min.js,base/form.min.js"><script>
 // 根据用到的组件添加style
 <link ref="stylesheet" href="/lib/swiper.min.css"/>
 ```
