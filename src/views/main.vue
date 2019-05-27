@@ -3,7 +3,8 @@
     <app-sidebar></app-sidebar>
     <div class="app-main">
       <app-toolbar v-on:showPageSet="showPageSet"
-                   v-on:savePageSet="savePageSet"></app-toolbar>
+                   v-on:savePageSet="savePageSet"
+                   v-on:showPreview="showPreview"></app-toolbar>
       <div class="scroll-y">
         <div class="app-phone"
              @dragover.self="dragPhoneOver"
@@ -120,6 +121,7 @@
     data() {
       return {
         clickShow: false,
+        previewShow: false,
         click: {
           index: 0,
           tabs: []
@@ -172,6 +174,10 @@
           message: '打开chomre devtool查看保存的信息！',
           type: 'success'
         })
+      },
+      showPreview() {
+        localStorage.setItem('pageConfig', JSON.stringify(this.pageConfig))
+        this.previewShow = true
       },
       getLocalData() {
         const tmp = localStorage.getItem('pageDateSet')

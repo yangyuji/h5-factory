@@ -8,15 +8,9 @@
              width="395px">
     <el-row>
       <el-col :span="12" style="text-align: center;width:375px;background-color:#f2f3f4;">
-        <iframe allowtransparency="yes" src="https://yangyuji.github.io/h5-factory/static/demo/preview.html"></iframe>
+        <iframe allowtransparency="yes" src="https://yangyuji.github.io/h5-factory/static/preview/index.html"></iframe>
       </el-col>
     </el-row>
-
-    <div class="pre-qrcode">
-      <img class="qrcode-img" src="https://yangyuji.github.io/h5-factory/static/img/qrcode.png">
-      <p style="color:red;">请勿分享该链接</p>
-      <p>二维码有效时长10分钟</p>
-    </div>
   </el-dialog>
 </template>
 
