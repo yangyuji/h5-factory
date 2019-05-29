@@ -8,7 +8,7 @@
           <div v-else class="image-placeholder"><i class="fa fa-caret-square-o-right"></i></div>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
+      <div v-show="pagination" class="swiper-pagination"></div>
     </div>
   </div>
 </template>
@@ -27,6 +27,7 @@
       return {
         swiper: null,
         banners: this.component.action.config,
+        pagination: this.component.base[1].val,
         height: this.getMaxHeight(),
         width: this.getWidth()
       }
@@ -45,6 +46,7 @@
       component: {
         handler() {
           this.banners = this.component.action.config
+          this.pagination = this.component.base[1].val
           this.height = this.getMaxHeight()
           this.width = this.getWidth()
           setTimeout(() => {
@@ -67,7 +69,7 @@
         return h > 0 ? h + 'px' : '225px'
       },
       getWidth() {
-        return (750 - this.component.style[4].val - this.component.style[6].val) + 'px'
+        return (750 - this.component.style[2].val - this.component.style[4].val) + 'px'
       }
     },
     mounted() {

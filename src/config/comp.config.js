@@ -500,14 +500,8 @@ module.exports = {
       script: ['./js/swiper/swiper.min.js'],
       style: ['./js/swiper/swiper.min.css']
     },
-    style: [
+    base: [
       {
-        type: 'color-picker',
-        label: '背景颜色',
-        attr: 'background-color',
-        val: 'rgba(255, 255, 255, 0)',
-        isNecessary: true
-      }, {
         type: 'radio',
         label: '自动播放',
         attr: 'autoplay',
@@ -533,6 +527,15 @@ module.exports = {
           val: false
         }],
         isNecessary: false
+      }
+    ],
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: 'rgba(255, 255, 255, 0)',
+        isNecessary: true
       }, {
         type: 'input-number',
         label: '上边距',

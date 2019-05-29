@@ -139,6 +139,7 @@
           this.outsideVal = this.getVal('outside')
           this.pageVal = this.getVal('page')
           this.telVal = this.getVal('tel')
+          this.returnVal = null
         }
       }
     },

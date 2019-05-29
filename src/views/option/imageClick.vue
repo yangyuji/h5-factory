@@ -90,7 +90,7 @@
                   y: parseInt(area.style.top),
                   w: parseInt(area.style.width),
                   h: parseInt(area.style.height),
-                  config: ''
+                  click: ''
                 })
                 this.current = parseInt(area.dataset.index)
               },
