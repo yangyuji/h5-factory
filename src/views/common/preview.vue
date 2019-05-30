@@ -8,7 +8,7 @@
              width="395px">
     <el-row>
       <el-col :span="12" style="text-align: center;width:375px;background-color:#f2f3f4;">
-        <iframe allowtransparency="yes" src="https://yangyuji.github.io/h5-factory/static/preview/index.html"></iframe>
+        <iframe id="ifr-preview" allowtransparency="yes" src="https://yangyuji.github.io/h5-factory/static/preview/index.html"></iframe>
 
         <div class="pre-desc">
           <h3 style="color:red;">预览说明：</h3>
@@ -36,7 +36,10 @@
       }
     },
     watch: {
-      show() {
+      show(val) {
+        if (val && document.getElementById('ifr-preview')) {
+          document.getElementById('ifr-preview').contentWindow.location.reload(true)
+        }
         this.visible = this.show
       }
     },
