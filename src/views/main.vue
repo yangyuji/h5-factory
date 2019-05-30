@@ -69,6 +69,8 @@
       </div>
     </div>
 
+    <preview-dialog :show.sync="previewShow"></preview-dialog>
+
     <app-opt v-if="currentConfig" :option="currentConfig"></app-opt>
     <app-page-opt v-else :option="pageConfig"></app-page-opt>
 
@@ -87,6 +89,7 @@
   import appOpt from '@/views/layout/option.vue'
   import appPageOpt from '@/views/layout/pageOption.vue'
   import clickConfig from '@/views/common/click.vue'
+  import previewDialog from '@/views/common/preview.vue'
   // 页面默认配置
   import pageOption from '@/config/page.config.js'
   // 组件默认配置
@@ -109,6 +112,7 @@
       appOpt,
       appPageOpt,
       clickConfig,
+      previewDialog,
       textTpl,
       imgTpl,
       formTpl,

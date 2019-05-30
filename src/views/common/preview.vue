@@ -9,6 +9,14 @@
     <el-row>
       <el-col :span="12" style="text-align: center;width:375px;background-color:#f2f3f4;">
         <iframe allowtransparency="yes" src="https://yangyuji.github.io/h5-factory/static/preview/index.html"></iframe>
+
+        <div class="pre-desc">
+          <h3 style="color:red;">预览说明：</h3>
+          <p>1、部分组件尚未实现预览；</p>
+          <p>2、组件尚未点击效果；</p>
+          <p>3、预览仅供参考，不代表真机效果；</p>
+          <p>4、反对伸手党，本开源仅作为项目参考，可以在此基础上开发自己的组件，即：自己生产数据，自己消费数据；</p>
+        </div>
       </el-col>
     </el-row>
   </el-dialog>
@@ -50,26 +58,18 @@
     .el-dialog__body {
       padding: 0px 10px 50px 10px !important;
 
-      .pre-qrcode {
+      .pre-desc {
         position: absolute;
         left: 110%;
-        top: 40%;
-        width: 150px;
-        height: 200px;
+        top: 20%;
+        width: 180px;
+        height: 250px;
         padding: 10px;
         background-color: #fff;
 
-        .qrcode-img {
-          display: block;
-          border: 1px solid #ccc;
-          width: 150px;
-          height: 150px;
-          margin-bottom: 6px;
-        }
-
         > p {
           margin: 0;
-          text-align: center;
+          text-align: left;
           line-height: 1.5;
         }
       }
