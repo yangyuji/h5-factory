@@ -18,10 +18,10 @@
 
     <section v-show="component.style[0].val === 'no-scroll'" class="no-scroll" id="scroll-two">
       <div class="scroll-content">
-        <div v-for="(item, idx) in scrolls" class="scroll-item">
+        <div v-for="(item) in scrolls" class="scroll-item">
           <img v-if="item.val" :src="item.val">
           <div v-else class="image-placeholder"><i class="fa fa-image"></i></div>
-          <p>{{item.text || '默认文字'}}</p>
+          <!--p>{{item.text || '默认文字'}}</p-->
         </div>
       </div>
     </section>
@@ -152,6 +152,7 @@
           height: 320px;
           padding: 0 12px;
           box-sizing: border-box;
+          vertical-align: top;
 
           > img {
             display: block;
@@ -191,6 +192,8 @@
       position: absolute;
       white-space: nowrap;
       height: 236px;
+      padding-right: 40px;
+      box-sizing: content-box;
       transform: translateZ(0);
       text-size-adjust: none;
       font-size: 0;
@@ -203,42 +206,39 @@
         height: 192px;
         flex-shrink: 0;
         margin-right: 16px;
-        vertical-align: baseline;
+        vertical-align: top;
         background: #FFF;
         box-shadow: 16px 16px 24px 0 rgba(0,0,0,0.15);
         font-size: 0;
 
-        &:last-child {
-          margin-right: 56px;
-        }
-
         > img {
           display: block;
           width: 100%;
-          height: 128px;
+          height: 100%;
           margin: 0 auto;
           -webkit-user-drag: none;
         }
 
         > .image-placeholder {
           width: 100%;
-          height: 127px;
-          line-height: 127px;
+          height: 192px;
+          line-height: 192px;
           text-align: center;
-          border-bottom: 1px solid #e8e8e8;
+          border: 1px solid #e8e8e8;
+          box-sizing: border-box;
 
           > .fa {
             color: #83c0ff;
-            font-size: 20px;
+            font-size: 32px;
           }
         }
 
-        > p {
+        /* > p {
           margin-top: 16px;
           font-size: 28px;
           line-height: 1;
           color: #000;
-        }
+        } */
       }
     }
   }
