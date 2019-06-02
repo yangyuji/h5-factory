@@ -46,6 +46,7 @@ npm run build:report
 ``` bash
 window.pageConfig = {
   shareInfo: {
+    api: '',
     title: '',
     desc: '',
     thumb: ''
@@ -91,8 +92,10 @@ window.pageConfig = {
 
 无需开发，自定义跳转链接，一键生成纯静态html文件，SEO友好，页面秒开，随时随地部署使用。还可以在此基础上开发业务相关的组件，例如商品列表，文章列表等。
 
-## 在线预览
-[在线Demo](https://yangyuji.github.io/h5-factory/)
+## 文档
+系统架构设计和组件拆分原则可阅读我的掘金文章：[《搭建一个简单易用的专题页面制作平台》](https://juejin.im/post/5cf328706fb9a07f042030f0)
+
+[在线体验地址](https://yangyuji.github.io/h5-factory/)
 
 ## 许可证
 [MIT](https://github.com/yangyuji/h5-factory/blob/master/LICENSE)

@@ -15,7 +15,7 @@
           <div class="el-upload el-upload--text">
             <div class="el-upload-dragger"><i class="el-icon-upload"></i>
               <div v-if="item.val" class="image-preview" :style="{ backgroundImage: 'url(' + item.val + ')' }">
-                <i class="fa fa-window-close" @click="delImg(item, $event)"></i>
+                <i class="fa fa-window-close" @click.stop="delImg(item)"></i>
               </div>
               <div v-else class="el-upload__text">点击此处，<em>上传图片</em></div>
             </div>
@@ -108,9 +108,8 @@
           }
         }
       },
-      delImg(item, event) {
+      delImg(item) {
         item.val = ''
-        event.stopPropagation()
       }
     }
   }
