@@ -66,6 +66,21 @@
 
           </template>
         </div>
+
+        <!--底部导航控件-->
+        <div v-if="bottomMenu"
+             :class="['absolute-tpl', bottomMenu.active ? 'current' : '']"
+             @click="clickBtmMenu">
+          <bottom-menu-tpl :component="bottomMenu"></bottom-menu-tpl>
+          <div class="comp-menu">
+            <a href="javascript:void(0)"
+               @click="delBtmMenu">
+              <span class="tips">删除</span>
+              <i class="fa fa-trash"></i>
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -103,6 +118,7 @@
   import scrollLeftTpl from '@/template/scroll-left.vue'
   import timeoutTpl from '@/template/timeout.vue'
   import newsMarqueeTpl from '@/template/news-marquee.vue'
+  import bottomMenuTpl from '@/template/bottom-menu.vue'
 
   export default {
     name: 'AppMain',
@@ -120,7 +136,8 @@
       floorMenuTpl,
       scrollLeftTpl,
       timeoutTpl,
-      newsMarqueeTpl
+      newsMarqueeTpl,
+      bottomMenuTpl
     },
     data() {
       return {
@@ -133,6 +150,7 @@
         compList: [{
           type: 'placeholder'
         }],
+        bottomMenu: null,
         pageConfig: util.copyObj(pageOption),
         currentIndex: -1,
         currentConfig: null
@@ -147,10 +165,15 @@
       })
       this.$bus.$on('click:submit', (idx, config) => {
         if (idx > -1 && config) {
-          this.compList[this.currentIndex].action.config[idx].click = config
+          if (this.currentIndex >= 0) {
+            this.compList[this.currentIndex].action.config[idx].click = config
+          } else if (this.currentIndex === -2) {
+            // 底部导航栏点击配置
+            this.bottomMenu.action.config[idx].click = config
+          }
         }
       })
-      this.getLocalData()
+      this.readLocalData()
       this.showPageSet()
     },
     watch: {
@@ -159,11 +182,21 @@
           if (val && val.length > 1) {
             localStorage.setItem('pageDateSet', JSON.stringify({
               time: Date.now(),
+              menu: this.bottomMenu,
               config: val
             }))
           }
         },
         deep: true
+      },
+      bottomMenu: {
+        handler(val) {
+          localStorage.setItem('pageDateSet', JSON.stringify({
+            time: Date.now(),
+            menu: val,
+            config: this.compList
+          }))
+        }
       }
     },
     methods: {
@@ -183,7 +216,7 @@
         localStorage.setItem('pageConfig', JSON.stringify(this.pageConfig))
         this.previewShow = true
       },
-      getLocalData() {
+      readLocalData() {
         const tmp = localStorage.getItem('pageDateSet')
         if (tmp) {
           const localData = JSON.parse(tmp)
@@ -195,6 +228,7 @@
             center: true
           }).then(() => {
             this.compList = localData.config
+            this.bottomMenu = localData.menu
             this.resetCompUnchecked()
           }).catch(() => {
             localStorage.setItem('pageDateSet', '')
@@ -202,6 +236,7 @@
         }
       },
       resetCompUnchecked() {
+        if (this.bottomMenu) this.bottomMenu.active = false
         this.compList.forEach((val) => {
           if (val.active) {
             val.active = false
@@ -225,7 +260,21 @@
         this.currentIndex = index + 1
         this.currentConfig = comp
       },
+      addBottomMenu() {
+        const comp = util.copyObj(compConfig['bottom-menu'])
+        const config = {
+          type: 'bottom-menu',
+          active: true,
+          domId: 'bottom-menu-' + util.createDomID()
+        }
+        Object.assign(comp, config)
+        this.bottomMenu = comp
+        // 显示配置项
+        this.currentIndex = -1
+        this.currentConfig = comp
+      },
       clickComp(e) {
+        if (this.bottomMenu) this.bottomMenu.active = false
         const idx = parseInt(e.currentTarget.dataset.index)
         this.compList.forEach((val, index) => {
           if (index === idx) {
@@ -236,6 +285,17 @@
             val.active = false
           }
         })
+      },
+      clickBtmMenu(e) {
+        this.resetCompUnchecked()
+        this.bottomMenu.active = true
+        this.currentIndex = -2
+        this.currentConfig = this.bottomMenu
+      },
+      delBtmMenu() {
+        this.bottomMenu = null
+        // 显示页面配置参数
+        this.showPageSet()
       },
       upComp(idx) {
         if (idx < 2) {
@@ -288,6 +348,7 @@
         const target = e.target
         target.classList.remove('active')
         const key = e.dataTransfer.getData('cmp-type')
+        if (key === 'bottom-menu') return
         const idx = parseInt(target.dataset.index)
         if (compConfig[key]) {
           this.resetCompUnchecked()
@@ -301,23 +362,33 @@
       },
       dragPhoneOver() {
         const target = document.querySelector('.place-holder:last-child')
-        if (!target.classList.contains('active')) target.classList.add('active')
+        if (target && !target.classList.contains('active')) target.classList.add('active')
       },
       dropPhone(e) {
         const target = document.querySelector('.place-holder:last-child')
-        target.classList.remove('active')
-        const key = e.dataTransfer.getData('cmp-type')
-        const idx = parseInt(target.dataset.index)
-        if (compConfig[key]) {
-          this.resetCompUnchecked()
-          this.replacePlaceholderWithComp(idx, key)
-        } else {
-          this.$message.warning('没有查询到该组件的配置信息。。。')
+        if (target) {
+          target.classList.remove('active')
+          const key = e.dataTransfer.getData('cmp-type')
+          const idx = parseInt(target.dataset.index)
+          if (compConfig[key]) {
+            if (key === 'bottom-menu') {
+              if (this.bottomMenu) {
+                this.$message.info('已经存在一个底部导航组件了，请勿重复添加！')
+              } else {
+                this.addBottomMenu()
+              }
+            } else {
+              this.resetCompUnchecked()
+              this.replacePlaceholderWithComp(idx, key)
+            }
+          } else {
+            this.$message.warning('没有查询到该组件的配置信息。。。')
+          }
         }
       },
       dragPhoneLeave() {
         const target = document.querySelector('.place-holder:last-child')
-        target.classList.remove('active')
+        target && target.classList.remove('active')
       }
     }
   }
@@ -344,7 +415,7 @@
       position: relative;
       box-sizing: border-box;
       width: 752px;
-      min-height: 1334px;
+      min-height: 1234px;
       margin: 0 auto;
       background-color: #fff;
       transform: translateX(-30px);
@@ -395,68 +466,83 @@
         .comp-content {
           position: relative;
         }
+      }
+    }
+
+    .comp-menu {
+      position: absolute;
+      display: none;
+      top: 0;
+      right: -38px;
+      width: 32px;
+
+      > a {
+        display: inline-block;
+        position: relative;
+        width: 36px;
+        height: 36px;
+        margin-bottom: 2px;
+        text-align: center;
+        color: #666;
+        background: #fff;
+        font-size: 18px;
+        line-height: 36px;
+
+        &.disabled {
+          color: #e4e4e4;
+        }
+
+        &:hover {
+          &.disabled {
+            color: #e4e4e4;
+          }
+          color: #333;
+          .tips {
+            display: block;
+          }
+        }
+
+        .tips {
+          font-size: 12px;
+          position: absolute;
+          left: 120%;
+          background-color: #111;
+          height: 18px;
+          padding: 0 5px;
+          line-height: 19px;
+          border-radius: 2px;
+          white-space: nowrap;
+          display: none;
+          color: #eee;
+          top: 5px;
+
+          &::before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: -5px;
+            top: 4.5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 6px 5px 0;
+            border-color: transparent #111 transparent transparent;
+          }
+        }
+      }
+    }
+
+    .absolute-tpl {
+      width: 752px;
+      margin: 0 auto;
+      transform: translateX(-30px);
+      border-top: 1px solid #e8e8e8;
+
+      &.current {
+        border: 1px solid #2aa7ff;
 
         .comp-menu {
-          position: absolute;
-          display: none;
-          top: 0;
-          right: -38px;
-          width: 32px;
-
-          > a {
-            display: inline-block;
-            position: relative;
-            width: 36px;
-            height: 36px;
-            margin-bottom: 2px;
-            text-align: center;
-            color: #666;
-            background: #fff;
-            font-size: 18px;
-            line-height: 36px;
-
-            &.disabled {
-              color: #e4e4e4;
-            }
-
-            &:hover {
-              &.disabled {
-                color: #e4e4e4;
-              }
-              color: #333;
-              .tips {
-                display: block;
-              }
-            }
-
-            .tips {
-              font-size: 12px;
-              position: absolute;
-              left: 120%;
-              background-color: #111;
-              height: 18px;
-              padding: 0 5px;
-              line-height: 19px;
-              border-radius: 2px;
-              white-space: nowrap;
-              display: none;
-              color: #eee;
-              top: 5px;
-
-              &::before {
-                content: ' ';
-                display: block;
-                position: absolute;
-                left: -5px;
-                top: 4.5px;
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 5px 6px 5px 0;
-                border-color: transparent #111 transparent transparent;
-              }
-            }
-          }
+          display: block;
         }
       }
     }

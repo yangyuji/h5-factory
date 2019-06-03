@@ -24,7 +24,7 @@ module.exports = [
         text: '轮播图',
         icon: 'fa-caret-square-o-right'
       }, {
-        key: 'bottom-tabs',
+        key: 'bottom-menu',
         text: '底部导航',
         icon: 'fa-adjust'
       }, {

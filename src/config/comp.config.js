@@ -74,7 +74,7 @@ module.exports = {
         ]
       }, {
         type: 'input-number',
-        label: '大小',
+        label: '字体大小',
         attr: 'font-size',
         val: 24,
         unit: 'px',
@@ -84,7 +84,7 @@ module.exports = {
         isNecessary: false
       }, {
         type: 'input-number',
-        label: '行距',
+        label: '文本行距',
         attr: 'line-height',
         val: 1.5,
         step: 0.5,
@@ -666,7 +666,6 @@ module.exports = {
       config: [
         {
           val: '',
-          text: '',
           click: null
         }
       ]
@@ -825,6 +824,38 @@ module.exports = {
       title: '滚动项配置',
       config: [{
         text: '滚动新闻默认文本',
+        click: null
+      }]
+    }
+  },
+  'bottom-menu': {
+    title: '底部导航',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'input-number',
+        label: '容器高度',
+        attr: 'height',
+        val: 80,
+        unit: 'px',
+        min: 0,
+        max: 200,
+        step: 1,
+        isNecessary: false
+      }, {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      }
+    ],
+    action: {
+      type: 'bottom-menu-click',
+      title: '点击项配置',
+      config: [{
+        val: '',
         click: null
       }]
     }

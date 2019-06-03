@@ -47,6 +47,10 @@
           <banner-item :banners="option.action.config"></banner-item>
         </template>
 
+        <template v-if="option.action.type === 'bottom-menu-click'">
+          <bottom-menu-item :items="option.action.config"></bottom-menu-item>
+        </template>
+
         <template v-if="option.action.type === 'floor-menu-click'">
           <floor-menu-item :menus="option.action.config"></floor-menu-item>
         </template>
@@ -82,6 +86,7 @@
   import imageClick from '@/views/option/imageClick.vue'
   import timeoutItem from '@/views/option/timeoutItem.vue'
   import bannerItem from '@/views/option/bannerItem.vue'
+  import bottomMenuItem from '@/views/option/bottomMenuItem.vue'
   import floorMenuItem from '@/views/option/floorMenuItem.vue'
   import scrollItem from '@/views/option/scrollItem.vue'
   import inputItem from '@/views/option/inputItem.vue'
@@ -99,6 +104,7 @@
       imageClick,
       timeoutItem,
       bannerItem,
+      bottomMenuItem,
       floorMenuItem,
       scrollItem,
       inputItem,
