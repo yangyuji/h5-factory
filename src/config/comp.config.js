@@ -828,6 +828,88 @@ module.exports = {
       }]
     }
   },
+  'grid-menu': {
+    title: '金刚位',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'input-number',
+        label: '最大列数',
+        attr: 'grid-column',
+        val: 4,
+        unit: '',
+        min: 2,
+        max: 5,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    style: [
+      {
+        type: 'input-number',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#333333',
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'grid-menu-click',
+      title: '点击项配置',
+      config: [
+        {
+          val: '',
+          text: '导航项一',
+          click: null
+        }, {
+          val: '',
+          text: '导航项二',
+          click: null
+        }
+      ]
+    }
+  },
   'bottom-menu': {
     title: '底部导航',
     domId: '',

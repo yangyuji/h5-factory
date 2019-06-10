@@ -41,6 +41,8 @@
               <timeout-tpl v-if="comp.type === 'timeout'" :component="comp"></timeout-tpl>
               <!--滚动新闻控件-->
               <news-marquee-tpl v-if="comp.type === 'news-marquee'" :component="comp"></news-marquee-tpl>
+              <!--金刚位控件-->
+              <grid-menu-tpl v-if="comp.type === 'grid-menu'" :component="comp"></grid-menu-tpl>
 
               <!--控件操作-->
               <div class="comp-menu">
@@ -118,6 +120,7 @@
   import scrollLeftTpl from '@/template/scroll-left.vue'
   import timeoutTpl from '@/template/timeout.vue'
   import newsMarqueeTpl from '@/template/news-marquee.vue'
+  import gridMenuTpl from '@/template/grid-menu.vue'
   import bottomMenuTpl from '@/template/bottom-menu.vue'
 
   export default {
@@ -137,6 +140,7 @@
       scrollLeftTpl,
       timeoutTpl,
       newsMarqueeTpl,
+      gridMenuTpl,
       bottomMenuTpl
     },
     data() {
@@ -415,7 +419,8 @@
       position: relative;
       box-sizing: border-box;
       width: 752px;
-      min-height: 1234px;
+      min-height: 1200px;
+      padding-bottom: 200px;
       margin: 0 auto;
       background-color: #fff;
       transform: translateX(-30px);

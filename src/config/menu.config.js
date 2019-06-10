@@ -49,7 +49,7 @@ module.exports = [
         text: '滚动新闻',
         icon: 'fa-newspaper-o'
       }, {
-        key: 'flex-box',
+        key: 'grid-menu',
         text: '金刚位',
         icon: 'fa-th'
       }

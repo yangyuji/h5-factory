@@ -72,6 +72,10 @@
                      @click="timeoutClickShow = true">时间项配置</el-button>
         </template>
 
+        <template v-if="option.action.type === 'grid-menu-click'">
+          <grid-menu-item :grids="option.action.config"></grid-menu-item>
+        </template>
+
         <template v-if="option.action.type === 'marquee-click'">
           <marquee-item :marquees="option.action.config"></marquee-item>
         </template>
@@ -90,6 +94,7 @@
   import floorMenuItem from '@/views/option/floorMenuItem.vue'
   import scrollItem from '@/views/option/scrollItem.vue'
   import inputItem from '@/views/option/inputItem.vue'
+  import gridMenuItem from '@/views/option/gridMenuItem.vue'
   import marqueeItem from '@/views/option/marqueeItem.vue'
   export default {
     name: 'AppOption',
@@ -108,6 +113,7 @@
       floorMenuItem,
       scrollItem,
       inputItem,
+      gridMenuItem,
       marqueeItem
     },
     props: {
