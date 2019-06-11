@@ -26,11 +26,11 @@
         </el-form-item>
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
-             @click="upInput(idx)"><i class="el-icon-arrow-up"></i>上移</a>
+             @click="upInput(idx)"><i class="el-icon-arrow-up"></i></a>
           <a href="javascript:;" v-if="idx !== inputs.length - 1"
-             @click="downInput(idx)"><i class="el-icon-arrow-down"></i>下移</a>
+             @click="downInput(idx)"><i class="el-icon-arrow-down"></i></a>
           <a href="javascript:;" v-if="idx > 0"
-             @click="delInput(idx)"><i class="el-icon-delete"></i>删除</a>
+             @click="delInput(idx)"><i class="el-icon-delete"></i></a>
         </div>
       </div>
     </template>

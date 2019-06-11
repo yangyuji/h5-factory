@@ -54,7 +54,7 @@ module.exports = [
         icon: 'fa-th'
       }
     ]
-  }, {
+  }/*, {
     title: '页面模板',
     items: [
       {
@@ -71,5 +71,5 @@ module.exports = [
         icon: 'fa-pied-piper-pp'
       }
     ]
-  }
+  }*/
 ]

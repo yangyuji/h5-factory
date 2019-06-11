@@ -17,11 +17,11 @@
         </el-form-item>
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
-             @click="upBanner(idx)"><i class="el-icon-arrow-up"></i>上移</a>
+             @click="upBanner(idx)"><i class="el-icon-arrow-up"></i></a>
           <a href="javascript:;" v-if="idx !== slides.length - 1"
-             @click="downBanner(idx)"><i class="el-icon-arrow-down"></i>下移</a>
+             @click="downBanner(idx)"><i class="el-icon-arrow-down"></i></a>
           <a href="javascript:;" v-if="idx > 0"
-             @click="delBanner(idx)"><i class="el-icon-delete"></i>删除</a>
+             @click="delBanner(idx)"><i class="el-icon-delete"></i></a>
         </div>
       </div>
     </template>

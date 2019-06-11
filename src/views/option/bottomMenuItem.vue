@@ -17,11 +17,11 @@
         </el-form-item>
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
-             @click="upItem(idx)"><i class="el-icon-arrow-up"></i>上移</a>
+             @click="upItem(idx)"><i class="el-icon-arrow-up"></i></a>
           <a href="javascript:;" v-if="idx !== menus.length - 1"
-             @click="downItem(idx)"><i class="el-icon-arrow-down"></i>下移</a>
+             @click="downItem(idx)"><i class="el-icon-arrow-down"></i></a>
           <a href="javascript:;" v-if="idx > 0"
-             @click="delItem(idx)"><i class="el-icon-delete"></i>删除</a>
+             @click="delItem(idx)"><i class="el-icon-delete"></i></a>
         </div>
       </div>
     </template>
