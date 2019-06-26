@@ -23,29 +23,6 @@ module.exports = {
         }
       ],
       isNecessary: false
-    }, {
-      type: 'datetime',
-      label: '生效时间',
-      attr: 'start-time',
-      val: '',
-      isNecessary: true
-    }, {
-      type: 'datetime',
-      label: '失效时间',
-      attr: 'start-time',
-      val: '',
-      isNecessary: true
-    }, {
-      type: 'text',
-      label: '文件名称',
-      attr: 'page-name',
-      rules: {
-        regex: '^[0-9a-zA-Z_]{1,}$',
-        tips: '只能输入字母、数字或者下划线'
-      },
-      placeholder: '生成的html文件名称',
-      val: '',
-      isNecessary: true
     }
   ],
   style: [
