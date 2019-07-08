@@ -30,23 +30,27 @@ npm run build:report
 * 金刚位
 * ...
 
+### todo
+1、一个配置生成小程序
+
 ### 功能特点
 * 图片懒加载
 ``` bash
 <img data-src="" class="lazyload">
 ```
-* 按需加载组件代码和样式
+* 按需加载组件代码和样式（‘,’方式需配置nginx支持）
 ``` bash
 // 按需生成script标签
 <script src="lib/swiper.min.js,base/timeout.min.js,base/form.min.js"><script>
 // 根据用到的组件添加style
-<link ref="stylesheet" href="/lib/swiper.min.css"/>
+<link ref="stylesheet" href="/css/swiper.min.css,form.min.css"/>
 ```
 * 微信分享配置
 ``` bash
 window.pageConfig = {
   shareInfo: {
     api: '',
+    url: '',
     title: '',
     desc: '',
     thumb: ''
@@ -58,12 +62,6 @@ window.pageConfig = {
 <meta name="keywords" content="<!--keywords-->">
 <meta name="description" content="<!--description-->">
 ```
-* 页面有效时间配置
-``` bash
-window.pageConfig = {
-  start: '',
-  end: ''
-}
 ```
 * 页面背景色/图片配置
 ```bash
@@ -75,22 +73,8 @@ window.pageConfig = {
   }
 </style>
 ```
-* 回到顶部按钮
-```bash
-<div class="goto-top" style="display:none;">
-    <svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-            <g transform="translate(1.000000, 3.000000)" stroke="#656565" stroke-width="1.2">
-                <path d="M0.436999822,10.5317502 L10.6875,0.28125"></path>
-                <path d="M11.4369998,10.5317502 L21.6875,0.28125" transform="translate(16.500000, 5.500000) scale(1, -1) translate(-16.500000, -5.500000) "></path>
-                <path d="M11,0 L11,18.5100098"></path>
-            </g>
-        </g>
-    </svg>
-</div>
-```
 
-无需开发，自定义跳转链接，一键生成纯静态html文件，SEO友好，页面秒开，随时随地部署使用。还可以在此基础上开发业务相关的组件，例如商品列表，文章列表等。
+自定义跳转链接，一键生成纯静态html文件，SEO友好，页面秒开，随时随地部署使用。还可以在此基础上开发业务相关的组件，例如商品列表，文章列表等。
 
 ## 文档
 系统架构设计和组件拆分原则可阅读我的掘金文章：[《搭建一个简单易用的专题页面制作平台》](https://juejin.im/post/5cf328706fb9a07f042030f0)

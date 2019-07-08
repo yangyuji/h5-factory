@@ -184,7 +184,7 @@
       compList: {
         handler(val) {
           if (val && val.length > 1) {
-            localStorage.setItem('pageDateSet', JSON.stringify({
+            localStorage.setItem('pageDataSet', JSON.stringify({
               time: Date.now(),
               menu: this.bottomMenu,
               config: val
@@ -195,7 +195,7 @@
       },
       bottomMenu: {
         handler(val) {
-          localStorage.setItem('pageDateSet', JSON.stringify({
+          localStorage.setItem('pageDataSet', JSON.stringify({
             time: Date.now(),
             menu: val,
             config: this.compList
@@ -221,7 +221,7 @@
         this.previewShow = true
       },
       readLocalData() {
-        const tmp = localStorage.getItem('pageDateSet')
+        const tmp = localStorage.getItem('pageDataSet')
         if (tmp) {
           const localData = JSON.parse(tmp)
           const t = util.parseTime(localData.time)
@@ -235,7 +235,7 @@
             this.bottomMenu = localData.menu
             this.resetCompUnchecked()
           }).catch(() => {
-            localStorage.setItem('pageDateSet', '')
+            localStorage.setItem('pageDataSet', '')
           })
         }
       },
