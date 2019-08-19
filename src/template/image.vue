@@ -31,9 +31,9 @@
       }
     },
     watch: {
-      component: {
-        handler() {
-          this.imgUrl = this.component.style[1].val
+      'component.style': {
+        handler(val) {
+          this.imgUrl = val[1].val
         },
         deep: true
       }

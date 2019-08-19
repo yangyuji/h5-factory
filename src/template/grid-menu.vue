@@ -41,14 +41,12 @@
       }
     },
     watch: {
-      component: {
-        handler() {
-          this.items = this.component.action.config
+      'component.action.config': {
+        handler(val) {
+          this.items = val
         },
         deep: true
       }
-    },
-    methods: {
     }
   }
 </script>

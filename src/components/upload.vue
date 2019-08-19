@@ -74,14 +74,14 @@
                     this.$alert('图片宽度不能超过750px', '提示')
                   }
                   if (file.type === 'image/gif') {
-                    if (file.size / 1024 > 200) {
+                    if (file.size / 1024 > 800) {
                       invalide = false
-                      this.$alert('gif图片不能超过200k', '提示')
+                      this.$alert('gif图片不能超过500k', '提示')
                     }
                   } else {
-                    if (file.size / 1024 > 100) {
+                    if (file.size / 1024 > 500) {
                       invalide = false
-                      this.$alert('jpg、jpeg、png图片不能超过100k', '提示')
+                      this.$alert('jpg、jpeg、png图片不能超过300k', '提示')
                     }
                   }
                 }

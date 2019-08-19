@@ -32,9 +32,9 @@
       }
     },
     watch: {
-      component: {
-        handler() {
-          this.menus = this.component.action.config
+      'component.action.config': {
+        handler(val) {
+          this.menus = val
         },
         deep: true
       }
