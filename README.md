@@ -106,8 +106,5 @@ npm run build:report
 
 [在线体验地址](https://yangyuji.github.io/h5-factory/)
 
-## 打赏作者
-![reward](https://yangyuji.github.io/h5-factory/static/img/reward.jpeg)
-
 ## 许可证
 [MIT](https://github.com/yangyuji/h5-factory/blob/master/LICENSE)
