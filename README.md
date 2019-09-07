@@ -3,7 +3,8 @@
 ![GitHub forks](https://img.shields.io/github/forks/yangyuji/h5-factory)
 ![GitHub stars](https://img.shields.io/github/stars/yangyuji/h5-factory)
 ![GitHub MIT](https://img.shields.io/github/license/yangyuji/h5-factory)
-h5专题页面可视化编辑工具，拖拽编辑，灵活切换，一键生成html文件
+
+> h5专题页面可视化编辑工具，拖拽编辑，灵活切换，一键生成html文件
 
 ## Build Setup
 ``` bash
@@ -111,3 +112,5 @@ npm run build:report
 
 ## 许可证
 [MIT](https://github.com/yangyuji/h5-factory/blob/master/LICENSE)
+
+![reward](https://yangyuji.github.io/h5-factory/static/img/reward.jpg)
