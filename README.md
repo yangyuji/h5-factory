@@ -98,6 +98,43 @@ npm run build:report
 
 ```
 
+我的app内点击兼容处理：
+```bash
+// 拨打电话
+if (type === 'tel') {
+  if (common.isApp()) {
+     var app = {
+        actionName: 'callphone',
+        phoneNumber: config
+     };
+     common.openApp(app);
+  } else {
+     location.href = 'tel:' + tel;
+  }
+}
+// 系统内部页面
+if (type === 'inside') {
+  if (common.isApp()) {
+     var app = {
+        actionName: 'appLogin',
+        params: obj
+     };
+     common.openApp(app);
+  } else {
+     location.href = url;
+  }
+}
+// 外链页面，也可以直接渲染到a[href]，但是不方便自己写统计代码
+if (type === 'outside') {
+  location.href = url;
+}
+// 调用后端接口（领取优惠券）
+if (type === 'coupon') {
+  common.getCoupon(url);
+}
+```
+
+
 根据模板由后端生成纯静态html文件，SEO友好，页面秒开，随时随地部署使用。还可以在此基础上开发业务相关的组件，例如商品列表，文章列表等。
 
 ### 发散使用
