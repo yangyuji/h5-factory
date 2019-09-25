@@ -1,7 +1,7 @@
 <template>
   <div>
-    <template v-if="items && items.length">
-      <div class="form-list-panel" v-for="(item, idx) in items">
+    <template v-if="grids && grids.length">
+      <div class="form-list-panel" v-for="(item, idx) in grids">
         <upload :label="'图片' + (idx + 1)"
                 :index="idx"
                 :item="item">
@@ -20,7 +20,7 @@
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
              @click="upItem(idx)"><i class="el-icon-arrow-up"></i></a>
-          <a href="javascript:;" v-if="idx !== items.length - 1"
+          <a href="javascript:;" v-if="idx !== grids.length - 1"
              @click="downItem(idx)"><i class="el-icon-arrow-down"></i></a>
           <a href="javascript:;" v-if="idx > 0"
              @click="delItem(idx)"><i class="el-icon-delete"></i></a>
@@ -39,21 +39,21 @@
     data() {
       return {
         defaultConf: util.copyObj(compConfig['grid-menu']),
-        items: this.grids
+        grids: this.items
       }
     },
     components: {
       upload
     },
     props: {
-      grids: {
+      items: {
         type: Array
       }
     },
     watch: {
-      grids: {
+      items: {
         handler(val) {
-          this.items = val
+          this.grids = val
         },
         deep: true
       }
@@ -63,21 +63,21 @@
         this.$bus.$emit('click:show', idx, ['outside'])
       },
       upItem(idx) {
-        const tmp = util.copyObj(this.items[idx])
-        this.items.splice(idx, 1)
-        this.items.splice(idx - 1, 0, tmp)
+        const tmp = util.copyObj(this.grids[idx])
+        this.grids.splice(idx, 1)
+        this.grids.splice(idx - 1, 0, tmp)
       },
       downItem(idx) {
-        const tmp = util.copyObj(this.items[idx])
-        this.items.splice(idx, 1)
-        this.items.splice(idx + 1, 0, tmp)
+        const tmp = util.copyObj(this.grids[idx])
+        this.grids.splice(idx, 1)
+        this.grids.splice(idx + 1, 0, tmp)
       },
       delItem(idx) {
-        this.items.splice(idx, 1)
+        this.grids.splice(idx, 1)
       },
       addItem() {
-        if (this.items.length < 10) {
-          this.items.push(util.copyObj(this.defaultConf.action.config[0]))
+        if (this.grids.length < 10) {
+          this.grids.push(util.copyObj(this.defaultConf.action.config[0]))
         } else {
           this.$alert('最多添加10个点击项！')
         }

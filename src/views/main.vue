@@ -25,24 +25,7 @@
 
             <div v-else :class="['tpl-container', comp.active ? 'current' : '']"
                  :data-index="idx" @click.capture="clickComp">
-              <!--文本控件-->
-              <text-tpl v-if="comp.type === 'text'" :component="comp"></text-tpl>
-              <!--图片控件-->
-              <img-tpl v-if="comp.type === 'img'" :component="comp"></img-tpl>
-              <!--表单控件-->
-              <form-tpl v-if="comp.type === 'form'" :component="comp"></form-tpl>
-              <!--轮播图控件-->
-              <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
-              <!--楼层导航控件-->
-              <floor-menu-tpl v-if="comp.type === 'floor-menu'" :component="comp"></floor-menu-tpl>
-              <!--横向滚动控件-->
-              <scroll-left-tpl v-if="comp.type === 'scroll-left'" :component="comp"></scroll-left-tpl>
-              <!--倒计时控件-->
-              <timeout-tpl v-if="comp.type === 'timeout'" :component="comp"></timeout-tpl>
-              <!--滚动新闻控件-->
-              <news-marquee-tpl v-if="comp.type === 'news-marquee'" :component="comp"></news-marquee-tpl>
-              <!--金刚位控件-->
-              <grid-menu-tpl v-if="comp.type === 'grid-menu'" :component="comp"></grid-menu-tpl>
+              <component :is="comp.type" :component="comp"></component>
 
               <!--控件操作-->
               <div class="comp-menu">
@@ -112,15 +95,15 @@
   // 组件默认配置
   import compConfig from '@/config/comp.config.js'
   // 组件模板
-  import textTpl from '@/template/text.vue'
-  import imgTpl from '@/template/image.vue'
-  import formTpl from '@/template/form.vue'
-  import swiperTpl from '@/template/swiper-banner.vue'
-  import floorMenuTpl from '@/template/floor-menu.vue'
-  import scrollLeftTpl from '@/template/scroll-left.vue'
-  import timeoutTpl from '@/template/timeout.vue'
-  import newsMarqueeTpl from '@/template/news-marquee.vue'
-  import gridMenuTpl from '@/template/grid-menu.vue'
+  import baseText from '@/template/text.vue'
+  import baseImg from '@/template/image.vue'
+  import baseForm from '@/template/form.vue'
+  import swiperBanner from '@/template/swiper-banner.vue'
+  import floorMenu from '@/template/floor-menu.vue'
+  import scrollLeft from '@/template/scroll-left.vue'
+  import timeout from '@/template/timeout.vue'
+  import newsMarquee from '@/template/news-marquee.vue'
+  import gridMenu from '@/template/grid-menu.vue'
   import bottomMenuTpl from '@/template/bottom-menu.vue'
 
   export default {
@@ -132,15 +115,15 @@
       appPageOpt,
       clickConfig,
       previewDialog,
-      textTpl,
-      imgTpl,
-      formTpl,
-      swiperTpl,
-      floorMenuTpl,
-      scrollLeftTpl,
-      timeoutTpl,
-      newsMarqueeTpl,
-      gridMenuTpl,
+      baseText,
+      baseImg,
+      baseForm,
+      swiperBanner,
+      floorMenu,
+      scrollLeft,
+      timeout,
+      newsMarquee,
+      gridMenu,
       bottomMenuTpl
     },
     data() {

@@ -37,19 +37,19 @@
     data() {
       return {
         defaultConf: util.copyObj(compConfig['swiper-banner']),
-        slides: this.banners
+        slides: this.items
       }
     },
     components: {
       upload
     },
     props: {
-      banners: {
+      items: {
         type: Array
       }
     },
     watch: {
-      banners: {
+      items: {
         handler(val) {
           this.slides = val
         },

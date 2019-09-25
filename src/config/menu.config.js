@@ -3,15 +3,15 @@ module.exports = [
     title: '基础组件',
     items: [
       {
-        key: 'text',
+        key: 'base-text',
         text: '文本',
         icon: 'fa-file-text-o'
       }, {
-        key: 'img',
+        key: 'base-img',
         text: '图片',
         icon: 'fa-file-image-o'
       }, {
-        key: 'form',
+        key: 'base-form',
         text: '表单',
         icon: 'fa-list'
       }

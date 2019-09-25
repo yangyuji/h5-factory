@@ -43,27 +43,7 @@
                      @click="imageClickShow = true">点击区域配置</el-button>
         </template>
 
-        <template v-if="option.action.type === 'swiper-click'">
-          <banner-item :banners="option.action.config"></banner-item>
-        </template>
-
-        <template v-if="option.action.type === 'bottom-menu-click'">
-          <bottom-menu-item :items="option.action.config"></bottom-menu-item>
-        </template>
-
-        <template v-if="option.action.type === 'floor-menu-click'">
-          <floor-menu-item :menus="option.action.config"></floor-menu-item>
-        </template>
-
-        <template v-if="option.action.type === 'left-scroll-click'">
-          <scroll-item :scrolls="option.action.config"></scroll-item>
-        </template>
-
-        <template v-if="option.action.type === 'form-submit'">
-          <input-item :forms="option.action.config"></input-item>
-        </template>
-
-        <template v-if="option.action.type === 'timeout-click'">
+        <template v-else-if="option.action.type === 'timeout-click'">
           <timeout-item :show.sync="timeoutClickShow"
                         :end="option.style[0].val"
                         :img="option.style[1].val"
@@ -72,12 +52,8 @@
                      @click="timeoutClickShow = true">时间项配置</el-button>
         </template>
 
-        <template v-if="option.action.type === 'grid-menu-click'">
-          <grid-menu-item :grids="option.action.config"></grid-menu-item>
-        </template>
-
-        <template v-if="option.action.type === 'marquee-click'">
-          <marquee-item :marquees="option.action.config"></marquee-item>
+        <template v-else>
+          <component :is="option.action.type" :items="option.action.config"></component>
         </template>
       </template>
 
@@ -89,13 +65,13 @@
   import formItem from '@/components/formItem.vue'
   import imageClick from '@/views/option/imageClick.vue'
   import timeoutItem from '@/views/option/timeoutItem.vue'
-  import bannerItem from '@/views/option/bannerItem.vue'
-  import bottomMenuItem from '@/views/option/bottomMenuItem.vue'
-  import floorMenuItem from '@/views/option/floorMenuItem.vue'
-  import scrollItem from '@/views/option/scrollItem.vue'
-  import inputItem from '@/views/option/inputItem.vue'
-  import gridMenuItem from '@/views/option/gridMenuItem.vue'
-  import marqueeItem from '@/views/option/marqueeItem.vue'
+  import swiperClick from '@/views/option/bannerItem.vue'
+  import bottomMenuClick from '@/views/option/bottomMenuItem.vue'
+  import floorMenuClick from '@/views/option/floorMenuItem.vue'
+  import leftScrollClick from '@/views/option/scrollItem.vue'
+  import formSubmit from '@/views/option/inputItem.vue'
+  import gridMenuClick from '@/views/option/gridMenuItem.vue'
+  import marqueeClick from '@/views/option/marqueeItem.vue'
   export default {
     name: 'AppOption',
     data() {
@@ -108,13 +84,13 @@
       formItem,
       imageClick,
       timeoutItem,
-      bannerItem,
-      bottomMenuItem,
-      floorMenuItem,
-      scrollItem,
-      inputItem,
-      gridMenuItem,
-      marqueeItem
+      swiperClick,
+      bottomMenuClick,
+      floorMenuClick,
+      leftScrollClick,
+      formSubmit,
+      gridMenuClick,
+      marqueeClick
     },
     props: {
       option: {
