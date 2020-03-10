@@ -97,9 +97,9 @@
           opacity: .6;
         }
 
-        &:nth-child(2n) {
+        /* &:nth-child(2n) {
           border-right: 0;
-        }
+        }*/
 
         .item-icon-box {
           text-align: center;
