@@ -111,33 +111,33 @@
 
   .scroll-left {
     position: relative;
-    height: 352px;
-    padding: 0 28px;
+    height: 176px;
+    padding: 0 14px;
     overflow: hidden;
 
     #indicator {
       position: relative;
-      width: 670px;
-      height: 8px;
-      margin: 24px auto 0 auto;
+      width: 335px;
+      height: 4px;
+      margin: 12px auto 0 auto;
       background-color: #e7e8e9;
     }
 
     #dotty {
       position: absolute;
-      width: 140px;
-      height: 8px;
+      width: 70px;
+      height: 4px;
       border-radius: 0;
       background: #409eff;
     }
 
     .scroll-wrapper {
-      width: 694px;
-      height: 320px;
+      width: 347px;
+      height: 160px;
 
       .scroll-content {
         position: absolute;
-        height: 320px;
+        height: 160px;
         white-space: nowrap;
         overflow: hidden;
         transform: translateZ(0);
@@ -148,29 +148,29 @@
 
         > .slide {
           display: inline-block;
-          width: 694px;
-          height: 320px;
-          padding: 0 12px;
+          width: 347px;
+          height: 160px;
+          padding: 0 6px;
           box-sizing: border-box;
           vertical-align: top;
 
           > img {
             display: block;
-            width: 670px;
-            height: 320px;
+            width: 335px;
+            height: 160px;
             -webkit-user-drag: none;
           }
 
           > .image-placeholder {
             width: 100%;
-            height: 318px;
-            line-height: 318px;
+            height: 158px;
+            line-height: 158px;
             text-align: center;
             border: 1px solid #e8e8e8;
 
             > .fa {
               color: #83c0ff;
-              font-size: 40px;
+              font-size: 20px;
             }
           }
         }
@@ -180,9 +180,9 @@
 
   .no-scroll {
     position: relative;
-    width: 708px;
-    padding: 40px 0 0 40px;
-    height: 236px;
+    width: 354px;
+    padding: 20px 0 0 20px;
+    height: 118px;
     box-sizing: content-box;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -191,8 +191,8 @@
     .scroll-content {
       position: absolute;
       white-space: nowrap;
-      height: 236px;
-      padding-right: 40px;
+      // height: 118px;
+      padding-right: 20px;
       box-sizing: content-box;
       transform: translateZ(0);
       text-size-adjust: none;
@@ -202,13 +202,13 @@
 
       .scroll-item {
         display: inline-block;
-        width: 192px;
-        height: 192px;
+        width: 96px;
+        height: 96px;
         flex-shrink: 0;
-        margin-right: 16px;
+        margin-right: 8px;
         vertical-align: top;
         background: #FFF;
-        box-shadow: 16px 16px 24px 0 rgba(0,0,0,0.15);
+        box-shadow: 8px 8px 12px 0 rgba(0,0,0,0.15);
         font-size: 0;
 
         > img {
@@ -221,8 +221,8 @@
 
         > .image-placeholder {
           width: 100%;
-          height: 192px;
-          line-height: 192px;
+          height: 96px;
+          line-height: 96px;
           text-align: center;
           border: 1px solid #e8e8e8;
           box-sizing: border-box;

@@ -80,7 +80,7 @@
             const unit = item.unit || ''
             const attr = item.attr.substring(idx + 1, item.attr.length)
             item.val && ret.push(attr + ':' + item.val + unit)
-            attr === 'height' && ret.push('line-height:' + item.val + unit)
+            attr === 'height' && ret.push('line-height:' + (parseInt(item.val) - 2 + unit))
           }
         })
         return ret.join(';')
@@ -108,8 +108,8 @@
 
     .image-placeholder {
       width: 100%;
-      height: 200px;
-      line-height: 200px;
+      height: 100px;
+      line-height: 100px;
       text-align: center;
 
       > .fa {
@@ -127,7 +127,7 @@
 
       .item-input {
         flex: 1;
-        padding: 10px 15px;
+        padding: 5px 10px;
         box-sizing: border-box;
         border: 1px solid;
         outline: 0;

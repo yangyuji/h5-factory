@@ -1,29 +1,30 @@
 <template>
   <div class="app-sidebar">
     <div class="sidebar-menu-group" v-for="(menu, index) in menuData">
-
-      <div class="menu-group-title">
+      <div class="menu-group-title" @click="menu.collapse = !menu.collapse">
         {{menu.title}}
-        <i class="el-icon-remove"></i>
+        <i :class="[!menu.collapse ? 'el-icon-remove-outline' : 'el-icon-circle-plus-outline']"></i>
       </div>
-      <div class="menu-group-list" id="Contros">
-        <div class="menu-item"
-             :data-key="item.key"
-             draggable="true"
-             @dragstart="menuDrag($event, item.key)"
-             v-for="item in menu.items">
-          <div class="item-icon-box">
-            <i :class="['fa', item.icon]" aria-hidden="true"></i>
+      <el-collapse-transition>
+        <div v-show="!menu.collapse" class="menu-group-list">
+          <div class="menu-item"
+               :data-key="item.key"
+               draggable="true"
+               @dragstart="menuDrag($event, item.key)"
+               v-for="item in menu.items">
+            <div class="item-icon-box">
+              <i :class="['fa', item.icon]" aria-hidden="true"></i>
+            </div>
+            <p class="item-text-box">{{item.text}}</p>
           </div>
-          <p class="item-text-box">{{item.text}}</p>
         </div>
-      </div>
+      </el-collapse-transition>
     </div>
   </div>
 </template>
 
 <script>
-  // 左侧菜单配置，#9ecaff
+  // 左侧菜单配置
   import menuConfig from '@/config/menu.config.js'
   export default {
     name: 'AppSide',
@@ -41,8 +42,9 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+
 .app-sidebar {
-  width: 200px;
+  width: 290px;
   border-right: 1px solid #e8e8e8;
   padding-left: 14px;
   padding-bottom: 20px;
@@ -61,10 +63,6 @@
 
   .sidebar-menu-group {
     position: relative;
-    margin-top: 20px;
-    &:first-child {
-      margin-top: 0;
-    }
 
     .menu-group-title {
       position: relative;
@@ -82,7 +80,6 @@
     }
     .menu-group-list {
       overflow: hidden;
-      transition: height 400ms ease;
 
       .menu-item {
         position: relative;
@@ -126,7 +123,7 @@
     }
   }
 }
-@media screen and (max-width: 1440px) {
+/* @media screen and (max-width: 1440px) {
   .app-sidebar {
     width: 100px;
     padding: 10px;
@@ -145,5 +142,5 @@
       }
     }
   }
-}
+} */
 </style>

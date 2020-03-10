@@ -45,7 +45,7 @@
         this.component.style.forEach((item) => {
           if (item.attr === 'background-image' && item.val) {
             ret.push(item.attr + ':url(' + item.val + ')')
-            ret.push('height:' + item.height + 'px')
+            ret.push('height:' + item.height / 2 + 'px')
             ret.push('background-size:contain')
           } else {
             const unit = item.unit || ''
@@ -71,12 +71,12 @@
       getTimeStyle(idx) {
         const ret = []
         if (this.component.action.config[idx].show) {
-          ret.push('left:' + this.component.action.config[idx].x * 2 + 'px')
-          ret.push('top:' + this.component.action.config[idx].y * 2 + 'px')
-          ret.push('width:' + this.component.action.config[idx].w * 2 + 'px')
-          ret.push('height:' + this.component.action.config[idx].h * 2 + 'px')
-          ret.push('line-height:' + this.component.action.config[idx].h * 2 + 'px')
-          ret.push('font-size:' + this.component.action.config[idx].font * 2 + 'px')
+          ret.push('left:' + this.component.action.config[idx].x + 'px')
+          ret.push('top:' + this.component.action.config[idx].y + 'px')
+          ret.push('width:' + this.component.action.config[idx].w + 'px')
+          ret.push('height:' + this.component.action.config[idx].h + 'px')
+          ret.push('line-height:' + this.component.action.config[idx].h + 'px')
+          ret.push('font-size:' + this.component.action.config[idx].font + 'px')
           ret.push('font-weight:' + this.component.action.config[idx].weight)
           ret.push('color:' + this.component.action.config[idx].color)
           return ret.join(';')
@@ -141,8 +141,8 @@
 
     .image-placeholder {
       width: 100%;
-      height: 200px;
-      line-height: 200px;
+      height: 100px;
+      line-height: 100px;
       text-align: center;
 
       > .fa {

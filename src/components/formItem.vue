@@ -85,6 +85,11 @@
             :item="item"
             v-on:uploadSuccess="uploadSuccess">
     </upload>
+
+    <el-form-item class="small" v-if="item.type == 'desc'" :label="item.label + '：'">
+      <span class="form-item-desc" v-html="item.val"></span>
+    </el-form-item>
+
   </div>
 </template>
 
@@ -131,3 +136,11 @@
     }
   }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  span.form-item-desc {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.2;
+  }
+</style>

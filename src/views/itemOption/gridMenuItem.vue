@@ -1,11 +1,14 @@
 <template>
   <div>
-    <template v-if="scrolls && scrolls.length">
-      <div class="form-list-panel" v-for="(item, idx) in scrolls">
+    <template v-if="items && items.length">
+      <div class="form-list-panel" v-for="(item, idx) in items">
         <upload :label="'图片' + (idx + 1)"
                 :index="idx"
                 :item="item">
         </upload>
+        <el-form-item class="small" label="文案：">
+          <el-input v-model="item.text" :maxlength="12" placeholder="导航文案"></el-input>
+        </el-form-item>
         <template v-if="item.click">
           <el-form-item class="small" label="跳转到：">
             <span style="word-break: break-all;">{{item.click.href}}</span>
@@ -17,14 +20,14 @@
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
              @click="upItem(idx)"><i class="el-icon-arrow-up"></i></a>
-          <a href="javascript:;" v-if="idx !== scrolls.length - 1"
+          <a href="javascript:;" v-if="idx !== items.length - 1"
              @click="downItem(idx)"><i class="el-icon-arrow-down"></i></a>
           <a href="javascript:;" v-if="idx > 0"
              @click="delItem(idx)"><i class="el-icon-delete"></i></a>
         </div>
       </div>
     </template>
-    <el-button icon="el-icon-plus" style="margin-top:15px;" round @click="addItem">添加滚动项</el-button>
+    <el-button icon="el-icon-plus" style="margin-top:15px;" round @click="addItem">添加点击项</el-button>
   </div>
 </template>
 
@@ -35,22 +38,22 @@
   export default {
     data() {
       return {
-        defaultConf: util.copyObj(compConfig['scroll-left']),
-        scrolls: this.items
+        defaultConf: util.copyObj(compConfig['grid-menu']),
+        items: this.grids
       }
     },
     components: {
       upload
     },
     props: {
-      items: {
+      grids: {
         type: Array
       }
     },
     watch: {
-      items: {
+      grids: {
         handler(val) {
-          this.scrolls = val
+          this.items = val
         },
         deep: true
       }
@@ -60,23 +63,23 @@
         this.$bus.$emit('click:show', idx, ['outside'])
       },
       upItem(idx) {
-        const tmp = util.copyObj(this.scrolls[idx])
-        this.scrolls.splice(idx, 1)
-        this.scrolls.splice(idx - 1, 0, tmp)
+        const tmp = util.copyObj(this.items[idx])
+        this.items.splice(idx, 1)
+        this.items.splice(idx - 1, 0, tmp)
       },
       downItem(idx) {
-        const tmp = util.copyObj(this.scrolls[idx])
-        this.scrolls.splice(idx, 1)
-        this.scrolls.splice(idx + 1, 0, tmp)
+        const tmp = util.copyObj(this.items[idx])
+        this.items.splice(idx, 1)
+        this.items.splice(idx + 1, 0, tmp)
       },
       delItem(idx) {
-        this.scrolls.splice(idx, 1)
+        this.items.splice(idx, 1)
       },
       addItem() {
-        if (this.scrolls.length < 10) {
-          this.scrolls.push(util.copyObj(this.defaultConf.action.config[0]))
+        if (this.items.length < 10) {
+          this.items.push(util.copyObj(this.defaultConf.action.config[0]))
         } else {
-          this.$alert('最多添加10个图片项！')
+          this.$alert('最多添加10个点击项！')
         }
       }
     }

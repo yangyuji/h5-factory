@@ -31,9 +31,9 @@
       }
     },
     watch: {
-      'component.style': {
-        handler(val) {
-          this.imgUrl = val[1].val
+      component: {
+        handler() {
+          this.imgUrl = this.component.style[1].val
         },
         deep: true
       }
@@ -48,8 +48,8 @@
 
     .image-placeholder {
       width: 100%;
-      height: 200px;
-      line-height: 200px;
+      height: 100px;
+      line-height: 100px;
       text-align: center;
 
       > .fa {

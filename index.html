@@ -6,56 +6,60 @@
     <meta name="keywords" content="h5-factory">
     <meta name="description" content="h5-factory,html5-factory,html-factory,html5-editor,html-editor,vuejs,vuejs2,vue-admin">
     <style type="text/css">
-      .svg-icon {
-        width: 40px;
-        height: 40px;
-        stroke: #343640;
-        stroke-width: 2;
-        stroke-linecap: round;
+      .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%)
       }
-      .svg-icon .path {
-        fill: none;
-      }
-      .init-box {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
-      .init-box .box-loading {
-        width: 128px;
-        height: 128px;
-        background: none;
-        animation: loading-rotate 0.8s linear infinite;
-      }
-      @keyframes loading-rotate {
-        to {
-          transform: rotate(1turn)
-        }
-      }
-      @-webkit-keyframes loading-rotate {
-        to {
-          transform: rotate(1turn)
-        }
-      }
-      .init-box .init-tips {
+      .loading span {
         color: #8B90A0;
+        animation: animate 1.75s ease infinite alternate;
+      }
+      .loading span:nth-child(1) {
+        animation-delay: .25s;
+      }
+      .loading span:nth-child(2) {
+        animation-delay: .5s;
+      }
+      .loading span:nth-child(3) {
+        animation-delay: .75s;
+      }
+      .loading span:nth-child(4) {
+        animation-delay: 1s;
+      }
+      .loading span:nth-child(5) {
+        animation-delay: 1.25s;
+      }
+      .loading span:nth-child(6) {
+        animation-delay: 1.5s;
+      }
+      .loading span:nth-child(7) {
+        animation-delay: 1.75s;
+      }
+      @keyframes animate {
+        from { font-size: 1em }
+        to { font-size: 4em }
+      }
+      @-webkit-keyframes animate {
+        from { font-size: 1em }
+        to { font-size: 4em }
       }
     </style>
   </head>
   <body>
     <div id="app">
-      <div class="init-box">
-        <svg viewBox="0 0 50 50" class="svg-icon box-loading">
-          <circle cx="25" cy="25" r="20" fill="none" stroke="#F2F2F2" class="path"></circle>
-          <circle cx="25" cy="25" r="20" fill="none" stroke="#24292e" stroke-dasharray="60,150" class="path"></circle>
-        </svg>
-        <p class="init-tips">初次加载，请耐心等待...</p>
+      <div class="loading">
+        <span>H</span>
+        <span>5</span>
+        <span>-</span>
+        <span>F</span>
+        <span>a</span>
+        <span>c</span>
+        <span>t</span>
+        <span>o</span>
+        <span>r</span>
+        <span>y</span>
       </div>
     </div>
   </body>

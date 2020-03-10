@@ -1,6 +1,6 @@
 <template>
   <div class="app-option">
-    <el-form ref="options-form" label-width="70px" size="mini">
+    <el-form ref="options-form" label-width="80px" size="mini">
       <h2>【页面配置】</h2>
 
       <template>
@@ -44,8 +44,8 @@
 
 <style rel="stylesheet/scss" lang="scss">
   .app-option {
-    width: 260px;
-    padding: 0 10px;
+    width: 360px;
+    padding: 0 10px 0 5px;
     overflow: auto;
     border-left: 1px solid #e8e8e8;
 

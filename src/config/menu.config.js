@@ -1,36 +1,76 @@
 module.exports = [
   {
-    title: '基础组件',
+    title: '通用组件',
+    collapse: false,
     items: [
       {
-        key: 'base-text',
+        key: 'text',
         text: '文本',
         icon: 'fa-file-text-o'
       }, {
-        key: 'base-img',
+        key: 'img',
         text: '图片',
         icon: 'fa-file-image-o'
       }, {
-        key: 'base-form',
+        key: 'form',
         text: '表单',
         icon: 'fa-list'
-      }
-    ]
-  }, {
-    title: '交互组件',
-    items: [
-      {
-        key: 'swiper-banner',
-        text: '轮播图',
-        icon: 'fa-caret-square-o-right'
+      }, {
+        key: 'floor-menu',
+        text: '楼层导航',
+        icon: 'fa-list-ol'
+      }, {
+        key: 'timeout',
+        text: '倒计时',
+        icon: 'fa-hourglass-start'
       }, {
         key: 'bottom-menu',
         text: '底部导航',
         icon: 'fa-adjust'
       }, {
-        key: 'floor-menu',
-        text: '楼层导航',
-        icon: 'fa-list-ol'
+        key: 'grid-menu',
+        text: '金刚位',
+        icon: 'fa-th'
+      }
+    ]
+  }, {
+    title: '样式模块',
+    collapse: true,
+    items: [
+      {
+        key: 'page-title',
+        text: '标题模块',
+        icon: 'fa-header'
+      }, {
+        key: 'page-paragraph',
+        text: '段落模块',
+        icon: 'fa-paragraph'
+      }, {
+        key: 'page-intro',
+        text: '引言模块',
+        icon: 'fa-quote-left'
+      }, {
+        key: 'page-faq',
+        text: 'FAQ模块',
+        icon: 'fa-quora'
+      }, {
+        key: 'page-guide',
+        text: '步骤模块',
+        icon: 'fa-step-forward'
+      }, {
+        key: 'page-footer',
+        text: '页脚模块',
+        icon: 'fa-copyright'
+      }
+    ]
+  }, {
+    title: '轮播组件',
+    collapse: true,
+    items: [
+      {
+        key: 'swiper-banner',
+        text: '轮播图',
+        icon: 'fa-caret-square-o-right'
       }, {
         key: 'scroll-left',
         text: '横向滚动',
@@ -38,38 +78,28 @@ module.exports = [
       }
     ]
   }, {
-    title: '其他组件',
+    title: '图文列表',
+    collapse: true,
     items: [
       {
-        key: 'timeout',
-        text: '倒计时',
-        icon: 'fa-hourglass-start'
+        key: 'horizontal-list',
+        text: '横向列表',
+        icon: 'fa-columns'
       }, {
+        key: 'vertical-list',
+        text: '纵向列表',
+        icon: 'fa-bars'
+      }
+    ]
+  }, {
+    title: '动画效果',
+    collapse: true,
+    items: [
+      {
         key: 'news-marquee',
         text: '滚动新闻',
         icon: 'fa-newspaper-o'
-      }, {
-        key: 'grid-menu',
-        text: '金刚位',
-        icon: 'fa-th'
       }
     ]
-  }/*, {
-    title: '页面模板',
-    items: [
-      {
-        key: 'page-home',
-        text: '首页模板',
-        icon: 'fa-home'
-      }, {
-        key: 'page-list',
-        text: '列表页',
-        icon: 'fa-list-alt'
-      }, {
-        key: 'page-swiper',
-        text: '全屏轮播',
-        icon: 'fa-pied-piper-pp'
-      }
-    ]
-  }*/
+  }
 ]

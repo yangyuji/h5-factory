@@ -41,12 +41,14 @@
       }
     },
     watch: {
-      'component.action.config': {
-        handler(val) {
-          this.items = val
+      component: {
+        handler() {
+          this.items = this.component.action.config
         },
         deep: true
       }
+    },
+    methods: {
     }
   }
 </script>
@@ -62,8 +64,8 @@
 
     .grid-menu-item {
       display: inline-block;
-      margin-top: 20px;
-      vertical-align: baseline;
+      margin-top: 15px;
+      vertical-align: top;
       text-align: center;
       font-size: 0;
       text-decoration: none;
@@ -71,15 +73,15 @@
 
       > .image-placeholder {
         margin: 0 auto;
-        width: 80px;
-        height: 80px;
-        line-height: 80px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
         border: 1px solid #e8e8e8;
         text-align: center;
 
         > .fa {
           color: #83c0ff;
-          font-size: 30px;
+          font-size: 20px;
           vertical-align: middle;
         }
       }
@@ -87,13 +89,13 @@
       > img {
         display: block;
         margin: 0 auto;
-        width: 80px;
-        height: 80px;
+        width: 40px;
+        height: 40px;
       }
       > span {
         display: block;
-        margin: 10px auto 0 auto;
-        font-size: 24px;
+        margin: 5px auto 0 auto;
+        font-size: 12px;
         color: #0a1b2b;
       }
     }

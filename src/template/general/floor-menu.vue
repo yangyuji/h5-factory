@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="floor-menu-down">
-        <svg width="80px" height="80px" viewBox="0 0 40 40" version="1.1"
+        <svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1"
              xmlns="http://www.w3.org/2000/svg">
           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <polygon :fill="fillColor"
@@ -68,12 +68,12 @@
     position: relative;
     display: flex;
     width: 100%;
-    height: 80px;
-    line-height: 80px;
+    height: 40px;
+    line-height: 40px;
 
     .floor-menu-list {
-      width: 670px;
-      height: 80px;
+      width: 335px;
+      height: 40px;
       overflow-y: hidden;
       overflow-x: auto;
 
@@ -81,24 +81,24 @@
         position: relative;
         display: flex;
         padding: 0 8px;
-        height: 80px;
+        height: 40px;
         white-space: nowrap;
 
         .floor-item {
           display: block;
-          line-height: 80px;
-          padding: 0 32px;
-          font-size: 28px;
+          line-height: 40px;
+          padding: 0 16px;
+          font-size: 14px;
           text-decoration: none;
         }
       }
     }
 
     .floor-menu-down {
-      width: 80px;
-      height: 80px;
+      width: 40px;
+      height: 40px;
       text-align: center;
-      box-shadow: -10px 0 10px -10px #333;
+      box-shadow: -5px 0 5px -5px #333;
     }
   }
 </style>

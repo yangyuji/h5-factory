@@ -44,8 +44,8 @@
   export default {
     data() {
       return {
-        inputs: this.items,
-        defaultConf: util.copyObj(compConfig['base-form']),
+        inputs: this.forms,
+        defaultConf: util.copyObj(compConfig['form']),
         inputTypes: [
           {
             name: '文本',
@@ -70,7 +70,7 @@
       }
     },
     props: {
-      items: {
+      forms: {
         type: Array
       }
     },

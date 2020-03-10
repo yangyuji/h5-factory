@@ -17,6 +17,14 @@
         </el-form>
       </el-tab-pane>
 
+      <el-tab-pane v-if="showTabs.indexOf('code') > -1" label="自定义脚本" name="jsCode">
+        <el-form label-width="100px" style="margin-top:20px;">
+          <el-form-item label="自定义脚本：">
+            <el-input type="textarea" placeholder="javascript代码，例：location.href='https://www.baidu.com'" v-model="codeVal"></el-input>
+          </el-form-item>
+        </el-form>
+      </el-tab-pane>
+
       <el-tab-pane v-if="showTabs.indexOf('page') > -1" label="页内位置" name="page">
 
         <el-tabs tab-position="left">
@@ -122,7 +130,8 @@
         returnVal: this.getOldVal(),
         outsideVal: this.getVal('outside'),
         pageVal: this.getVal('page'),
-        telVal: this.getVal('tel')
+        telVal: this.getVal('tel'),
+        codeVal: ''
       }
     },
     watch: {

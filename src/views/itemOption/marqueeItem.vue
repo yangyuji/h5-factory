@@ -1,7 +1,7 @@
 <template>
   <div>
-    <template v-if="marquees && marquees.length">
-      <div class="form-list-panel" v-for="(item, idx) in marquees">
+    <template v-if="items && items.length">
+      <div class="form-list-panel" v-for="(item, idx) in items">
         <el-form-item class="small" label="滚动文案：">
           <el-input v-model="item.text" :maxlength="500" placeholder="滚动项文案"></el-input>
         </el-form-item>
@@ -16,7 +16,7 @@
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
              @click="upItem(idx)"><i class="el-icon-arrow-up"></i></a>
-          <a href="javascript:;" v-if="idx !== marquees.length - 1"
+          <a href="javascript:;" v-if="idx !== items.length - 1"
              @click="downItem(idx)"><i class="el-icon-arrow-down"></i></a>
           <a href="javascript:;" v-if="idx > 0"
              @click="delItem(idx)"><i class="el-icon-delete"></i></a>
@@ -34,18 +34,18 @@
     data() {
       return {
         defaultConf: util.copyObj(compConfig['news-marquee']),
-        marquees: this.items
+        items: this.marquees
       }
     },
     props: {
-      items: {
+      marquees: {
         type: Array
       }
     },
     watch: {
-      items: {
+      marquees: {
         handler(val) {
-          this.marquees = val
+          this.items = val
         },
         deep: true
       }
@@ -55,21 +55,21 @@
         this.$bus.$emit('click:show', idx)
       },
       upItem(idx) {
-        const tmp = util.copyObj(this.marquees[idx])
-        this.marquees.splice(idx, 1)
-        this.marquees.splice(idx - 1, 0, tmp)
+        const tmp = util.copyObj(this.items[idx])
+        this.items.splice(idx, 1)
+        this.items.splice(idx - 1, 0, tmp)
       },
       downItem(idx) {
-        const tmp = util.copyObj(this.marquees[idx])
-        this.marquees.splice(idx, 1)
-        this.marquees.splice(idx + 1, 0, tmp)
+        const tmp = util.copyObj(this.items[idx])
+        this.items.splice(idx, 1)
+        this.items.splice(idx + 1, 0, tmp)
       },
       delItem(idx) {
-        this.marquees.splice(idx, 1)
+        this.items.splice(idx, 1)
       },
       addItem() {
-        if (this.marquees.length < 10) {
-          this.marquees.push(util.copyObj(this.defaultConf.action.config[0]))
+        if (this.items.length < 10) {
+          this.items.push(util.copyObj(this.defaultConf.action.config[0]))
         } else {
           this.$alert('最多添加10个滚动项！')
         }

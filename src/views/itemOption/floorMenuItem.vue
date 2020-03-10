@@ -1,7 +1,7 @@
 <template>
   <div>
-    <template v-if="menus && menus.length">
-      <div class="form-list-panel" v-for="(item, idx) in menus">
+    <template v-if="items && items.length">
+      <div class="form-list-panel" v-for="(item, idx) in items">
         <el-form-item class="small" label="导航文案：">
           <el-input v-model="item.text" :maxlength="500" placeholder="跳转项文案"></el-input>
         </el-form-item>
@@ -16,7 +16,7 @@
         <div class="list-item-opt">
           <a href="javascript:;" v-if="idx !== 0"
              @click="upItem(idx)"><i class="el-icon-arrow-up"></i></a>
-          <a href="javascript:;" v-if="idx !== menus.length - 1"
+          <a href="javascript:;" v-if="idx !== items.length - 1"
              @click="downItem(idx)"><i class="el-icon-arrow-down"></i></a>
           <a href="javascript:;" v-if="idx > 0"
              @click="delItem(idx)"><i class="el-icon-delete"></i></a>
@@ -34,18 +34,18 @@
     data() {
       return {
         defaultConf: util.copyObj(compConfig['floor-menu']),
-        menus: this.items
+        items: this.menus
       }
     },
     props: {
-      items: {
+      menus: {
         type: Array
       }
     },
     watch: {
-      items: {
+      menus: {
         handler(val) {
-          this.menus = val
+          this.items = val
         },
         deep: true
       }
@@ -55,21 +55,21 @@
         this.$bus.$emit('click:show', idx, ['page'])
       },
       upItem(idx) {
-        const tmp = util.copyObj(this.menus[idx])
-        this.menus.splice(idx, 1)
-        this.menus.splice(idx - 1, 0, tmp)
+        const tmp = util.copyObj(this.items[idx])
+        this.items.splice(idx, 1)
+        this.items.splice(idx - 1, 0, tmp)
       },
       downItem(idx) {
-        const tmp = util.copyObj(this.menus[idx])
-        this.menus.splice(idx, 1)
-        this.menus.splice(idx + 1, 0, tmp)
+        const tmp = util.copyObj(this.items[idx])
+        this.items.splice(idx, 1)
+        this.items.splice(idx + 1, 0, tmp)
       },
       delItem(idx) {
-        this.menus.splice(idx, 1)
+        this.items.splice(idx, 1)
       },
       addItem() {
-        if (this.menus.length < 18) {
-          this.menus.push(util.copyObj(this.defaultConf.action.config[0]))
+        if (this.items.length < 18) {
+          this.items.push(util.copyObj(this.defaultConf.action.config[0]))
         } else {
           this.$alert('最多添加18个导航项！')
         }

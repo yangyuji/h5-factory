@@ -15,7 +15,7 @@
     position: relative;
     height: 60px;
     line-height: 60px;
-    padding-left: 40px;
+    padding-left: 20px;
     background: rgba(38, 38, 38, 1);
     font-size: 18px;
     color: #fff;

@@ -1,6 +1,6 @@
 {
   "name": "h5-factory",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
@@ -10,7 +10,7 @@
     "test": "npm run lint"
   },
   "dependencies": {
-    "element-ui": "^2.4.9",
+    "element-ui": "^2.9.1",
     "font-awesome": "^4.7.0",
     "iscroll": "^5.2.0",
     "normalize.css": "7.0.0",

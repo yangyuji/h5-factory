@@ -11,7 +11,7 @@
 } */
 
 module.exports = {
-  'base-text': {
+  text: {
     title: '文本',
     domId: '',
     domName: '',
@@ -76,11 +76,11 @@ module.exports = {
         type: 'input-number',
         label: '字体大小',
         attr: 'font-size',
-        val: 24,
+        val: 12,
         unit: 'px',
         step: 1,
-        max: 200,
-        min: 20,
+        max: 100,
+        min: 10,
         isNecessary: false
       }, {
         type: 'input-number',
@@ -97,7 +97,7 @@ module.exports = {
         attr: 'letter-spacing',
         val: 0,
         step: 1,
-        max: 100,
+        max: 50,
         min: 0,
         unit: 'px',
         isNecessary: false
@@ -105,46 +105,46 @@ module.exports = {
         type: 'input-number',
         label: '上边距',
         attr: 'padding-top',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '右边距',
         attr: 'padding-right',
-        val: 30,
+        val: 15,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '下边距',
         attr: 'padding-bottom',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '左边距',
         attr: 'padding-left',
-        val: 30,
+        val: 15,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }
     ]
   },
-  'base-img': {
+  img: {
     title: '图片',
     domId: '',
     domName: '',
@@ -173,7 +173,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
@@ -183,7 +183,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
@@ -193,7 +193,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
@@ -203,7 +203,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }
@@ -221,7 +221,7 @@ module.exports = {
       }]
     }
   },
-  'base-form': {
+  form: {
     title: '表单',
     domId: '',
     domName: '',
@@ -291,11 +291,11 @@ module.exports = {
         type: 'input-number',
         label: '字体大小',
         attr: 'font-size',
-        val: 24,
+        val: 12,
         unit: 'px',
         step: 1,
-        max: 200,
-        min: 20,
+        max: 100,
+        min: 10,
         isNecessary: false
       }, {
         type: 'color-picker',
@@ -307,40 +307,40 @@ module.exports = {
         type: 'input-number',
         label: '容器上白',
         attr: 'padding-top',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 200,
+        max: 100,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '容器右白',
         attr: 'padding-right',
-        val: 30,
+        val: 15,
         unit: 'px',
         min: 0,
-        max: 200,
+        max: 100,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '容器下白',
         attr: 'padding-bottom',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 200,
+        max: 100,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '容器左白',
         attr: 'padding-left',
-        val: 30,
+        val: 15,
         unit: 'px',
         min: 0,
-        max: 200,
+        max: 100,
         step: 1,
         isNecessary: true
       }
@@ -353,20 +353,20 @@ module.exports = {
           type: 'input-number',
           label: 'label宽度',
           attr: 'form-label_width',
-          val: 120,
+          val: 60,
           unit: 'px',
           min: 0,
-          max: 300,
+          max: 150,
           step: 1,
           isNecessary: true
         }, {
           type: 'input-number',
           label: 'input高度',
           attr: 'form-input_height',
-          val: 48,
+          val: 24,
           unit: 'px',
           min: 0,
-          max: 300,
+          max: 150,
           step: 1,
           isNecessary: true
         }, {
@@ -376,7 +376,7 @@ module.exports = {
           val: 0,
           unit: 'px',
           min: 0,
-          max: 100,
+          max: 50,
           step: 1,
           isNecessary: true
         }, {
@@ -390,31 +390,31 @@ module.exports = {
           type: 'input-number',
           label: 'input间距',
           attr: 'form-item_margin-top',
-          val: 20,
+          val: 10,
           unit: 'px',
           min: 0,
-          max: 300,
+          max: 150,
           step: 1,
           isNecessary: true
         }, {
           type: 'input-number',
           label: '按钮距上',
           attr: 'form-btn_margin-top',
-          val: 30,
+          val: 15,
           unit: 'px',
           min: 0,
-          max: 200,
+          max: 100,
           step: 1,
           isNecessary: true
         }, {
           type: 'input-number',
           label: '按钮高度',
           attr: 'form-btn_height',
-          val: 60,
+          val: 30,
           unit: 'px',
           min: 0,
-          max: 200,
-          step: 1,
+          max: 100,
+          step: 2,
           isNecessary: true
         }, {
           type: 'input-number',
@@ -444,20 +444,20 @@ module.exports = {
           type: 'input-number',
           label: '按钮圆角',
           attr: 'form-btn_border-radius',
-          val: 5,
+          val: 2.5,
           unit: 'px',
           min: 0,
-          max: 100,
+          max: 50,
           step: 1,
           isNecessary: true
         }, {
           type: 'input-number',
           label: '按钮字体',
           attr: 'form-btn_font-size',
-          val: 28,
+          val: 14,
           unit: 'px',
-          min: 20,
-          max: 200,
+          min: 10,
+          max: 100,
           step: 1,
           isNecessary: true
         }, {
@@ -543,7 +543,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
@@ -553,7 +553,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
@@ -563,7 +563,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
@@ -573,7 +573,7 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }
@@ -703,7 +703,7 @@ module.exports = {
           y: 0,
           w: 40,
           h: 40,
-          font: 32,
+          font: 16,
           weight: 400,
           color: '#333'
         }, {
@@ -712,7 +712,7 @@ module.exports = {
           y: 0,
           w: 40,
           h: 40,
-          font: 32,
+          font: 16,
           weight: 400,
           color: '#333'
         }, {
@@ -721,7 +721,7 @@ module.exports = {
           y: 0,
           w: 40,
           h: 40,
-          font: 32,
+          font: 16,
           weight: 400,
           color: '#333'
         }, {
@@ -730,7 +730,7 @@ module.exports = {
           y: 0,
           w: 40,
           h: 40,
-          font: 32,
+          font: 16,
           weight: 400,
           color: '#333'
         }
@@ -769,40 +769,40 @@ module.exports = {
         type: 'input-number',
         label: '容器高度',
         attr: 'height',
-        val: 80,
+        val: 40,
         unit: 'px',
         min: 0,
-        max: 200,
+        max: 100,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '右边距',
         attr: 'padding-right',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '左边距',
         attr: 'padding-left',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '字体大小',
         attr: 'font-size',
-        val: 24,
+        val: 12,
         unit: 'px',
         min: 0,
-        max: 120,
+        max: 60,
         step: 1,
         isNecessary: true
       }, {
@@ -853,37 +853,37 @@ module.exports = {
         val: 0,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '右边距',
         attr: 'padding-right',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '下边距',
         attr: 'padding-bottom',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
         type: 'input-number',
         label: '左边距',
         attr: 'padding-left',
-        val: 20,
+        val: 10,
         unit: 'px',
         min: 0,
-        max: 100,
+        max: 50,
         step: 1,
         isNecessary: true
       }, {
@@ -919,10 +919,10 @@ module.exports = {
         type: 'input-number',
         label: '容器高度',
         attr: 'height',
-        val: 80,
+        val: 40,
         unit: 'px',
         min: 0,
-        max: 200,
+        max: 100,
         step: 1,
         isNecessary: false
       }, {
@@ -938,6 +938,548 @@ module.exports = {
       title: '点击项配置',
       config: [{
         val: '',
+        click: null
+      }]
+    }
+  },
+  'page-title': {
+    title: '页面标题',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'text',
+        label: '主标题',
+        val: '主标题文案',
+        isNecessary: true
+      }, {
+        type: 'text',
+        label: '副标题',
+        val: '副标题文案 - 作者 - 2019.09.09',
+        isNecessary: false
+      }
+    ],
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      }, {
+        type: 'upload',
+        label: '背景图片',
+        attr: 'background-image',
+        val: '',
+        isNecessary: true
+      }, {
+        type: 'select',
+        label: '背景尺寸',
+        attr: 'background-size',
+        val: 'contain',
+        options: [
+          {
+            name: '无',
+            val: 'inherit'
+          }, {
+            name: '宽高裁剪',
+            val: 'cover'
+          }, {
+            name: '宽高自适应',
+            val: 'contain'
+          }
+        ]
+      }, {
+        type: 'input-number',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 20,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    others: {
+      type: 'page-title-style',
+      title: '标题样式',
+      config: [
+        {
+          type: 'font',
+          label: '主标字体',
+          attr: ['font-weight', 'text-decoration', 'font-style', 'text-align'],
+          val: ['600', 'none', 'inherit', 'left'],
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '主标大小',
+          attr: 'font-size',
+          val: 16,
+          unit: 'px',
+          step: 1,
+          max: 100,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'color-picker',
+          label: '主标颜色',
+          attr: 'color',
+          val: '#333333',
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '主标字距',
+          attr: 'letter-spacing',
+          val: 0,
+          step: 1,
+          max: 20,
+          min: 0,
+          unit: 'px',
+          isNecessary: false
+        }, {
+          type: 'font',
+          label: '副标字体',
+          attr: ['font-weight', 'text-decoration', 'font-style', 'text-align'],
+          val: ['400', 'none', 'inherit', 'left'],
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '副标大小',
+          attr: 'font-size',
+          val: 12,
+          unit: 'px',
+          step: 1,
+          max: 100,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'color-picker',
+          label: '副标颜色',
+          attr: 'color',
+          val: '#666666',
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '副标字距',
+          attr: 'letter-spacing',
+          val: 0,
+          step: 1,
+          max: 10,
+          min: 0,
+          unit: 'px',
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '副标上距',
+          attr: 'margin-top',
+          val: 10,
+          step: 1,
+          max: 100,
+          min: 0,
+          unit: 'px',
+          isNecessary: false
+        }
+      ]
+    }
+  },
+  'page-paragraph': {
+    title: '段落模块',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'select',
+        label: '标题风格',
+        attr: 'theme',
+        val: 'theme-1',
+        options: [
+          {
+            name: '风格一',
+            val: 'theme-1'
+          }, {
+            name: '风格二',
+            val: 'theme-2'
+          }
+        ]
+      }, {
+        type: 'text',
+        label: '标题文案',
+        val: '标题',
+        isNecessary: true
+      }
+    ],
+    style: [
+      /* {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      },*/ {
+        type: 'input-number',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 0,
+        unit: 'px',
+        min: 10,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'page-paragraph-list',
+      title: '段落项',
+      config: [{
+        label: '1、',
+        content: 'H5制作工厂是一个移动端页面设计和制作平台，无需任何开发经营也可以制作自己的移动端站点和页面，从灵感到实现，您只需要10分钟。'
+      }]
+    }
+  },
+  'page-intro': {
+    title: '页面引言',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'textarea',
+        label: '文本内容',
+        val: 'H5制作工厂是一个移动端页面设计和制作平台，无需任何开发经营也可以制作自己的移动端站点和页面，从灵感到实现，您只需要10分钟。',
+        isNecessary: true
+      }
+    ],
+    style: [
+      {
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#999999',
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '字体大小',
+        attr: 'font-size',
+        val: 12,
+        unit: 'px',
+        step: 1,
+        max: 100,
+        min: 10,
+        isNecessary: false
+      }, {
+        type: 'input-number',
+        label: '文本行距',
+        attr: 'line-height',
+        val: 1.5,
+        step: 0.5,
+        max: 12,
+        min: 0.5,
+        isNecessary: false
+      }, {
+        type: 'input-number',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ]
+  },
+  'page-faq': {
+    title: '页面FAQ',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'input-number',
+        label: '字体大小',
+        attr: 'font-size',
+        val: 12,
+        unit: 'px',
+        step: 1,
+        max: 100,
+        min: 10,
+        isNecessary: false
+      }, {
+        type: 'input-number',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'page-faq-list',
+      title: '聊天项配置',
+      config: [{
+        text: '默认FAQ信息',
+        isAuthor: 1,
+        val: '',
+        limit: {
+          w: 50,
+          h: 50,
+          s: 40
+        },
+        nickName: '昵称'
+      }]
+    }
+  },
+  'horizontal-list': {
+    title: '横向列表',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      }, {
+        type: 'input-number',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    others: {
+      type: 'item-style',
+      title: '列表项样式',
+      config: [
+        {
+          type: 'input-number',
+          label: '上边距',
+          attr: 'horizontal-list-item_padding-top',
+          val: 10,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '下边距',
+          attr: 'horizontal-list-item_padding-bottom',
+          val: 10,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '图片宽度',
+          attr: 'horizontal-list-logo_width',
+          val: 100,
+          unit: 'px',
+          step: 1,
+          max: 300,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '图片高度',
+          attr: 'horizontal-list-logo_height',
+          val: 60,
+          unit: 'px',
+          step: 1,
+          max: 300,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '标题大小',
+          attr: 'horizontal-list-title_font-size',
+          val: 16,
+          unit: 'px',
+          step: 1,
+          max: 100,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'color-picker',
+          label: '标题颜色',
+          attr: 'horizontal-list-title_color',
+          val: '#333333',
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '标题粗细',
+          attr: 'horizontal-list-title_font-weight',
+          val: 500,
+          unit: '',
+          min: 300,
+          max: 900,
+          step: 100,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '描述大小',
+          attr: 'horizontal-list-desc_font-size',
+          val: 13,
+          unit: 'px',
+          step: 1,
+          max: 100,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'color-picker',
+          label: '描述颜色',
+          attr: 'horizontal-list-desc_color',
+          val: '#999999',
+          isNecessary: false
+        }
+      ]
+    },
+    action: {
+      type: 'horizontal-item-click',
+      title: '列表项配置',
+      config: [{
+        val: 'https://yangyuji.github.io/h5-factory/static/img/logo.png',
+        title: '默认标题',
+        desc: '默认文案描述，默认文案描述，默认文案描述默认文案描述',
         click: null
       }]
     }

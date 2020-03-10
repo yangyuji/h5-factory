@@ -1,6 +1,6 @@
 <template>
   <div class="app-option">
-    <el-form ref="options-form" label-width="70px" size="mini">
+    <el-form ref="options-form" label-width="80px" size="mini">
 
       <h2>【{{option.title}}】</h2>
       <el-form-item class="small" label="组件编号：">
@@ -43,7 +43,31 @@
                      @click="imageClickShow = true">点击区域配置</el-button>
         </template>
 
-        <template v-else-if="option.action.type === 'timeout-click'">
+        <template v-if="option.action.type === 'swiper-click'">
+          <banner-item :banners="option.action.config"></banner-item>
+        </template>
+
+        <template v-if="option.action.type === 'bottom-menu-click'">
+          <bottom-menu-item :items="option.action.config"></bottom-menu-item>
+        </template>
+
+        <template v-if="option.action.type === 'floor-menu-click'">
+          <floor-menu-item :menus="option.action.config"></floor-menu-item>
+        </template>
+
+        <template v-if="option.action.type === 'left-scroll-click'">
+          <scroll-item :scrolls="option.action.config"></scroll-item>
+        </template>
+
+        <template v-if="option.action.type === 'horizontal-item-click'">
+          <horizontal-item :items="option.action.config"></horizontal-item>
+        </template>
+
+        <template v-if="option.action.type === 'form-submit'">
+          <input-item :forms="option.action.config"></input-item>
+        </template>
+
+        <template v-if="option.action.type === 'timeout-click'">
           <timeout-item :show.sync="timeoutClickShow"
                         :end="option.style[0].val"
                         :img="option.style[1].val"
@@ -52,9 +76,22 @@
                      @click="timeoutClickShow = true">时间项配置</el-button>
         </template>
 
-        <template v-else>
-          <component :is="option.action.type" :items="option.action.config"></component>
+        <template v-if="option.action.type === 'grid-menu-click'">
+          <grid-menu-item :grids="option.action.config"></grid-menu-item>
         </template>
+
+        <template v-if="option.action.type === 'marquee-click'">
+          <marquee-item :marquees="option.action.config"></marquee-item>
+        </template>
+
+        <template v-if="option.action.type === 'page-paragraph-list'">
+          <page-paragraph-item :paragraphs="option.action.config"></page-paragraph-item>
+        </template>
+
+        <template v-if="option.action.type === 'page-faq-list'">
+          <page-faq-item :paragraphs="option.action.config"></page-faq-item>
+        </template>
+
       </template>
 
     </el-form>
@@ -63,15 +100,19 @@
 
 <script>
   import formItem from '@/components/formItem.vue'
-  import imageClick from '@/views/option/imageClick.vue'
-  import timeoutItem from '@/views/option/timeoutItem.vue'
-  import swiperClick from '@/views/option/bannerItem.vue'
-  import bottomMenuClick from '@/views/option/bottomMenuItem.vue'
-  import floorMenuClick from '@/views/option/floorMenuItem.vue'
-  import leftScrollClick from '@/views/option/scrollItem.vue'
-  import formSubmit from '@/views/option/inputItem.vue'
-  import gridMenuClick from '@/views/option/gridMenuItem.vue'
-  import marqueeClick from '@/views/option/marqueeItem.vue'
+  import imageClick from '@/views/itemOption/imageClick.vue'
+  import timeoutItem from '@/views/itemOption/timeoutItem.vue'
+  import bannerItem from '@/views/itemOption/bannerItem.vue'
+  import bottomMenuItem from '@/views/itemOption/bottomMenuItem.vue'
+  import floorMenuItem from '@/views/itemOption/floorMenuItem.vue'
+  import horizontalItem from '@/views/itemOption/horizontalItem.vue'
+  import scrollItem from '@/views/itemOption/scrollItem.vue'
+  import inputItem from '@/views/itemOption/inputItem.vue'
+  import gridMenuItem from '@/views/itemOption/gridMenuItem.vue'
+  import marqueeItem from '@/views/itemOption/marqueeItem.vue'
+  import pageParagraphItem from '@/views/itemOption/pageParagraphItem.vue'
+  import pageFaqItem from '@/views/itemOption/pageFaqItem.vue'
+
   export default {
     name: 'AppOption',
     data() {
@@ -84,13 +125,16 @@
       formItem,
       imageClick,
       timeoutItem,
-      swiperClick,
-      bottomMenuClick,
-      floorMenuClick,
-      leftScrollClick,
-      formSubmit,
-      gridMenuClick,
-      marqueeClick
+      bannerItem,
+      bottomMenuItem,
+      floorMenuItem,
+      scrollItem,
+      horizontalItem,
+      inputItem,
+      gridMenuItem,
+      marqueeItem,
+      pageParagraphItem,
+      pageFaqItem
     },
     props: {
       option: {
@@ -102,8 +146,8 @@
 
 <style rel="stylesheet/scss" lang="scss">
 .app-option {
-  width: 260px;
-  padding: 0 10px;
+  width: 360px;
+  padding: 0 10px 0 5px;
   overflow: auto;
   border-left: 1px solid #e8e8e8;
 
@@ -160,7 +204,7 @@
     .form-list-panel {
       margin-top: 15px;
       border: 1px solid #e8e8e8;
-      padding: 15px 15px 10px 15px;
+      padding: 10px 10px 5px 5px;
 
       &:first-child {
         margin-top: 0;

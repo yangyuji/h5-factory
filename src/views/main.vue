@@ -25,7 +25,36 @@
 
             <div v-else :class="['tpl-container', comp.active ? 'current' : '']"
                  :data-index="idx" @click.capture="clickComp">
-              <component :is="comp.type" :component="comp"></component>
+              <!--文本控件-->
+              <text-tpl v-if="comp.type === 'text'" :component="comp"></text-tpl>
+              <!--图片控件-->
+              <img-tpl v-if="comp.type === 'img'" :component="comp"></img-tpl>
+              <!--表单控件-->
+              <form-tpl v-if="comp.type === 'form'" :component="comp"></form-tpl>
+              <!--轮播图控件-->
+              <swiper-tpl v-if="comp.type === 'swiper-banner'" :component="comp"></swiper-tpl>
+              <!--楼层导航控件-->
+              <floor-menu-tpl v-if="comp.type === 'floor-menu'" :component="comp"></floor-menu-tpl>
+              <!--横向滚动控件-->
+              <scroll-left-tpl v-if="comp.type === 'scroll-left'" :component="comp"></scroll-left-tpl>
+              <!--倒计时控件-->
+              <timeout-tpl v-if="comp.type === 'timeout'" :component="comp"></timeout-tpl>
+              <!--滚动新闻控件-->
+              <news-marquee-tpl v-if="comp.type === 'news-marquee'" :component="comp"></news-marquee-tpl>
+              <!--金刚位控件-->
+              <grid-menu-tpl v-if="comp.type === 'grid-menu'" :component="comp"></grid-menu-tpl>
+              <!--页面标题-->
+              <page-title-tpl v-if="comp.type === 'page-title'" :component="comp"></page-title-tpl>
+              <!--页面段落-->
+              <page-paragraph-tpl v-if="comp.type === 'page-paragraph'" :component="comp"></page-paragraph-tpl>
+              <!--页面引言-->
+              <page-intro-tpl v-if="comp.type === 'page-intro'" :component="comp"></page-intro-tpl>
+              <!--页面FAQ-->
+              <page-faq-tpl v-if="comp.type === 'page-faq'" :component="comp"></page-faq-tpl>
+              <!--横向列表-->
+              <horizontal-list-tpl v-if="comp.type === 'horizontal-list'" :component="comp"></horizontal-list-tpl>
+              <!--纵向列表-->
+              <vertical-list-tpl v-if="comp.type === 'vertical-list'" :component="comp"></vertical-list-tpl>
 
               <!--控件操作-->
               <div class="comp-menu">
@@ -95,16 +124,22 @@
   // 组件默认配置
   import compConfig from '@/config/comp.config.js'
   // 组件模板
-  import baseText from '@/template/text.vue'
-  import baseImg from '@/template/image.vue'
-  import baseForm from '@/template/form.vue'
-  import swiperBanner from '@/template/swiper-banner.vue'
-  import floorMenu from '@/template/floor-menu.vue'
-  import scrollLeft from '@/template/scroll-left.vue'
-  import timeout from '@/template/timeout.vue'
-  import newsMarquee from '@/template/news-marquee.vue'
-  import gridMenu from '@/template/grid-menu.vue'
-  import bottomMenuTpl from '@/template/bottom-menu.vue'
+  import textTpl from '@/template/general/text.vue'
+  import imgTpl from '@/template/general/image.vue'
+  import formTpl from '@/template/general/form.vue'
+  import swiperTpl from '@/template/swiper/swiper-banner.vue'
+  import floorMenuTpl from '@/template/general/floor-menu.vue'
+  import scrollLeftTpl from '@/template/swiper/scroll-left.vue'
+  import timeoutTpl from '@/template/general/timeout.vue'
+  import newsMarqueeTpl from '@/template/animate/news-marquee.vue'
+  import gridMenuTpl from '@/template/general/grid-menu.vue'
+  import bottomMenuTpl from '@/template/general/bottom-menu.vue'
+  import pageTitleTpl from '@/template/pageModule/page-title.vue'
+  import pageParagraphTpl from '@/template/pageModule/page-paragraph.vue'
+  import pageIntroTpl from '@/template/pageModule/page-intro.vue'
+  import pageFaqTpl from '@/template/pageModule/page-faq.vue'
+  import horizontalListTpl from '@/template/list/horizontal-list.vue'
+  import verticalListTpl from '@/template/list/vertical-list.vue'
 
   export default {
     name: 'AppMain',
@@ -115,16 +150,22 @@
       appPageOpt,
       clickConfig,
       previewDialog,
-      baseText,
-      baseImg,
-      baseForm,
-      swiperBanner,
-      floorMenu,
-      scrollLeft,
-      timeout,
-      newsMarquee,
-      gridMenu,
-      bottomMenuTpl
+      textTpl,
+      imgTpl,
+      formTpl,
+      swiperTpl,
+      floorMenuTpl,
+      scrollLeftTpl,
+      timeoutTpl,
+      newsMarqueeTpl,
+      gridMenuTpl,
+      bottomMenuTpl,
+      pageTitleTpl,
+      pageParagraphTpl,
+      pageIntroTpl,
+      pageFaqTpl,
+      horizontalListTpl,
+      verticalListTpl
     },
     data() {
       return {
@@ -167,7 +208,7 @@
       compList: {
         handler(val) {
           if (val && val.length > 1) {
-            localStorage.setItem('pageDataSet', JSON.stringify({
+            localStorage.setItem('pageDateSet', JSON.stringify({
               time: Date.now(),
               menu: this.bottomMenu,
               config: val
@@ -178,7 +219,7 @@
       },
       bottomMenu: {
         handler(val) {
-          localStorage.setItem('pageDataSet', JSON.stringify({
+          localStorage.setItem('pageDateSet', JSON.stringify({
             time: Date.now(),
             menu: val,
             config: this.compList
@@ -204,7 +245,7 @@
         this.previewShow = true
       },
       readLocalData() {
-        const tmp = localStorage.getItem('pageDataSet')
+        const tmp = localStorage.getItem('pageDateSet')
         if (tmp) {
           const localData = JSON.parse(tmp)
           const t = util.parseTime(localData.time)
@@ -218,7 +259,7 @@
             this.bottomMenu = localData.menu
             this.resetCompUnchecked()
           }).catch(() => {
-            localStorage.setItem('pageDataSet', '')
+            localStorage.setItem('pageDateSet', '')
           })
         }
       },
@@ -275,7 +316,7 @@
       },
       clickBtmMenu(e) {
         this.resetCompUnchecked()
-        this.bottomMenu.active = true
+        if (this.bottomMenu) this.bottomMenu.active = true
         this.currentIndex = -2
         this.currentConfig = this.bottomMenu
       },
@@ -385,7 +426,7 @@
   .app-main {
     position: relative;
     flex: 1;
-    min-width: 752px;
+    min-width: 377px;
     background-color: #f2f3f4;
 
     .scroll-y {
@@ -401,12 +442,12 @@
     .app-phone {
       position: relative;
       box-sizing: border-box;
-      width: 752px;
-      min-height: 1200px;
+      width: 377px;
+      min-height: 667px;
       padding-bottom: 200px;
       margin: 0 auto;
       background-color: #fff;
-      transform: translateX(-30px);
+      transform: translateX(-20px);
 
       .place-holder {
         position: relative;
@@ -521,9 +562,9 @@
     }
 
     .absolute-tpl {
-      width: 752px;
+      width: 377px;
       margin: 0 auto;
-      transform: translateX(-30px);
+      transform: translateX(-20px);
       border-top: 1px solid #e8e8e8;
 
       &.current {

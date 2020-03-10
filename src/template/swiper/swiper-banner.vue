@@ -66,10 +66,10 @@
             }
           })
         }
-        return h > 0 ? h + 'px' : '225px'
+        return h > 0 ? h / 2 + 'px' : '112px'
       },
       getWidth() {
-        return (750 - this.component.style[2].val - this.component.style[4].val) + 'px'
+        return (750 - this.component.style[2].val - this.component.style[4].val) / 2 + 'px'
       }
     },
     mounted() {
@@ -102,8 +102,8 @@
 
   .image-placeholder {
     width: 100%;
-    height: 200px;
-    line-height: 200px;
+    height: 100px;
+    line-height: 100px;
     text-align: center;
 
     > .fa {

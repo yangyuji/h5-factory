@@ -1,7 +1,7 @@
 <template>
   <el-row class="app-toolbar">
     <el-col :span="12">
-      <span><i class="fa fa-mobile-phone"></i> 当前适配设计稿：750px</span>
+      <span><i class="fa fa-mobile-phone"></i> 当前适配设计稿：750x1334 px</span>
     </el-col>
     <el-col :span="12">
       <div class="bar-btn" @click="saveAll()">

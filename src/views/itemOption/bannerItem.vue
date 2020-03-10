@@ -33,23 +33,24 @@
   import util from '@/utils/util.js'
   import compConfig from '@/config/comp.config.js'
   import upload from '@/components/upload.vue'
+
   export default {
     data() {
       return {
         defaultConf: util.copyObj(compConfig['swiper-banner']),
-        slides: this.items
+        slides: this.banners
       }
     },
     components: {
       upload
     },
     props: {
-      items: {
+      banners: {
         type: Array
       }
     },
     watch: {
-      items: {
+      banners: {
         handler(val) {
           this.slides = val
         },
@@ -59,7 +60,7 @@
     methods: {
       showClick(banner, idx) {
         // 轮播图只可配置外链
-        this.$bus.$emit('click:show', idx, ['outside'])
+        this.$bus.$emit('click:show', idx, ['outside', 'code'])
       },
       upBanner(idx) {
         const tmp = util.copyObj(this.slides[idx])
