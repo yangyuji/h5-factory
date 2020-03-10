@@ -84,11 +84,11 @@ module.exports = [
       {
         key: 'horizontal-list',
         text: '横向列表',
-        icon: 'fa-columns'
+        icon: 'fa-th-list'
       }, {
         key: 'vertical-list',
         text: '纵向列表',
-        icon: 'fa-bars'
+        icon: 'fa-columns'
       }
     ]
   }, {

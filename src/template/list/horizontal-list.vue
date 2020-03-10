@@ -79,14 +79,13 @@
         bottom: 0;
         right: 0;
         height: 1px;
-        border-top: 1px solid #E5E5E5;
-        color: #E5E5E5;
+        background-color: #E5E5E5;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: scaleY(0.5);
         transform: scaleY(0.5);
       }
-      
+
       &:last-child {
         &:after {
           display: none;

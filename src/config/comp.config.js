@@ -1364,7 +1364,7 @@ module.exports = {
         isNecessary: false
       }, {
         type: 'input-number',
-        label: '左边距',
+        label: '左内边距',
         attr: 'padding-left',
         val: 15,
         unit: 'px',
@@ -1374,7 +1374,7 @@ module.exports = {
         isNecessary: true
       }, {
         type: 'input-number',
-        label: '右边距',
+        label: '右内边距',
         attr: 'padding-right',
         val: 15,
         unit: 'px',
@@ -1390,7 +1390,7 @@ module.exports = {
       config: [
         {
           type: 'input-number',
-          label: '上边距',
+          label: '上内边距',
           attr: 'horizontal-list-item_padding-top',
           val: 10,
           unit: 'px',
@@ -1400,7 +1400,7 @@ module.exports = {
           isNecessary: true
         }, {
           type: 'input-number',
-          label: '下边距',
+          label: '下内边距',
           attr: 'horizontal-list-item_padding-bottom',
           val: 10,
           unit: 'px',
@@ -1477,6 +1477,154 @@ module.exports = {
       type: 'horizontal-item-click',
       title: '列表项配置',
       config: [{
+        val: 'https://yangyuji.github.io/h5-factory/static/img/logo.png',
+        title: '默认标题',
+        desc: '默认文案描述，默认文案描述，默认文案描述默认文案描述',
+        click: null
+      }]
+    }
+  },
+  'vertical-list': {
+    title: '纵向列表',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      }, {
+        type: 'input-number',
+        label: '上内边距',
+        attr: 'padding-top',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'input-number',
+        label: '下内边距',
+        attr: 'padding-bottom',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    others: {
+      type: 'item-style',
+      title: '列表项样式',
+      config: [
+        {
+          type: 'input-number',
+          label: '上内边距',
+          attr: 'vertical-list-item_padding-top',
+          val: 0,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '下内边距',
+          attr: 'vertical-list-item_padding-bottom',
+          val: 10,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '左内边距',
+          attr: 'vertical-list-item_padding-left',
+          val: 10,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '右内边距',
+          attr: 'vertical-list-item_padding-right',
+          val: 10,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '图片高度',
+          attr: 'vertical-list-logo_height',
+          val: 160,
+          unit: 'px',
+          step: 1,
+          max: 300,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '标题大小',
+          attr: 'vertical-list-title_font-size',
+          val: 16,
+          unit: 'px',
+          step: 1,
+          max: 100,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'color-picker',
+          label: '标题颜色',
+          attr: 'vertical-list-title_color',
+          val: '#333333',
+          isNecessary: false
+        }, {
+          type: 'input-number',
+          label: '标题粗细',
+          attr: 'vertical-list-title_font-weight',
+          val: 500,
+          unit: '',
+          min: 300,
+          max: 900,
+          step: 100,
+          isNecessary: true
+        }, {
+          type: 'input-number',
+          label: '描述大小',
+          attr: 'vertical-list-desc_font-size',
+          val: 13,
+          unit: 'px',
+          step: 1,
+          max: 100,
+          min: 10,
+          isNecessary: false
+        }, {
+          type: 'color-picker',
+          label: '描述颜色',
+          attr: 'vertical-list-desc_color',
+          val: '#999999',
+          isNecessary: false
+        }
+      ]
+    },
+    action: {
+      type: 'vertical-item-click',
+      title: '列表项配置',
+      config: [{
+        val: 'https://yangyuji.github.io/h5-factory/static/img/logo.png',
+        title: '默认标题',
+        desc: '默认文案描述，默认文案描述，默认文案描述默认文案描述',
+        click: null
+      }, {
         val: 'https://yangyuji.github.io/h5-factory/static/img/logo.png',
         title: '默认标题',
         desc: '默认文案描述，默认文案描述，默认文案描述默认文案描述',

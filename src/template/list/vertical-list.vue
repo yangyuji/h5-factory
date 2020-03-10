@@ -1,9 +1,17 @@
 <template>
   <div :class="['comp-content', component.active ? 'active' : '']"
        :style="getStyle">
-    <div class="home-title">
-      <h3 :style="getH3Style">{{ component.base[0].val }}</h3>
-      <p v-if="component.base[1].val" :style="getPStyle">{{ component.base[1].val }}</p>
+    <div class="page-list">
+      <div v-for="(item, idx) in list" class="page-list-item"
+           :key="idx" :style="getItemStyle('vertical-list-item')">
+        <div class="page-list-item__hd" :style="getItemStyle('vertical-list-logo_')">
+          <div class="page-list-item__img" :style="{backgroundImage: 'url(' + item.val + ')'}"></div>
+        </div>
+        <div class="page-list-item__bd">
+          <div class="page-list-item__title" :style="getItemStyle('vertical-list-title_')">{{ item.title }}</div>
+          <p class="page-list-item__desc" :style="getItemStyle('vertical-list-desc_')">{{ item.desc }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -13,6 +21,11 @@
     props: {
       component: {
         type: Object
+      }
+    },
+    data() {
+      return {
+        list: this.component.action.config
       }
     },
     computed: {
@@ -29,35 +42,17 @@
           }
         })
         return ret.join(';')
-      },
-      getH3Style() {
+      }
+    },
+    methods: {
+      getItemStyle(key) {
         const ret = []
-        this.component.others.config.forEach((item, idx) => {
-          const unit = item.unit || ''
-          if (item.val && idx < 4) {
-            if (Array.isArray(item.attr)) {
-              item.attr.forEach((atr, i) => {
-                ret.push(atr + ':' + item.val[i])
-              })
-            } else {
-              ret.push(item.attr + ':' + item.val + unit)
-            }
-          }
-        })
-        return ret.join(';')
-      },
-      getPStyle() {
-        const ret = []
-        this.component.others.config.forEach((item, idx) => {
-          const unit = item.unit || ''
-          if (item.val && idx > 3) {
-            if (Array.isArray(item.attr)) {
-              item.attr.forEach((atr, i) => {
-                ret.push(atr + ':' + item.val[i])
-              })
-            } else {
-              ret.push(item.attr + ':' + item.val + unit)
-            }
+        this.component.others.config.forEach((item) => {
+          const isItem = item.attr.indexOf(key)
+          const idx = item.attr.indexOf('_')
+          if (isItem === 0) {
+            const unit = item.unit || ''
+            item.val && ret.push(item.attr.substring(idx + 1, item.attr.length) + ':' + item.val + unit)
           }
         })
         return ret.join(';')
@@ -70,22 +65,76 @@
   .comp-content {
     background-repeat: no-repeat;
   }
-  .home-title {
-    position: relative;
-    box-sizing: border-box;
+  .page-list {
+    background-color: #fff;
 
-    * {
-      margin: 0;
-      padding: 0;
-      line-height: 1;
-    }
+    .page-list-item {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      width: 50%;
+      box-sizing: border-box;
 
-    > h3 {
-      display: block;
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1px;
+        background-color: #E5E5E5;
+        color: #E5E5E5;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scaleX(0.5);
+        transform: scaleX(0.5);
+      }
+
+      &:nth-child(2n) {
+        &:after {
+          display: none;
+        }
+      }
+
+      .page-list-item__hd {
+        margin-bottom: .8em;
+        text-align: center;
+
+        .page-list-item__img {
+          margin: 0 auto;
+          width: 100%;
+          height: 100%;
+          background-color: #e9e9eb;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+
+      .page-list-item__bd {
+        min-width: 60px;
+
+        .page-list-item__title {
+          margin-bottom: .3em;
+          width: auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          word-wrap: normal;
+          word-wrap: break-word;
+          word-break: break-all;
+        }
+
+        .page-list-item__desc {
+          margin: 0;
+          line-height: 1.5;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+      }
     }
   }
 </style>

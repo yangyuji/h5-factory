@@ -63,6 +63,10 @@
           <horizontal-item :items="option.action.config"></horizontal-item>
         </template>
 
+        <template v-if="option.action.type === 'vertical-item-click'">
+          <vertical-item :items="option.action.config"></vertical-item>
+        </template>
+
         <template v-if="option.action.type === 'form-submit'">
           <input-item :forms="option.action.config"></input-item>
         </template>
@@ -106,6 +110,7 @@
   import bottomMenuItem from '@/views/itemOption/bottomMenuItem.vue'
   import floorMenuItem from '@/views/itemOption/floorMenuItem.vue'
   import horizontalItem from '@/views/itemOption/horizontalItem.vue'
+  import verticalItem from '@/views/itemOption/verticalItem.vue'
   import scrollItem from '@/views/itemOption/scrollItem.vue'
   import inputItem from '@/views/itemOption/inputItem.vue'
   import gridMenuItem from '@/views/itemOption/gridMenuItem.vue'
@@ -130,6 +135,7 @@
       floorMenuItem,
       scrollItem,
       horizontalItem,
+      verticalItem,
       inputItem,
       gridMenuItem,
       marqueeItem,
