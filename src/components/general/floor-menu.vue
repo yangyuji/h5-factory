@@ -25,6 +25,7 @@
 
 <script>
   export default {
+    name: 'FloorMenu',
     props: {
       component: {
         type: Object

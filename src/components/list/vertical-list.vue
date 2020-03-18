@@ -18,6 +18,7 @@
 
 <script>
   export default {
+    name: 'VerticalList',
     props: {
       component: {
         type: Object

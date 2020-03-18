@@ -15,6 +15,7 @@
 
 <script>
   export default {
+    name: 'GridMenu',
     props: {
       component: {
         type: Object

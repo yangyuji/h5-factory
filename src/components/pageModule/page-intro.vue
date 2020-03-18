@@ -19,6 +19,7 @@
 
 <script>
   export default {
+    name: 'PageIntro',
     props: {
       component: {
         type: Object

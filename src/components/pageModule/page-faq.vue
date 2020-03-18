@@ -11,6 +11,7 @@
 
 <script>
   export default {
+    name: 'PageFaq',
     props: {
       component: {
         type: Object

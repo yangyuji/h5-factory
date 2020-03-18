@@ -10,6 +10,7 @@
 
 <script>
   export default {
+    name: 'PageTitle',
     props: {
       component: {
         type: Object

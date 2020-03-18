@@ -7,6 +7,7 @@
 
 <script>
   export default {
+    name: 'BaseText',
     props: {
       component: {
         type: Object

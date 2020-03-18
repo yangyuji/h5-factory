@@ -32,7 +32,7 @@
 <script>
   import util from '@/utils/util.js'
   import compConfig from '@/config/comp.config.js'
-  import upload from '@/components/upload.vue'
+  import upload from '@/common/upload.vue'
 
   export default {
     data() {

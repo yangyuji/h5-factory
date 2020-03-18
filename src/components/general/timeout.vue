@@ -25,6 +25,7 @@
 
 <script>
   export default {
+    name: 'Timeout',
     props: {
       component: {
         type: Object

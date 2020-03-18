@@ -9,6 +9,7 @@
 
 <script>
   export default {
+    name: 'BottomMenu',
     props: {
       component: {
         type: Object

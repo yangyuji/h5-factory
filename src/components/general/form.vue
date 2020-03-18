@@ -22,6 +22,7 @@
 
 <script>
   export default {
+    name: 'BaseForm',
     props: {
       component: {
         type: Object

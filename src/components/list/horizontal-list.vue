@@ -17,6 +17,7 @@
 
 <script>
   export default {
+    name: 'HorizontalList',
     props: {
       component: {
         type: Object

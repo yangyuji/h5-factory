@@ -103,7 +103,7 @@
 </template>
 
 <script>
-  import formItem from '@/components/formItem.vue'
+  import formItem from '@/common/formItem.vue'
   import imageClick from '@/views/itemOption/imageClick.vue'
   import timeoutItem from '@/views/itemOption/timeoutItem.vue'
   import bannerItem from '@/views/itemOption/bannerItem.vue'

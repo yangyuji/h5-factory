@@ -10,6 +10,7 @@
 
 <script>
   export default {
+    name: 'BaseImage',
     props: {
       component: {
         type: Object

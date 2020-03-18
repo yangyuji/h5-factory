@@ -18,6 +18,7 @@
   import 'swiper/dist/css/swiper.min.css'
 
   export default {
+    name: 'SwiperBanner',
     props: {
       component: {
         type: Object

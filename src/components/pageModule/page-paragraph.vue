@@ -18,6 +18,7 @@
 
 <script>
   export default {
+    name: 'PageParagraph',
     props: {
       component: {
         type: Object
