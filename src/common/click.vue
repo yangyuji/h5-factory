@@ -44,7 +44,7 @@
           <el-tab-pane label="图片">
             <div class="choose-panel">
               <template v-for="comp in comps">
-                <el-button v-if="comp.type == 'img'"
+                <el-button v-if="comp.type == 'base-img'"
                            size="mini" round
                            :class="[currentTab == 'page' && pageVal === comp.domId ?
                              'el-button--primary' : '']"
@@ -57,7 +57,7 @@
           <el-tab-pane label="文本">
             <div class="choose-panel">
               <template v-for="comp in comps">
-                <el-button v-if="comp.type == 'text'"
+                <el-button v-if="comp.type == 'base-text'"
                            size="mini" round
                            :class="[currentTab == 'page' && pageVal === comp.domId ?
                              'el-button--primary' : '']"
@@ -70,7 +70,7 @@
           <el-tab-pane label="表单">
             <div class="choose-panel">
               <template v-for="comp in comps">
-                <el-button v-if="comp.type == 'form'"
+                <el-button v-if="comp.type == 'base-form'"
                            size="mini" round
                            :class="[currentTab == 'page' && pageVal == comp.domId ?
                              'el-button--primary' : '']"

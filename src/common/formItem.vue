@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form-item class="small"
-                  v-if="item.type === 'text'"
+                  v-if="item.type === 'base-text'"
                   :label="item.label + '：'">
       <el-input v-model="item.val"
                 :maxlength="item.maxLength || 128"

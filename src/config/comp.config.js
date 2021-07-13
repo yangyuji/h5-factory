@@ -11,7 +11,7 @@
 } */
 
 module.exports = {
-  text: {
+  'base-text': {
     title: '文本',
     domId: '',
     domName: '',
@@ -144,7 +144,7 @@ module.exports = {
       }
     ]
   },
-  img: {
+  'base-image': {
     title: '图片',
     domId: '',
     domName: '',
@@ -221,7 +221,7 @@ module.exports = {
       }]
     }
   },
-  form: {
+  'base-form': {
     title: '表单',
     domId: '',
     domName: '',
