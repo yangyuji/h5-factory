@@ -12,31 +12,29 @@
              @drop.self="dropPhone"
              @dragover.prevent>
 
+          <!--占位提示控件-->
+          <div class="place-holder"
+               @dragover.stop="dragover"
+               @dragleave.stop="dragleave"
+               @drop.stop="drop"
+               @dragover.prevent>放在这里</div>
+
           <template v-for="(comp, idx) in compList">
 
-            <!--占位提示控件-->
-            <div v-if="comp.type === 'placeholder'"
-                 class="place-holder"
-                 @dragover.stop="dragover"
-                 @dragleave.stop="dragleave"
-                 @drop.stop="drop"
-                 @dragover.prevent
-                 :data-index="idx">放在这里</div>
-
-            <div v-else :class="['tpl-container', comp.active ? 'current' : '']"
+            <div :class="['tpl-container', comp.active ? 'current' : '']"
                  :data-index="idx" @click.capture="clickComp">
               <component :is="comp.type" :component="comp"></component>
 
               <!--控件操作-->
               <div class="comp-menu">
                 <a href="javascript:void(0)"
-                   :class="[idx == 1 ? 'disabled' : '']"
+                   :class="[idx == 0 ? 'disabled' : '']"
                    @click="upComp(idx)">
                   <span class="tips">上移</span>
                   <i class="fa fa-arrow-circle-up"></i>
                 </a>
                 <a href="javascript:void(0)"
-                   :class="[idx == compList.length - 2 ? 'disabled' : '']"
+                   :class="[idx == compList.length - 1 ? 'disabled' : '']"
                    @click="downComp(idx)">
                   <span class="tips">下移</span>
                   <i class="fa fa-arrow-circle-down"></i>
@@ -48,6 +46,13 @@
                 </a>
               </div>
             </div>
+
+            <div class="place-holder"
+                 @dragover.stop="dragover"
+                 @dragleave.stop="dragleave"
+                 @drop.stop="drop"
+                 @dragover.prevent
+                 :data-index="idx">放在这里</div>
 
           </template>
         </div>
@@ -113,9 +118,7 @@
           index: 0,
           tabs: []
         },
-        compList: [{
-          type: 'placeholder'
-        }],
+        compList: [],
         bottomMenu: null,
         pageConfig: util.copyObj(pageOption),
         currentIndex: -1,
@@ -209,19 +212,14 @@
           }
         })
       },
-      replacePlaceholderWithComp(index, key) {
+      addComp(index, key) {
         const comp = util.copyObj(compConfig[key])
         const config = {
           type: key,
           active: true,
           domId: key + '-' + util.createDomID()
         }
-        Object.assign(comp, config)
-        this.compList.splice(index + 1, 0, comp)
-        // 再插入一个占位控件
-        this.compList.splice(index + 2, 0, {
-          type: 'placeholder'
-        })
+        this.compList.splice(index + 1, 0, { ...comp, ...config })
         // 显示配置项
         this.currentIndex = index + 1
         this.currentConfig = comp
@@ -264,45 +262,34 @@
         this.showPageSet()
       },
       upComp(idx) {
-        if (idx < 2) {
-          return false
-        }
+        if (idx < 1) return false
         // 复制当前控件
         const tmp = util.copyObj(this.compList[idx])
         // 再删除控件+占位坑
-        this.compList.splice(idx, 2)
+        this.compList.splice(idx, 1)
         // 再插入控件
-        this.compList.splice(idx - 2, 0, tmp)
-        // 最后插入一个占位控件
-        this.compList.splice(idx - 1, 0, {
-          type: 'placeholder'
-        })
+        this.compList.splice(idx - 1, 0, tmp)
         // 显示当前组件配置
-        this.currentIndex = idx - 2
-        this.currentConfig = this.compList[idx - 2]
+        this.currentIndex = idx - 1
+        this.currentConfig = this.compList[idx - 1]
       },
       downComp(idx) {
-        if (idx === this.compList.length - 2) {
+        if (idx === this.compList.length - 1) {
           return false
         }
         // 复制当前控件
         const tmp = util.copyObj(this.compList[idx])
-        // 再删除控件+占位坑
-        this.compList.splice(idx, 2)
+        // 再删除控件
+        this.compList.splice(idx, 1)
         // 再插入控件
-        this.compList.splice(idx + 2, 0, tmp)
-        // 最后插入一个占位控件
-        this.compList.splice(idx + 3, 0, {
-          type: 'placeholder',
-          active: false
-        })
+        this.compList.splice(idx + 1, 0, tmp)
         // 显示当前组件配置
-        this.currentIndex = idx + 2
-        this.currentConfig = this.compList[idx + 2]
+        this.currentIndex = idx + 1
+        this.currentConfig = this.compList[idx + 1]
       },
       delComp(idx) {
         // 删除控件
-        this.compList.splice(idx, 2)
+        this.compList.splice(idx, 1)
         // 显示页面配置参数
         this.showPageSet()
       },
@@ -318,7 +305,7 @@
         const idx = parseInt(target.dataset.index)
         if (compConfig[key]) {
           this.resetCompUnchecked()
-          this.replacePlaceholderWithComp(idx, key)
+          this.addComp(idx, key)
         } else {
           this.$message.warning('没有查询到该组件的配置信息。。。')
         }
@@ -345,7 +332,7 @@
               }
             } else {
               this.resetCompUnchecked()
-              this.replacePlaceholderWithComp(idx, key)
+              this.addComp(idx, key)
             }
           } else {
             this.$message.warning('没有查询到该组件的配置信息。。。')
