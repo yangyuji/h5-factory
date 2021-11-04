@@ -219,7 +219,8 @@
           active: true,
           domId: key + '-' + util.createDomID()
         }
-        this.compList.splice(index + 1, 0, { ...comp, ...config })
+        Object.assign(comp, config)
+        this.compList.splice(index + 1, 0, comp)
         // 显示配置项
         this.currentIndex = index + 1
         this.currentConfig = comp
