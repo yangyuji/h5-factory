@@ -7,9 +7,9 @@
              @close="$emit('update:show', false)"
              width="680px">
 
-    <el-tabs v-model="currentTab" type="card" @tab-click="clickTab">
+    <el-tabs v-model="currentTab" type="card">
 
-      <el-tab-pane v-if="showTabs.indexOf('outside') > -1" label="链接地址" name="outside">
+      <el-tab-pane v-if="showTabs.includes('outside')" label="链接地址" name="outside">
         <el-form label-width="100px" style="margin-top:20px;">
           <el-form-item label="链接地址：">
             <el-input placeholder="请输入链接地址，例：https://www.example.com/" v-model="outsideVal"></el-input>
@@ -17,7 +17,7 @@
         </el-form>
       </el-tab-pane>
 
-      <el-tab-pane v-if="showTabs.indexOf('code') > -1" label="自定义脚本" name="jsCode">
+      <el-tab-pane v-if="showTabs.includes('code')" label="自定义脚本" name="code">
         <el-form label-width="100px" style="margin-top:20px;">
           <el-form-item label="自定义脚本：">
             <el-input type="textarea" placeholder="javascript代码，例：location.href='https://www.baidu.com'" v-model="codeVal"></el-input>
@@ -25,7 +25,7 @@
         </el-form>
       </el-tab-pane>
 
-      <el-tab-pane v-if="showTabs.indexOf('page') > -1" label="页内位置" name="page">
+      <el-tab-pane v-if="showTabs.includes('page')" label="页内位置" name="page">
 
         <el-tabs tab-position="left">
           <el-tab-pane label="全部">
@@ -84,7 +84,7 @@
 
       </el-tab-pane>
 
-      <el-tab-pane v-if="showTabs.indexOf('tel') > -1" label="拨打电话" name="tel">
+      <el-tab-pane v-if="showTabs.includes('tel')" label="拨打电话" name="tel">
         <el-form label-width="100px">
           <el-form-item label="电话号码：">
             <el-input placeholder="请输入电话号码" v-model="telVal" :maxlength="11"></el-input>
@@ -177,9 +177,6 @@
           href: id
         }
       },
-      clickTab(tab) {
-        this.currentTab = tab.name
-      },
       sure() {
         this.dialogShow = false
         if (this.currentTab === 'outside' && this.outsideVal) {
@@ -194,6 +191,13 @@
             href: this.telVal
           }
         }
+        if (this.currentTab === 'code' && this.codeVal) {
+          this.returnVal = {
+            type: 'code',
+            href: this.codeVal
+          }
+        }
+        // 其他的自己实现
         this.$bus.$emit('click:submit', this.index, this.returnVal)
       }
     }
